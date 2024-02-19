@@ -20,16 +20,10 @@ public class InventoryUI_M : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-/*        if (Input.GetKeyDown(KeyCode.I)) {
-            InventoryUI.SetActive(!InventoryUI.activeSelf);
-        }*/
-    }
 
     void UpdateUI()
     {
-        InventoryUI.SetActive(true);
+        Show();
         for(int i = 0; i < slot.Length; i++)
         {
             if(i < inventory.items.Count)
@@ -40,5 +34,13 @@ public class InventoryUI_M : MonoBehaviour
                 slot[i].ClearSlot();
             }
         }
+    }
+
+    public void Show() {
+        InventoryUI.SetActive(true );
+        UiManager.Instance.topUI.Add(this.gameObject);
+    }
+    public void Hide() {
+        InventoryUI.SetActive(false);
     }
 }

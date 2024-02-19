@@ -14,20 +14,16 @@ public class PlayerEquipmentManager : MonoBehaviour
 
     public Equipment[] currentEquipment;
 
-    public EquipmentUI_M uiManager;
+    public EquipmentUI_M equipmentUI;
 
     void Start()
     {
         inventoryManager = GetComponent<InventoryManager>();
-        uiManager = GameObject.Find("GameUI_Handler").GetComponent<EquipmentUI_M>();
+        equipmentUI = UiManager.Instance.equipmentUI;
 
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlotType)).Length;
         
         currentEquipment = new Equipment[numSlots];
-    }
-
-    private void Update() {
-
     }
 
     #region Basic Equipment Function
@@ -44,7 +40,7 @@ public class PlayerEquipmentManager : MonoBehaviour
 
         currentEquipment[slotIndex] = newItem;
         onEquipmentChanged?.Invoke(newItem, oldItem);
-        uiManager.UpdateUI(slotIndex);
+        equipmentUI.UpdateUI(slotIndex);
 
     }
     public void UnEquip(Equipment Item) {  // For Button in  Equipment Slot
@@ -56,7 +52,7 @@ public class PlayerEquipmentManager : MonoBehaviour
 
             currentEquipment[slotIndex] = null;
             onEquipmentChanged?.Invoke(null, oldItem);
-            uiManager.UpdateUI2(slotIndex);
+            equipmentUI.UpdateUI2(slotIndex);
         }
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -7,17 +5,12 @@ using System;
 
 public class GameUI : MonoBehaviour {
 
-    #region INSTANCE
-    public static GameUI Instance;
-
-    #endregion
-
     #region State
     public enum GameUIState {
         Pause,Play,Pause_Main,Pause_Setting,GameOver
     }
 
-    public GameUIState activeState { get; private set; }
+    public GameUIState ActiveState;
     #endregion
 
     #region Variable
@@ -28,45 +21,77 @@ public class GameUI : MonoBehaviour {
     [SerializeField] GameObject GameOverGrp;
 
 
-    [Header("Inventory and Other UIs")]
-    public GameObject InventoryUI;
-    public GameObject chestUI;
-    public GameObject EquipmentUI;
+
 
     internal bool isPaused = false;
 
     #endregion
 
-    private void Awake() {
-        #region Singleton
-        if (Instance != null)
-            Destroy(Instance);
-        else
-            Instance = this;
-        #endregion
-        GameManager.Instance.OnGameOver += GameOverUI;
-    }
-
     private void Start() {
         ToggleAllUI(false);
-        activeState = GameUIState.Play;
-        
+        ActiveState = GameUIState.Play;
     }
 
     void Update() {
-        switch (activeState) {
+        switch(ActiveState) {  // onClick Listener // new Input system
+            case GameUIState.Play:
+            ToggleAllUI(false);
+            PlayState();
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                ChangeState(GameUIState.Pause);
+            }
+            break;
+
+            case GameUIState.Pause:
+                ToggleAllUI(false);
+                PauseState();
+                if(Input.GetKeyDown(KeyCode.Escape)) {
+                    ChangeState(GameUIState.Play);
+                    Debug.Log("Test;");
+            }
+            break;
+
+            case GameUIState.Pause_Main:
+            pauseBut_MainGrp.SetActive(true);
+
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                pauseBut_MainGrp.SetActive(false);  // Deactivate Owns UI
+                ChangeState(GameUIState.Pause);  //Change State
+            }
+            break;
+
+            case GameUIState.Pause_Setting:
+            PauseSettingState();
+
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+
+                pauseBut_inSettingsGrp.SetActive(false);
+                ChangeState(GameUIState.Pause);
+            }
+            break;
+
+            case GameUIState.GameOver:
+                
+            break;
+        }
+
+    }
+    /*
+
+    void ActivateState(GameUIState activeState) {
+        ToggleAllUI(false);
+        switch(activeState) {
             case GameUIState.Play:
                 PlayState();
-                if (Input.GetKeyDown(KeyCode.Escape)) {
-                    ChangeState(GameUIState.Pause);
-                }
+                if(Input.GetKeyDown(KeyCode.Escape)) {
+                    ActivateState(GameUIState.Pause);
+                }   
             break;
 
             case GameUIState.Pause:
                 PauseState();
-
                 if(Input.GetKeyDown(KeyCode.Escape)) {
-                    ChangeState(GameUIState.Play);
+                    ActivateState(GameUIState.Play);
                 }
             break;
 
@@ -82,9 +107,9 @@ public class GameUI : MonoBehaviour {
             case GameUIState.Pause_Setting:
                 PauseSettingState();
 
-                if (Input.GetKeyDown(KeyCode.Escape)) {
+                if(Input.GetKeyDown(KeyCode.Escape)) {
 
-                    pauseBut_inSettingsGrp.SetActive(false); 
+                    pauseBut_inSettingsGrp.SetActive(false);
                     ChangeState(GameUIState.Pause);
                 }
             break;
@@ -93,40 +118,45 @@ public class GameUI : MonoBehaviour {
             break;
 
         }
-
-    }
-
+    }*/
 
     //...................................................
     #region DefaultFUnction
     private void OnDestroy() {
         if(GameManager.Instance != null)
             GameManager.Instance.OnGameOver -= GameOverUI;
+            
     }
 
     private void OnEnable() {
-        GameManager.Instance.onSceneChange += RefreshRefrences;
+        GameManager.Instance.OnSceneChange += RefreshRefrences;
+        GameManager.Instance.OnGameOver += GameOverUI;
     }
 
 
     #endregion
 
+
+    #region Functions
+    private void RefreshRefrences() {
+        
+    
+    
+    }
+    #endregion
     //...................................................
+
     #region State Function
     public void ChangeState(GameUIState newState) {
-        activeState = newState;
+        ActiveState = newState;
     }
     void PlayState() {
         Time.timeScale = 1f;
-        UiManager.Instance.activeUI = null;
         isPaused = false;
-        pauseUiGrp.SetActive(false);
-        pauseBut_MainGrp.SetActive(false);
     }
     void PauseState() {
         Time.timeScale = 0f;
         isPaused = true;
-        UiManager.Instance.activeUI = pauseUiGrp;
         pauseUiGrp.SetActive(true);
         pauseBut_MainGrp.SetActive(true);
     }
@@ -151,29 +181,26 @@ public class GameUI : MonoBehaviour {
         GameOverGrp.SetActive(true);
     }
 
-    private void RefreshRefrences() {
-        
-    }
-    #endregion
 
+    #endregion
 
     //...................................................
     #region Buttons
-    public void RestartGame() {
+    public void OnButton_Restart() {
         ChangeState(GameUIState.Play);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
 
     }
 
-    public void GoToMainMenu() {
+    public void OnButton_MainMenu() {
         //Load main menu scene
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void OnSettings() {
-        activeState = GameUIState.Pause_Setting;
+    public void OnButton_Settings() {
+        ActiveState = GameUIState.Pause_Setting;
     }
 
     #endregion

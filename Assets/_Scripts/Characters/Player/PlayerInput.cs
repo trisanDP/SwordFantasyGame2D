@@ -80,21 +80,19 @@ public class PlayerInput : MonoBehaviour
 
         #region UIcommand
         if (Input.GetKeyDown(KeyCode.P)) {
-            playerScrip.playerEquipmentM.uiManager.ToggleUi();  // PlayerScript => PlayerEquipmentScript => UimanagerScript (ToggleUi())
+            playerScrip.playerEquipmentM.equipmentUI.ToggleUi();  // PlayerScript => PlayerEquipmentScript => UimanagerScript (ToggleUi())
         }
         if (Input.GetKeyDown(KeyCode.U)) {
             playerScrip.playerEquipmentM.UnEquipAll();
         }
 
         if(Input.GetKeyDown(KeyCode.I)) {
-            GameObject ui = GameUI.Instance.InventoryUI;
+            GameObject ui = UiManager.Instance.InventoryUI.gameObject;
             ui.SetActive(!ui.activeSelf);
             ui = null;
         }
-        if(Input.GetKeyDown(KeyCode.Escape)) {
-            UiManager.Instance.OnUIBack();
-        }
 
+            
         #endregion
 
         #region GameCommand
@@ -118,6 +116,5 @@ public class PlayerInput : MonoBehaviour
 
 
     }
-
 
 }

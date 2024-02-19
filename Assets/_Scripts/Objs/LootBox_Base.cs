@@ -27,7 +27,7 @@ public class LootBox_Base : Intractable  {
     protected virtual void Start() {
         playerLayer = 1 << LayerMask.NameToLayer("Player");
         animator = GetComponent<Animator>();
-        UiManager = GameObject.Find("GameUI_Handler").GetComponent<ChestUI_Manager>();
+        UiManager = FindObjectOfType<ChestUI_Manager>();
     }
 
     protected virtual void Update() {

@@ -14,7 +14,7 @@ public class PlayerIntract : MonoBehaviour
 
     private void Start(){
         playerScrip = GetComponent<PlayerScript>();
-        intractablesUI = GameObject.Find("GameUI_Handler").GetComponent<IntractablesUI_Manager>();
+        intractablesUI = UiManager.Instance.intractableUi;
     }
 
     private void Update()

@@ -12,6 +12,10 @@ public class IntractablesUI_Manager : MonoBehaviour
     public GameManager gameManager;
     private void Start() {
         gameManager = GameManager.Instance;
+        if(intractObj == null)
+            Debug.Log("IntractObj is Null");
+        if(intractTxt == null)
+            Debug.Log("Intract Txt is Null");
     }
 
     public void Show(Intractable obj)  // called in PlayerIntract 
