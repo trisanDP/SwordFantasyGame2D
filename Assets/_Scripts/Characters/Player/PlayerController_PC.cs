@@ -25,7 +25,7 @@ public class PlayerController_PC : MonoBehaviour
     //[SerializeField] int Climb_Speed = 100;
 
     [Header("Internal")]
-    float inputMove;
+    Vector2 inputMove;
     float movement = 0;
     Rigidbody2D rb;
 
@@ -48,15 +48,15 @@ public class PlayerController_PC : MonoBehaviour
     }
 
     private void Update(){
-        if(canMove == true)
+        if(canMove == true) {
             inputMove = playerScrip.playerInput._moveInput;
-
+        }
+        Move();
         switch (playerScrip.ActiveState) {
             case PlayerScript.State.idel_State:
-                //PlayIdeal Animation 
                 break;
             case PlayerScript.State.Moving_State:
-                Move();
+                
                 break;
 
             case PlayerScript.State.Jumping_State:
@@ -95,13 +95,13 @@ public class PlayerController_PC : MonoBehaviour
     }
 
     #region Movement
+
     void Move() {
-        playerScrip.ActiveState = PlayerScript.State.Moving_State;
-        float targetSpeed = inputMove * moveSpeed;
+        float targetSpeed = inputMove.x * moveSpeed;
         float speedDif = targetSpeed - rb.velocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01) ? accel : decell;
         movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
-        
+
     }
 
     #endregion

@@ -16,7 +16,6 @@ public class GameUI : MonoBehaviour {
     #region Variable
     [Header("Pause/Over UI's")]
     [SerializeField] GameObject pauseUiGrp;
-    [SerializeField] GameObject pauseBut_MainGrp;
     [SerializeField] GameObject pauseBut_inSettingsGrp;
     [SerializeField] GameObject GameOverGrp;
 
@@ -26,7 +25,9 @@ public class GameUI : MonoBehaviour {
     internal bool isPaused = false;
 
     #endregion
-
+    private void Awake() {
+        UiManager.Instance.activeState = UiManager.State.Game1;
+    }
     private void Start() {
         ToggleAllUI(false);
         ActiveState = GameUIState.Play;
@@ -51,20 +52,11 @@ public class GameUI : MonoBehaviour {
             }
             break;
 
-            case GameUIState.Pause_Main:
-            pauseBut_MainGrp.SetActive(true);
-
-            if(Input.GetKeyDown(KeyCode.Escape)) {
-                pauseBut_MainGrp.SetActive(false);  // Deactivate Owns UI
-                ChangeState(GameUIState.Pause);  //Change State
-            }
-            break;
-
             case GameUIState.Pause_Setting:
-            PauseSettingState();
+                ToggleAllUI(false);
+                PauseSettingState();
 
             if(Input.GetKeyDown(KeyCode.Escape)) {
-
                 pauseBut_inSettingsGrp.SetActive(false);
                 ChangeState(GameUIState.Pause);
             }
@@ -129,10 +121,14 @@ public class GameUI : MonoBehaviour {
     }
 
     private void OnEnable() {
-        GameManager.Instance.OnSceneChange += RefreshRefrences;
+        ScenesManager.Instance.OnSceneChange += RefreshRefrences;
         GameManager.Instance.OnGameOver += GameOverUI;
     }
 
+    private void OnDisable() {
+        ScenesManager.Instance.OnSceneChange -= RefreshRefrences;
+        GameManager.Instance.OnGameOver -= GameOverUI;
+    }
 
     #endregion
 
@@ -158,7 +154,6 @@ public class GameUI : MonoBehaviour {
         Time.timeScale = 0f;
         isPaused = true;
         pauseUiGrp.SetActive(true);
-        pauseBut_MainGrp.SetActive(true);
     }
 
     void PauseSettingState(){
@@ -172,7 +167,6 @@ public class GameUI : MonoBehaviour {
     void ToggleAllUI(bool var) {
         GameOverGrp.SetActive(var);
         pauseUiGrp.SetActive(var);
-        pauseBut_MainGrp.SetActive(var);
         pauseBut_inSettingsGrp.SetActive(var);
     }
 

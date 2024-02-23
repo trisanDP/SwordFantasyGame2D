@@ -21,20 +21,18 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void Update()
     {
-        if (playerScrip.playerInput._moveInput > 0 && !_facingRight)
-        {
+        if(playerScrip.playerInput._moveInput.x > 0 && !_facingRight) {
             Flip();
 
         }
-        if (playerScrip. playerInput._moveInput < 0 && _facingRight)
-        {
+        if(playerScrip.playerInput._moveInput.x < 0 && _facingRight) {
             Flip();
         }
 
         animator_Player.SetBool("IsGrounded",playerScrip.playerCollider.GroundCheck());
         animator_Player.SetFloat("JumpVelocity", playerScrip.Rb.velocity.y);
         animator_Player.SetBool("jumpPressed", playerScrip.playerInput.jumpPressed);
-        animator_Player.SetInteger("Speed", (int)playerScrip.playerInput._moveInput);
+        animator_Player.SetInteger("Speed", (int)playerScrip.playerInput._moveInput.x);
 
         switch (playerScrip.ActiveState){
 

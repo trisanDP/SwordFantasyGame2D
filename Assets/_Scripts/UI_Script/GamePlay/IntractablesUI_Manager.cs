@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class IntractablesUI_Manager : MonoBehaviour
@@ -9,15 +6,22 @@ public class IntractablesUI_Manager : MonoBehaviour
     public GameObject intractObj;
     public TextMeshProUGUI intractTxt;
 
-    public GameManager gameManager;
-    private void Start() {
-        gameManager = GameManager.Instance;
+    private void Awake() {
         if(intractObj == null)
             Debug.Log("IntractObj is Null");
         if(intractTxt == null)
             Debug.Log("Intract Txt is Null");
     }
 
+    private void OnEnable() {
+        ScenesManager.Instance.OnSceneChange += RefreshRefrences;
+    }
+    private void OnDisable() {
+        ScenesManager.Instance.OnSceneChange -= RefreshRefrences;
+    }
+    private void RefreshRefrences() {
+
+    }
     public void Show(Intractable obj)  // called in PlayerIntract 
     {
         intractObj.SetActive(true); 

@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour {
     #region Singleton
     public static ScenesManager Instance;
+    public event Action OnSceneChange;
 
     private void Awake() {
         if(Instance == null) {
@@ -11,6 +13,8 @@ public class ScenesManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
         } else
             Destroy(gameObject);
+
+        OnSceneChange?.Invoke();
     }
     #endregion
 
@@ -33,7 +37,12 @@ public class ScenesManager : MonoBehaviour {
     public void LoadNextScene() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
+    private void OnEnable() {
+        SceneManager.sceneLoaded += SceneChanged;
+    }
+    void SceneChanged(Scene a, LoadSceneMode b) {
+        OnSceneChange?.Invoke();
+    }
 
 
 }

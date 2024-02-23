@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEngine.InputSystem;
+using OriginL.InputSystem;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -9,11 +11,7 @@ public class PlayerInput : MonoBehaviour
     #region VARIABLES
 
     internal PlayerScript playerScrip;
-    internal float _moveInput;
-
-
-    [Header("")]
-    internal int moveState = 0;
+    public Vector2 _moveInput;
 
 
     [Header("Link")]
@@ -26,57 +24,76 @@ public class PlayerInput : MonoBehaviour
     private void Start() {
         playerScrip = GetComponent<PlayerScript>();
     }
-    private void Update() {
+    #region NewInputSystemF
+    public void OnJump(InputAction.CallbackContext context) {
+        if(context.performed) {
+            playerScrip.ActiveState = PlayerScript.State.Jumping_State;
+            jumpPressed = true;
+        }
+    }
 
-        #region Movement
-        //............................
-
-        _moveInput = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            moveState += 1;
-            if (moveState >= 3) {
-                moveState = 0;
+    public void OnShortJump(InputAction.CallbackContext context) {
+        // Check if the action was canceled
+        if(context.canceled) {
+            // Check if the player is still jumping
+            if(playerScrip.Rb.velocity.y > 0) {
+                // Call the short jump method from the player controller
+                playerScrip.playerController.ShortJump();
             }
-            Debug.Log(moveState);
         }
+    }
+    #region Movement
 
-        //.............................
-        #endregion 
+    #endregion
+    public void OnMove(InputAction.CallbackContext context) {
+        if(context.performed) {
+            _moveInput = context.ReadValue<Vector2>();
+            Debug.Log("Moving");
+        }else
+            _moveInput = new Vector2(0,0);
+    }
 
-        #region Jump
-            //......................
-        if (Input.GetKeyDown(KeyCode.Space)) {
-                playerScrip.ActiveState = PlayerScript.State.Jumping_State; // Long Jump
-                jumpPressed = true;
-                Debug.Log("Pressed");
-        }
+    #region Attack
+    //.....................
+    public void OnAttack1(InputAction.CallbackContext context) {
+        if(context.performed)
+            playerScrip.playerCombact.MeleeAttack1();
+    }
 
-        if (playerScrip.playerCollider.GroundCheck() == false) {
+    public void OnAttack2(InputAction.CallbackContext context) {
+        if(context.performed)
+            playerScrip.playerCombact.MeleeAttack2();
+
+    }
+    //........................
+    #endregion
+
+
+    #endregion
+
+    private void Update() {
+        if(playerScrip.playerCollider.GroundCheck() == false) {
             jumpPressed = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && playerScrip.Rb.velocity.y > 0) {  // Short Jump
-            playerScrip.playerController.ShortJump();
-        }
+
+        #region Jump
+        //......................
+        /*        if (Input.GetKeyDown(KeyCode.Space)) {
+                        playerScrip.ActiveState = PlayerScript.State.Jumping_State; // Long Jump
+                        jumpPressed = true;
+                        Debug.Log("Pressed");
+                }*/
+
+
+        /*
+                if (Input.GetKeyUp(KeyCode.Space) && playerScrip.Rb.velocity.y > 0) {  // Short Jump
+                    playerScrip.playerController.ShortJump();
+                }*/
         //.........................
         #endregion
 
 
-        #region Attack
-        //.....................
-        //Attack2 . Normal Attack
-        if (Input.GetKeyDown(KeyCode.F)) {
-            playerScrip.playerCombact.MeleeAttack1();
-        }
-
-        //Attack 2 Strong Attack
-        if (Input.GetKeyDown(KeyCode.R)) {
-            playerScrip.playerCombact.MeleeAttack2();
-        }
-
-        //........................
-        #endregion
 
         #region UIcommand
         if (Input.GetKeyDown(KeyCode.P)) {

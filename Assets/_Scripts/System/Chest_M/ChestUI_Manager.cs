@@ -22,7 +22,7 @@ public class ChestUI_Manager : MonoBehaviour
         ChestUi.SetActive(true);
     }
     public void Hide() {
-        ChestUi.SetActive(false );
+        ChestUi.SetActive(false);
     }
 
     public void UpdateUI(LootBox_Base chest) {

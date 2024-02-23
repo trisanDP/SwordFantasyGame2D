@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static State ActiveState;
     #region Events
     public event Action OnGameOver;
-    public event Action OnSceneChange;
+
     #endregion
 
     #region PrimitiveVariables
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         } else{
             Destroy(gameObject);
         }
-        OnSceneChange?.Invoke();
+
         #endregion
     }
 
@@ -49,10 +49,13 @@ public class GameManager : MonoBehaviour
 
     #region Links
     private void OnEnable() {
-        SceneManager.sceneLoaded += SceneChanged;
+        if(ScenesManager.Instance == null) {
+            Debug.Log("Testttt3333");
+        }
+        ScenesManager.Instance.OnSceneChange += SceneChange;
     }
-    void SceneChanged(Scene a, LoadSceneMode b) {
-        OnSceneChange?.Invoke();
+
+    void SceneChange() {
         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Area1")) {  // can replace with ScenesManager.ActiveScene check;
             isGameOver = false;
             playerObj = GameObject.Find("Player");

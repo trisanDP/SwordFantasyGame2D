@@ -35,7 +35,7 @@ public class InventoryManager : MonoBehaviour
                 return false;
             }
             items.Add(item);
-            itemChangeCallBack.Invoke();            
+            itemChangeCallBack?.Invoke();            
         }
         return true;
     }

@@ -31,9 +31,8 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if (GameManager.Instance.isGameOver == false) {
             StateManager();
-        }
+        
     }
 
     protected virtual void StateManager()

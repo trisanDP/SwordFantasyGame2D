@@ -23,6 +23,10 @@ public class LootBox_Base : Intractable  {
 
     #endregion
 
+    internal enum BoxState {
+        Normal, Open,Close, Empty
+    }
+    BoxState activeState;
 
     protected virtual void Start() {
         playerLayer = 1 << LayerMask.NameToLayer("Player");
@@ -31,10 +35,24 @@ public class LootBox_Base : Intractable  {
     }
 
     protected virtual void Update() {
-        Collider2D col = Physics2D.OverlapCircle(transform.position, range, playerLayer);
-        if (isOpen == true && (col == null || col.name != "Player")) {
-            CloseChest();
+        switch(activeState) {
+            case BoxState.Normal:
+
+            break;
+            case BoxState.Open:
+            Collider2D col = Physics2D.OverlapCircle(transform.position, range, playerLayer);
+            if(col == null || col.name != "Player") {
+                CloseChest();
+            }
+            break;
+            case BoxState.Close:
+
+            break;
+            case BoxState.Empty:
+
+            break;
         }
+
     }
 
     #region IntractableF
@@ -54,6 +72,7 @@ public class LootBox_Base : Intractable  {
         isOpen = true;
         UiManager.Show();
         animator.SetTrigger("Open");
+        activeState = BoxState.Open;
     }
 
     protected void CloseChest() {
@@ -61,11 +80,15 @@ public class LootBox_Base : Intractable  {
         UiManager.Hide();
         animator.SetTrigger("Close");
         activeLootBox = null;
+        activeState = BoxState.Close;
     }
 
     public void RemoveChestItem(ItemClass item) {
         ItemsRewards.Remove(item);
         UiManager.UpdateUI(this);
+        if(ItemsRewards.Count <= 0) {
+            activeState = BoxState.Empty;
+        }
     }
 
     #region Extra/Collider

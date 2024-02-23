@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour {
 
@@ -8,9 +9,10 @@ public class UiManager : MonoBehaviour {
 
     #region State
 
-    public enum state {
+    public enum State {
         MainMenu, Game1
     }
+    public State activeState;
     #endregion
 
     #region UI_Variables
@@ -22,7 +24,6 @@ public class UiManager : MonoBehaviour {
 
     #endregion
 
-    public List<GameObject> topUI;
     #endregion
 
     #region Singleton
@@ -39,9 +40,15 @@ public class UiManager : MonoBehaviour {
     #endregion
 
     private void OnEnable() {
-        GameManager.Instance.OnSceneChange += RefreshRefrences;
+        switch(activeState) {
+            case State.Game1:
+            ScenesManager.Instance.OnSceneChange += RefreshRefrences1;
+            break;
+            case State.MainMenu:
+            break;
+        }
     }
-    private void RefreshRefrences() {
+    private void RefreshRefrences1() {
         if(InventoryUI == null) {
             Debug.Log("InventoryUI was Empty");
             InventoryUI = FindObjectOfType<InventoryUI_M>();
@@ -60,11 +67,5 @@ public class UiManager : MonoBehaviour {
             intractableUi = FindObjectOfType<IntractablesUI_Manager>();
         }
 
-    }
-
-    public void ClearTopUis() {
-        foreach(GameObject go in topUI) {
-            go.SetActive(false);
-        }
     }
 }

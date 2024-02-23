@@ -33,7 +33,6 @@ public class PlayerIntract : MonoBehaviour
             intractablesUI.Show(HasIntractObj());
         } 
         else {
-    
             intractablesUI.Hide();
         }
         #endregion

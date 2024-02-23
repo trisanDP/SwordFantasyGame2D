@@ -13,22 +13,27 @@ public class InventoryUI_M : MonoBehaviour
 
     void Start()
     {
-        inventory = GameObject.Find("Player").GetComponent<InventoryManager>();
+        inventory = FindObjectOfType<InventoryManager>();
         slot = itemParent.GetComponentsInChildren<InventorySlot>();
         inventory.itemChangeCallBack += UpdateUI;
         InventoryUI.SetActive(false);
 
     }
-
+    private void OnEnable() {
+        
+    }
+    private void OnDestroy() {
+        inventory.itemChangeCallBack -= UpdateUI;
+    }
 
     void UpdateUI()
     {
-        Show();
         for(int i = 0; i < slot.Length; i++)
         {
             if(i < inventory.items.Count)
             {
                 slot[i].AddItem(inventory.items[i]);
+                Show();
             } else
             {
                 slot[i].ClearSlot();
@@ -37,8 +42,7 @@ public class InventoryUI_M : MonoBehaviour
     }
 
     public void Show() {
-        InventoryUI.SetActive(true );
-        UiManager.Instance.topUI.Add(this.gameObject);
+        InventoryUI.SetActive(true);
     }
     public void Hide() {
         InventoryUI.SetActive(false);
