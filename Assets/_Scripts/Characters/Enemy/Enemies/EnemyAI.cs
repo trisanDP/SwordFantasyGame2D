@@ -1,13 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    protected EnemyScript enemyScript;
+    protected Enemy enemyScript;
 
     #region Variables
-
     [Header("DerivedClass")]
     internal float distFromTarget;
     protected bool canMove;
@@ -16,11 +14,13 @@ public class EnemyAI : MonoBehaviour
     [Header("Petrol")]
     [SerializeField] protected float idelDuration = 1;
 
+
+    public float x = 1;
     #endregion
 
     protected virtual void Start()
     {
-        enemyScript = GetComponent<EnemyScript>();
+        enemyScript = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody2D>();
         player = GameManager.Instance.playerObj;
     }
@@ -31,37 +31,47 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void FixedUpdate() {
-            StateManager();
+         /*   StateManager();*/
         
     }
 
-    protected virtual void StateManager()
-    {
-        
-        switch (enemyScript.ActiveState)
-        {
-            case EnemyScript.State.Ideal_State:
-                enemyScript.enemyController.StartPetrolMovement();
-                if (enemyScript.enemyCollider.HasHitWall() && !canMove) {
-                    StartCoroutine(Petrol());
-                    return;
-                }
-            break;
-            case EnemyScript.State.Chasing_State:
-                enemyScript.enemyController.StartChasing(enemyScript.Target);
-                break;
+    /*
+     protected virtual void StateManager() {
 
-            case EnemyScript.State.Attacking_State:
-                enemyScript.enemyController.AttackingState();
-                break;
-            case EnemyScript.State.Stund_State:
-                enemyScript.enemyController.StundState();
-                
-            break;
+         switch(enemyScript.ActiveState) {
+             case EnemyScript.State.Ideal_State:
+             enemyScript.enemyController.StartPetrolMovement();
+             if(enemyScript.enemyCollider.HasHitWall() && !canMove) {
+                 StartCoroutine(Petrol());
+                 return;
+             }
+             break;
+             case EnemyScript.State.Chasing_State:
+             enemyScript.enemyController.StartChasing(enemyScript.Target);
+             break;
 
-        }
+             case EnemyScript.State.Attacking_State:
+             enemyScript.enemyController.AttackingState();
+             break;
+
+             case EnemyScript.State.Stund_State:
+             enemyScript.enemyController.StundState();
+
+             break;
+
+         }
+     }*/
+    #region New
+    internal virtual void StartPetrol() { 
+        StartCoroutine(Petrol());
     }
 
+    internal float DistanceFromTarget() {
+        if(enemyScript.enemyCollider.InDetectRange()) {
+            return Vector2.Distance(player.transform.position, transform.position);
+        } else
+            return 1000;
+    }
     protected virtual IEnumerator Petrol()
     { // Petrol And Idel 
         canMove = true;
@@ -75,20 +85,18 @@ public class EnemyAI : MonoBehaviour
 
 
     #region ShareAbles:
-    internal void LookAt(string name)
+    internal void  LookAt(GameObject target)  // Shouldnt be at any state cause, i maight make a enemy that looks at player not doing anything
     {   // Looks towards player When ever called
-        GameObject target = GameObject.Find(name);
-        if (target.transform.position.x > transform.position.x && !enemyScript.enemyAnimCont._facingRight)
-        {
-            enemyScript.enemyAnimCont.Flip();
-        } else if (target.transform.position.x < transform.position.x && enemyScript.enemyAnimCont._facingRight)
-        {
+        if((target.transform.position.x > transform.position.x && !enemyScript.enemyAnimCont._facingRight) ||
+            (target.transform.position.x < transform.position.x && enemyScript.enemyAnimCont._facingRight)) {
             enemyScript.enemyAnimCont.Flip();
         }
     }
+
+
     #endregion
 
 
 
-
+    #endregion
 }

@@ -11,10 +11,15 @@ public class PlayerIntract : MonoBehaviour
     IntractablesUI_Manager intractablesUI;
 
     #endregion
-
+    private void Awake() {
+        intractablesUI = UiManager.Instance.intractableUi;
+    }
     private void Start(){
         playerScrip = GetComponent<PlayerScript>();
-        intractablesUI = UiManager.Instance.intractableUi;
+        
+        if(intractablesUI == null ) {
+            Debug.Log(" intractable UI missing ");
+        }
     }
 
     private void Update()

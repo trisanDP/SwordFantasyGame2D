@@ -26,7 +26,6 @@ public class CharacterStat : MonoBehaviour, IDamageable
         damage = Mathf.Clamp(damage, 0,int.MaxValue);
         currentHealth -= (int)damage;
         Debug.Log(name + " takes " + damage + " damage");
-        KnockBack(knockBack,damageFrom);
         if(currentHealth <= 0)
         {
             Die();
@@ -38,6 +37,7 @@ public class CharacterStat : MonoBehaviour, IDamageable
         {
             currentHealth += add;
             Debug.Log("added " + add + " Health to" + name);
+            
         }
     }
 

@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class EnemyStat : CharacterStat
 {
-    internal EnemyScript enemyScrip;
+    internal Enemy enemy;
 
     [Header("Status")]
     [SerializeField] internal float stundDuration;
@@ -12,43 +14,60 @@ public class EnemyStat : CharacterStat
     [Header("Internal")]
     internal bool isStund;
 
+    [Header("Drops")]
+    [SerializeField] GameObject dropBox;
+    [SerializeField] List<ItemClass> drops;
+
+
     private void Start() {
-        enemyScrip = GetComponent<EnemyScript>();
+        enemy = GetComponent<Enemy>();
     }
 
    
 
     public override void TakeDamage(float damage, int knockBack, GameObject damageFrom) {
         base.TakeDamage(damage, knockBack, damageFrom);
-        if(enemyScrip.Target == null) {
-            enemyScrip.Target = damageFrom;
+        enemy.enemyAnimCont.DamageTaken();
+        if(enemy.Target == null) {
+            enemy.Target = damageFrom;
         }
+        KnockBack(knockBack,damageFrom);
     }
-
-
-
+    public override void Die() {
+        base.Die();
+        enemy.enemyAnimCont.PlayDeathAnim();
+    }
+    #region basic
+    public void DropItems() {  // Called in EnemyAnimation Script
+        dropBox = Instantiate(dropBox, transform.position, Quaternion.identity);
+        if(dropBox != null) {
+            foreach(ItemClass item in drops) { // Loop through all items in Drops
+                LootDrop itemDropsScript = dropBox.GetComponent<LootDrop>();
+                if(itemDropsScript != null) {
+                    itemDropsScript.ItemsRewards.Add(item);
+                } else
+                    Debug.Log("LootDrop Component in Dropbox in enemy Is Empty");
+            }
+        } else
+            Debug.Log("DropBox Prefab Empty");
+    }
+    #endregion
 
     #region Effect
     public override void KnockBack(int force, GameObject target) {
         base.KnockBack(force, target);
+    }
+    
+    public void StartStundEffect() {
         StartCoroutine(Stund());
-        enemyScrip.ActiveState = EnemyScript.State.Stund_State;  //Make a state manager as base
     }
 
     internal IEnumerator Stund() {
-        enemyScrip.enemyController.activeSpeed = 0;  //make movement manager as base
+        enemy.enemyController.StopEnemyMovement();  //make movement manager as base
         yield return new WaitForSeconds(stundDuration);
-        enemyScrip.enemyController.activeSpeed = enemyScrip.enemyController.ChasingSpeed;
-        enemyScrip.ActiveState = EnemyScript.State.Chasing_State;
+        enemy.enemyController.activeSpeed = enemy.enemyController.ChasingSpeed;
         isStund = false;
     }
 
-    #endregion
-
-    #region basic
-    public override void Die() {
-        base.Die();
-        enemyScrip.OnDeath();
-    }
     #endregion
 }

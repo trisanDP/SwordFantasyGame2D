@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAnimController : MonoBehaviour {
-    EnemyScript enemyScrip;
+    Enemy enemyScrip;
 
     #region Variables
 
@@ -19,11 +19,10 @@ public class EnemyAnimController : MonoBehaviour {
     private void Awake() {
         _facingRight = true;
         anim = GetComponent<Animator>();
-        enemyScrip = GetComponent<EnemyScript>();
+        enemyScrip = GetComponent<Enemy>();
     }
 
     private void Update() {
-
         anim.SetInteger("Speed", (int)enemyScrip.rb.velocity.x);
         anim.SetBool("isGrounded", enemyScrip.isGrounded);
     }
@@ -37,9 +36,12 @@ public class EnemyAnimController : MonoBehaviour {
     }
 
     public void AfterDeathAnim() {
-        enemyScrip.DropItems();
-        Debug.Log("Death?Anim");
+        enemyScrip.enemyStatus.DropItems(); 
         Destroy(gameObject);
+    }
+
+    public void PlayIdelAnimation() {
+        anim.SetBool("IsIdel",true);
     }
 
 
@@ -53,4 +55,6 @@ public class EnemyAnimController : MonoBehaviour {
     internal void DamageTaken() { // When enemy takes damage
         anim.SetTrigger("DamageTaken");
     }
+
+
 }

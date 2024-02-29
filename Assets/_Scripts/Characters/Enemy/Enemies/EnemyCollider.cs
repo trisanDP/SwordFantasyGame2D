@@ -4,12 +4,11 @@ using UnityEngine;
 public class EnemyCollider : MonoBehaviour {
 
     [Header("Internal")]
-    internal EnemyScript enemyScript;
+    internal Enemy enemyScript;
 
 
-    [SerializeField] GameObject hitPos; 
-    [SerializeField] LayerMask hitLayer;
-    [SerializeField] float attackSize;
+
+    [SerializeField] float HitSize;
 
 
 
@@ -21,8 +20,12 @@ public class EnemyCollider : MonoBehaviour {
 
 
     [Header("Components")]
-    [SerializeField] internal GameObject detectPoint;
-    [SerializeField] internal LayerMask platformLayor;
+    [SerializeField] internal GameObject wallDetectPoint;
+    [SerializeField] GameObject hitPos;
+    [SerializeField] LayerMask hitLayer;
+    [SerializeField] LayerMask platformLayor;
+    [SerializeField] LayerMask playerLayer;
+
 
     [Header("Vectors")]
     [SerializeField] Vector3 size;
@@ -37,7 +40,7 @@ public class EnemyCollider : MonoBehaviour {
             Debug.LogError("EnemyCollider/LayerMask not set");
         }
 
-        enemyScript = GetComponent<EnemyScript>();
+        enemyScript = GetComponent<Enemy>();
     }
 
     #region Collision
@@ -50,12 +53,8 @@ public class EnemyCollider : MonoBehaviour {
 
     #endregion
 
-    #region Trigger
-
-    #endregion
-
     internal bool HasHitWall() {
-        if (Physics2D.OverlapBox(detectPoint.transform.position, size, 0, platformLayor)) {
+        if (Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, platformLayor)) {
             return true;
         }
         else 
@@ -64,21 +63,27 @@ public class EnemyCollider : MonoBehaviour {
 
 
 
-    internal Collider2D[] ColInRange() {  // returns damageables object collider
-        Collider2D[] hit = Physics2D.OverlapCircleAll(hitPos.transform.position, attackSize, hitLayer);
+    internal Collider2D[] HitRange() {  // returns damageables object collider
+        Collider2D[] hit = Physics2D.OverlapCircleAll(hitPos.transform.position, HitSize, hitLayer);
         return hit;
     }
+
+    internal bool InDetectRange() {
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, detectRange, playerLayer);
+        return hit;
+    }
+
 
     #region Extra And Gizmos
     private void OnDrawGizmos() {
         //Detection Box
         Gizmos.color = Color.yellow; 
-        Gizmos.DrawWireCube(detectPoint.transform.position, size);
+        Gizmos.DrawWireCube(wallDetectPoint.transform.position, size);
 
 
         //Attack Box
         Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(hitPos.transform.position, attackSize);
+        Gizmos.DrawWireSphere(hitPos.transform.position, HitSize);
 
 
         //Attack Range

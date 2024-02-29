@@ -32,9 +32,21 @@ public class UiManager : MonoBehaviour {
     private void Awake() {
         if(Instance == null) {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+/*            DontDestroyOnLoad(gameObject);*/
         } else
             Destroy(gameObject);
+        if(InventoryUI == null) {
+            Debug.LogError("InventoryUI is missing!");
+        }
+        if(chestUI == null) {
+            Debug.LogError("ChestUI is missing!");
+        }
+        if(equipmentUI == null) {
+            Debug.LogError("EquipmentUI is missing!");
+        }
+        if(intractableUi == null) {
+            Debug.LogError("IntractablesUI is missing!");
+        }
     }
 
     #endregion
@@ -47,6 +59,7 @@ public class UiManager : MonoBehaviour {
             case State.MainMenu:
             break;
         }
+
     }
     private void RefreshRefrences1() {
         if(InventoryUI == null) {

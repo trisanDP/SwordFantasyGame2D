@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour
-{
+public class EnemyScript : MonoBehaviour {/*
     #region Variables
 
-    #region StatesVariables
-    internal enum State
+*//*    #region StatesVariables
+   *//* internal enum State
     {
         Ideal_State, Chasing_State, Attacking_State, Stund_State
     };
 
-    [SerializeField] internal State ActiveState;
+    [SerializeField] internal State ActiveState;*//*
     #endregion
 
     #region ScriptVariables
@@ -40,31 +37,28 @@ public class EnemyScript : MonoBehaviour
 
     [Header("Collider and Physic")]
     internal bool isGrounded = true;
-
+*//*
     #endregion
 
 
     private void Awake()
     {
-        enemyCollider = GetComponent<EnemyCollider>();
+*//*        enemyCollider = GetComponent<EnemyCollider>();
         enemyStatus = GetComponent<EnemyStat>();
         enemyController = GetComponent<EnemyController>();
-        enemyAI = GetComponent<EnemyAI>();
         enemyAnimCont = GetComponent<EnemyAnimController>();
         enemyCombact = GetComponent<EnemyCombact>();
-        ActiveState = State.Ideal_State;
         rb = GetComponent<Rigidbody2D>();
         gameManager = GetComponent<GameManager>();
-
-        Target = GameObject.Find("Player");
+        Target = GameObject.FindGameObjectWithTag("Player");*//*
     }
 
 
-
+*//*
     public void OnDeath() { // Called in EnemyStat 
         enemyAnimCont.PlayDeathAnim();
     }
-
+*//*
 
     public void DropItems() {  // Called in EnemyAnimation Script
         dropBox = Instantiate(dropBox, transform.position, Quaternion.identity);
@@ -79,9 +73,11 @@ public class EnemyScript : MonoBehaviour
         } else
             Debug.Log("DropBox Prefab Empty");
     }
+        */
 }
-
-public enum EnemyType
-{
+/*
+    public enum EnemyType {
     Normal, Ghost, Heavy, Light
-}
+
+    }
+*/

@@ -25,7 +25,7 @@ public class IntractablesUI_Manager : MonoBehaviour
     public void Show(Intractable obj)  // called in PlayerIntract 
     {
         intractObj.SetActive(true); 
-        intractTxt.text = "Press E for " + obj.name;
+        intractTxt.text = "Press E To Intract";
 
     }
     public void Hide() // Called in Player INtract

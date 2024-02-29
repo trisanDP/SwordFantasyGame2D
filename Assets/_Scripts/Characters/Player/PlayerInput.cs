@@ -48,7 +48,6 @@ public class PlayerInput : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context) {
         if(context.performed) {
             _moveInput = context.ReadValue<Vector2>();
-            Debug.Log("Moving");
         }else
             _moveInput = new Vector2(0,0);
     }

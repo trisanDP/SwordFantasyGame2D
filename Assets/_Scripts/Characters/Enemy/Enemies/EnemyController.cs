@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(EnemyAI))]
 
 public class EnemyController : MonoBehaviour
 {
 
-    internal EnemyScript enemyScrip;
+    internal Enemy enemyScrip;
 
     #region Variables
     [Header("Values")]
@@ -17,15 +16,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] internal float ChasingSpeed = 200;
     [SerializeField] internal float activeSpeed;
     [SerializeField] internal float petrolSpeed = 150;
-
     internal bool canAttack = true;
 
     #endregion
 
     private void Start()
     {
-        enemyScrip = GetComponent<EnemyScript>();
-        enemyScrip.rb = GetComponent<Rigidbody2D>();
+        enemyScrip = GetComponent<Enemy>();
         petrolSpeed = Random.Range(petrolSpeed * 1f, petrolSpeed);
         ChasingSpeed = Random.Range(ChasingSpeed * 0.85f, ChasingSpeed);
         activeSpeed = petrolSpeed;
@@ -37,8 +34,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    internal virtual void StartPetrolMovement()
-    {
+    internal virtual void StartPetrolMovement(){
         activeSpeed = petrolSpeed;
         // Petrol Movement
         if (enemyScrip.enemyAnimCont._facingRight)
@@ -50,23 +46,16 @@ public class EnemyController : MonoBehaviour
         }
 
     }
-    
-    internal void AttackingState() {
-        activeSpeed = 0;
-        enemyScrip.rb.velocity = new Vector2(0, 0);
-        if (enemyScrip.enemyCombact.isAttacking == false)
-            enemyScrip.enemyCombact.MeleeAttack1();
+    internal void EnemyMoveController(GameObject obj, float activeSpeed) {
+        enemyScrip.enemyAI.LookAt(obj);
+        enemyScrip.rb.AddForce(((obj.transform.position) - enemyScrip.transform.position).normalized * activeSpeed, ForceMode2D.Force);
     }
 
-    internal virtual void StartChasing(GameObject name)
-    {
-        activeSpeed = ChasingSpeed;
-        enemyScrip.enemyAI.LookAt(name.name);
-        activeSpeed = ChasingSpeed;
-        enemyScrip.rb.AddForce((name.transform.position - transform.position).normalized * activeSpeed,
-            ForceMode2D.Force);
+    internal void StopEnemyMovement() {
+        if(enemyScrip.rb.velocity.x != 0) {
+            enemyScrip.rb.velocity = new Vector2(0,enemyScrip.rb.velocity.y);
+
+        }
     }
-
-
 
 }

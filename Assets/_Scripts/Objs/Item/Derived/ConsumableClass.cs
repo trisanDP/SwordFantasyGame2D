@@ -60,10 +60,9 @@ public class ConsumableClass : ItemClass
         /*GameManager.Instance.playerScript.playerHealth.AddHealth(10);*/
         Debug.Log("DamageAmpBy" + i);
     }
-    void HealBy(int i)
+    void HealBy(int i) 
     { 
-/*        GameManager.Instance.playerScript.playerHealth.AddHealth(10);*/
-           Debug.Log("Healing By"+ i);
+/*           Debug.Log("Healing By"+ i);*/
     }
 
     public override void Use()

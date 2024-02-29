@@ -6,19 +6,5 @@ using UnityEngine;
 public class Enemy2_AI : EnemyAI
 {
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
-    protected override void StateManager()
-    {
-        base.StateManager();
-    }
-
 
 }

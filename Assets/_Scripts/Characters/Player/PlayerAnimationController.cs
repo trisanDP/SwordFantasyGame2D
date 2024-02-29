@@ -28,24 +28,24 @@ public class PlayerAnimationController : MonoBehaviour
         if(playerScrip.playerInput._moveInput.x < 0 && _facingRight) {
             Flip();
         }
-
-        animator_Player.SetBool("IsGrounded",playerScrip.playerCollider.GroundCheck());
+/*
+        animator_Player.SetBool("IsGrounded", playerScrip.playerCollider.GroundCheck());
         animator_Player.SetFloat("JumpVelocity", playerScrip.Rb.velocity.y);
         animator_Player.SetBool("jumpPressed", playerScrip.playerInput.jumpPressed);
         animator_Player.SetInteger("Speed", (int)playerScrip.playerInput._moveInput.x);
 
-        switch (playerScrip.ActiveState){
+        switch(playerScrip.ActiveState) {
 
             case PlayerScript.State.idel_State:
-                animator_Player.SetBool("IsIdeal", true);
-                break;
+            animator_Player.SetBool("IsIdel", true);
+            break;
 
             case PlayerScript.State.Moving_State:
-                break;
+            break;
 
             case PlayerScript.State.Jumping_State:
-                break;
-        }
+            break;
+        }*/
 
     }
 

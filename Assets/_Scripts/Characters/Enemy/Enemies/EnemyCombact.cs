@@ -1,17 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static Combact_Base;
 
 public class EnemyCombact : Combact_Base
 {
-    EnemyScript enemyScrip;
+    Enemy enemyScrip;
     private void Start() {
-        enemyScrip = GetComponent<EnemyScript>();
+        enemyScrip = GetComponent<Enemy>();
     }
+    public Attack Attack1 = new() { Rate = 1.0f, CanAttack = true, baseDamage = 10, knockBackF = 1};
+    public Attack Attack2 = new() { Rate = 1.0f, CanAttack = true, baseDamage = 20, knockBackF = 2};
+
+
+
 
     internal void MeleeAttack1() {
-        if (Attack1.CanAttack) {
+        if (Attack1.CanAttack  && isAttacking == false) {
             isAttacking = true;
             Attack1.CanAttack = false;
             enemyScrip.enemyAnimCont.PlayAttackAnim("Attack1");
@@ -28,7 +30,7 @@ public class EnemyCombact : Combact_Base
 
 
     public void CallAttack1() {  // Attack Function is called within animation frame     
-        foreach (Collider2D hit in enemyScrip.enemyCollider.ColInRange()) {
+        foreach (Collider2D hit in enemyScrip.enemyCollider.HitRange()) {
             if (hit.TryGetComponent<IDamageable>(out var damageable)) {
                 /*playerScrip.target = hit.gameObject;*/
                 damageable.TakeDamage(Attack1.TPhysicalDamage(this.gameObject), Attack1.knockBackF,this.gameObject);
@@ -37,7 +39,7 @@ public class EnemyCombact : Combact_Base
     }
 
     internal void CallAttack2() {
-        foreach (Collider2D hit in enemyScrip.enemyCollider.ColInRange()) {
+        foreach (Collider2D hit in enemyScrip.enemyCollider.HitRange()) {
             if (hit.TryGetComponent<IDamageable>(out var damageable)) {
                 damageable.TakeDamage(Attack2.TMagicalDamage(), Attack2.knockBackF,this.gameObject);
             }

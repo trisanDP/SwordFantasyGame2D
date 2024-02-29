@@ -16,10 +16,8 @@ public class EnemyStateManager : MonoBehaviour
 
     }
 
-    private void Update() {
+    private void Update() {/*
         distFromTarget = enemyScript.enemyAI.distFromTarget;
-        float detectR = enemyScript.enemyCollider.detectRange;
-        float attackR = enemyScript.enemyCollider.attackRange;
 
         switch (enemyScript.ActiveState) {
 
@@ -44,7 +42,8 @@ public class EnemyStateManager : MonoBehaviour
                 enemyScript.ActiveState = EnemyScript.State.Chasing_State;
             }
             break;
-        }
+        }*/
+
     }
 
 }

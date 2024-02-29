@@ -15,7 +15,8 @@ public class PlayerCombact : Combact_Base
 
     #region MainAttackFuntion
 
-
+    public Attack Attack1 = new() { Rate = 1.0f, CanAttack = true, baseDamage = 10, knockBackF = 1};
+    public Attack Attack2 = new() { Rate = 1.0f, CanAttack = true, baseDamage = 20, knockBackF = 2};
 
     internal void MeleeAttack1()
     {
