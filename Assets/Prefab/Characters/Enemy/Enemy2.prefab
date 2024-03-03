@@ -44,8 +44,6 @@ GameObject:
   - component: {fileID: 4539204771944092195}
   - component: {fileID: 8307427985669716154}
   - component: {fileID: 857421187055107008}
-  - component: {fileID: 5745904465559954229}
-  - component: {fileID: 1574201280591542366}
   - component: {fileID: 521794385813817778}
   - component: {fileID: 3112027375682434844}
   - component: {fileID: 3268007230250313378}
@@ -58,7 +56,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &808493445925751858
 Transform:
   m_ObjectHideFlags: 0
@@ -211,38 +209,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5745904465559954229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2530833107077641713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d755c5892a62c44890c89e51b824cbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ActiveState: 0
-  enemyType: 0
-  dropBox: {fileID: 8480252229364006164, guid: bee59f3e4f3e10642905bc254c96978f, type: 3}
-  drops:
-  - {fileID: 11400000, guid: dd747df5796bc5643bc2d5f81063fc6e, type: 2}
-  - {fileID: 11400000, guid: cd95f232f3ba8c14c95ab9ab3fd1e5c4, type: 2}
-  - {fileID: 11400000, guid: 0a93f59261174c146b636df9b6b826bc, type: 2}
---- !u!114 &1574201280591542366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2530833107077641713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a215b10336b6ac40af37b7fbc30281d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distFromTarget: 0
 --- !u!114 &521794385813817778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5b00f8bb510144e96f2c8ddcb14d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 20
   ChasingSpeed: 150
   activeSpeed: 0
   petrolSpeed: 50
@@ -284,17 +249,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f72770e40455ab4bae035d173cb0aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HitSize: 0
+  attackRange: 4
+  wallDetectPoint: {fileID: 0}
   hitPos: {fileID: 962326608090708055}
   hitLayer:
     serializedVersion: 2
     m_Bits: 640
-  attackSize: 1.7
-  detectRange: 10
-  attackRange: 4
-  detectPoint: {fileID: 3596553374361800201}
   platformLayor:
     serializedVersion: 2
     m_Bits: 256
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
   size: {x: 0.76, y: 3.01, z: 0}
 --- !u!114 &8623304210597938780
 MonoBehaviour:
@@ -332,6 +299,8 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   stundDuration: 2
+  dropBox: {fileID: 0}
+  drops: []
 --- !u!114 &2248826955485103248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +318,6 @@ MonoBehaviour:
     Rate: 1
     CanAttack: 1
     knockBackF: 1
-    statusEffect: []
     baseDamage: 10
     physicalD_Mod: 0
     magicD_Mod: 0
@@ -357,7 +325,6 @@ MonoBehaviour:
     Rate: 1
     CanAttack: 1
     knockBackF: 2
-    statusEffect: []
     baseDamage: 20
     physicalD_Mod: 0
     magicD_Mod: 0

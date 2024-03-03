@@ -57,6 +57,9 @@ TagManager:
   - name: Ground&Platform
     uniqueID: 2667630905
     locked: 0
+  - name: Building
+    uniqueID: 3090077377
+    locked: 0
   - name: Intractables
     uniqueID: 464676349
     locked: 0

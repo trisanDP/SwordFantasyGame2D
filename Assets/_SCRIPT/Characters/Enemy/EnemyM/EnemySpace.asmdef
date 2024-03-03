@@ -1,0 +1,16 @@
+{
+    "name": "EnemySpace",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ddc20ee1575897c44a1af0b128fda2e2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
