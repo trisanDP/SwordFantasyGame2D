@@ -12,7 +12,7 @@ public class PlayerStateController : MonoBehaviour
     }
 
     private void Update() {
-        switch(playerScrip.ActiveState) {
+/*        switch(playerScrip.ActiveState) {
             case PlayerScript.State.Moving_State:
             if(playerScrip.playerInput._moveInput.x == 0 && playerScrip.playerInput.jumpPressed == false) {
                 playerScrip.ActiveState = PlayerScript.State.idel_State;  // Moving 
@@ -36,11 +36,6 @@ public class PlayerStateController : MonoBehaviour
             default:
             Debug.Log("Default Case");
             break;
-        }
-    }
-    void FixedUpdate() {
-        if(playerScrip.Rb.velocity == Vector2.zero) {
-            playerScrip.ActiveState = PlayerScript.State.idel_State;
-        }
+        }*/
     }
 }

@@ -1,5 +1,6 @@
 using OriginL;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class PlayerScript : MonoBehaviour
@@ -28,8 +29,8 @@ public class PlayerScript : MonoBehaviour
     #endregion
 
     #region StateScripts
-    public PlayerIdelState playerIdelState {  get; private set; }
-    public PlayerMovingState playerMovingState {  get; private set; }
+    public PlayerIdelState IdelState {  get; private set; }
+    public PlayerMovingState MovingState {  get; private set; }
     public PlayerAttackingState playerAttackingState {  get; private set; }
 
     #endregion
@@ -41,6 +42,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject target;
 
     [SerializeField] internal bool isDead = false;
+    private bool _isJumpPressed;
     #endregion
 
     protected void Awake() {
@@ -61,15 +63,15 @@ public class PlayerScript : MonoBehaviour
 
         #region StateScriptLink
         playerStateMachine = new PlayerStateMachine();
-        playerIdelState = new PlayerIdelState(this,playerStateMachine);
+        IdelState = new PlayerIdelState(this,playerStateMachine);
         playerAttackingState = new PlayerAttackingState(this,playerStateMachine);
-        playerMovingState = new PlayerMovingState(this,playerStateMachine);
+        MovingState = new PlayerMovingState(this,playerStateMachine);
 
         #endregion
 
     }
     private void Start() {
-        playerStateMachine.Initialize(playerIdelState);
+        playerStateMachine.Initialize(IdelState);
     }
     private void Update() {
         playerStateMachine.CurrentState.FrameUpdate();
@@ -78,6 +80,9 @@ public class PlayerScript : MonoBehaviour
         playerStateMachine.CurrentState.PhysicUpdate();
     }
 
+    void OnJumpPressed(InputAction.CallbackContext context) {
+        _isJumpPressed = context.performed;
+    }
     #region Extra Scrip
 
     #endregion

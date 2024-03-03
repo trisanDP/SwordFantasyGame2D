@@ -1,18 +1,20 @@
-using OriginL.EnemySpace;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
+using UnityEngine.InputSystem;
+
 
 namespace OriginL
 {
     public class PlayerState 
     {
         public PlayerScript player;
-        protected PlayerStateMachine playerStateMachine;
-        public PlayerState(PlayerScript player, PlayerStateMachine playerStateMachine) {
+        protected PlayerStateMachine StateMachine;
+
+        [SerializeField] private InputActionAsset controls;
+        private InputActionMap _inputActionMap;
+        private InputAction _jumpAction;
+        public PlayerState(PlayerScript player, PlayerStateMachine StateMachine) {
             this.player = player;
-            this.playerStateMachine = playerStateMachine;
+            this.StateMachine = StateMachine;
         }
         #region Virtual State Functions
         public virtual void EnterState() {
@@ -21,6 +23,7 @@ namespace OriginL
 
         public virtual void FrameUpdate() {
             CheckStateChange();   
+            CheckStateChange();
         }
 
         public virtual void PhysicUpdate() { }
@@ -30,9 +33,13 @@ namespace OriginL
         #endregion
 
         protected virtual void CheckStateChange() {
-            if(player.Rb.velocity.x != 0) {
-                playerStateMachine.ChangeState(player.playerMovingState);
+            if(player.Rb.velocity == Vector2.zero) {
+                player.ActiveState = PlayerScript.State.idel_State;
             }
+        }
+        
+        void CheckJumpPressed() {
+
         }
 
     }

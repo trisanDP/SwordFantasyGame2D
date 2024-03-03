@@ -5,7 +5,7 @@ using UnityEngine;
 namespace OriginL
 {
     public class PlayerIdelState : PlayerState {
-        public PlayerIdelState(PlayerScript player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine) {
+        public PlayerIdelState(PlayerScript player, PlayerStateMachine StateMachine) : base(player, StateMachine) {
 
         }
 
@@ -26,6 +26,13 @@ namespace OriginL
 
         public override void PhysicUpdate() {
             base.PhysicUpdate();
+        }
+
+        protected override void CheckStateChange() {
+            if(player.playerInput._moveInput.x != 0) {
+                StateMachine.ChangeState(player.MovingState); 
+            }
+
         }
     }
 }

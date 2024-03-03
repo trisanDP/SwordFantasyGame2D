@@ -11,7 +11,7 @@ public class PlayerController_PC : MonoBehaviour
     [Header("Main_Script")]
     internal PlayerScript playerScrip;
 
-    [Header("Movement Attributes")]
+    [Header("Movement Attributes")]  //Copyed
     [SerializeField] float accel;
     [SerializeField] float decell;
     [SerializeField] float moveSpeed;
@@ -22,7 +22,6 @@ public class PlayerController_PC : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] int fallMultiplier = 15;
     [Range(0, 2)][SerializeField] float jmpMoveSpeed;
-    //[SerializeField] int Climb_Speed = 100;
 
     [Header("Internal")]
     Vector2 inputMove;
@@ -48,28 +47,17 @@ public class PlayerController_PC : MonoBehaviour
     }
 
     private void Update(){
-        if(canMove == true) {
+/*        if(canMove == true) {
             inputMove = playerScrip.playerInput._moveInput;
         }
         Move();
-        switch (playerScrip.ActiveState) {
-            case PlayerScript.State.idel_State:
-                break;
-            case PlayerScript.State.Moving_State:
-                
-                break;
-
+        switch(playerScrip.ActiveState) {
             case PlayerScript.State.Jumping_State:
-                if (playerScrip.playerCollider.GroundCheck()) {
-                    Jump();
-                }
-                break;
-
-
-            default:
-                Debug.Log("Default Case");
-                break;
-        }
+            if(playerScrip.playerCollider.GroundCheck()) {
+                Jump();
+            }
+            break;
+        }*/
     }
 
     private void FixedUpdate() {
@@ -81,20 +69,30 @@ public class PlayerController_PC : MonoBehaviour
         }
         #endregion
 
+
         #region Movement Physic
 
-        if (playerScrip.playerCollider.GroundCheck())
+/*        if (playerScrip.playerCollider.GroundCheck())
         {
             rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
 
         } else if(playerScrip.playerCollider.GroundCheck()==false && playerScrip.ActiveState == PlayerScript.State.Moving_State) { 
             rb.AddForce(jmpMoveSpeed * movement * Vector2.right, ForceMode2D.Force);
         }
-            
+            */
         #endregion
     }
 
-    #region Movement
+
+    #region Jump
+    void Jump() {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+
+    internal void ShortJump() {
+        rb.velocity = new Vector2(rb.velocity.x, -fallMultiplier);
+    }
+
 
     void Move() {
         float targetSpeed = inputMove.x * moveSpeed;
@@ -103,18 +101,5 @@ public class PlayerController_PC : MonoBehaviour
         movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
 
     }
-
     #endregion
-
-    #region Jump
-    void Jump() {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-    }
-
-    internal void ShortJump() {
-        rb.velocity = new Vector2(rb.velocity.x ,-fallMultiplier);
-    }
-
-    #endregion
-
 }
