@@ -48,7 +48,6 @@ public class GameUI : MonoBehaviour {
                 PauseState();
                 if(Input.GetKeyDown(KeyCode.Escape)) {
                     ChangeState(GameUIState.Play);
-                    Debug.Log("Test;");
             }
             break;
 
@@ -114,21 +113,16 @@ public class GameUI : MonoBehaviour {
 
     //...................................................
     #region DefaultFUnction
+    private void OnEnable() {
+        ScenesManager.Instance.OnSceneChange += RefreshRefrences;
+        GameManager.Instance.OnGameOver += GameOverUI;
+    }
     private void OnDestroy() {
         if(GameManager.Instance != null)
             GameManager.Instance.OnGameOver -= GameOverUI;
             
     }
 
-    private void OnEnable() {
-        ScenesManager.Instance.OnSceneChange += RefreshRefrences;
-        GameManager.Instance.OnGameOver += GameOverUI;
-    }
-
-    private void OnDisable() {
-        ScenesManager.Instance.OnSceneChange -= RefreshRefrences;
-        GameManager.Instance.OnGameOver -= GameOverUI;
-    }
 
     #endregion
 

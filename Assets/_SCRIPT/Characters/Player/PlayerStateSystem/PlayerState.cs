@@ -7,7 +7,7 @@ namespace OriginL
     public class PlayerState {
         public PlayerScript player;
         protected PlayerStateMachine StateMachine;
-
+        protected float movement = 0;
 
         public PlayerState(PlayerScript player, PlayerStateMachine StateMachine) {
             this.player = player;

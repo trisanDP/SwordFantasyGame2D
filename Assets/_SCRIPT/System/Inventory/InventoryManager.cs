@@ -6,7 +6,7 @@ using UnityEngine;
 namespace OriginL.System {
     public class InventoryManager : MonoBehaviour {
 
-        public List<ItemClass> items = new();
+        public List<ItemClass> items = new(); 
         public delegate void OnItemChange();
         public OnItemChange itemChangeCallBack;
         public int space = 20;

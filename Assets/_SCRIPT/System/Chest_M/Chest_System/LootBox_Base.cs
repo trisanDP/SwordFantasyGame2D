@@ -11,7 +11,7 @@ public class LootBox_Base : Intractable  {
     public List<ItemClass> ItemsRewards;
     [Header("Components")]
     protected Animator animator;
-    protected ChestUI_Manager UiManager;
+    protected ChestUI_Manager ChestUi_M;
 
     protected int range;
     protected bool isOpen = false;
@@ -31,7 +31,8 @@ public class LootBox_Base : Intractable  {
     protected virtual void Start() {
         playerLayer = 1 << LayerMask.NameToLayer("Player");
         animator = GetComponent<Animator>();
-        UiManager = FindObjectOfType<ChestUI_Manager>();
+        ChestUi_M = UiManager.Instance.chestUI;
+
     }
 
     protected virtual void Update() {
@@ -59,7 +60,7 @@ public class LootBox_Base : Intractable  {
     public override void OnEntract() {
         if (isOpen == false) {
             activeLootBox = this;
-            UiManager.UpdateUI(this);
+            ChestUi_M.UpdateUI(this);
             OpenChest();
         } else {
             CloseChest();
@@ -70,14 +71,14 @@ public class LootBox_Base : Intractable  {
 
     protected void OpenChest() { // Called In OnEntract()
         isOpen = true;
-        UiManager.Show();
+        ChestUi_M.Show();
         animator.SetTrigger("Open");
         activeState = BoxState.Open;
     }
 
     protected void CloseChest() {
         isOpen = false;
-        UiManager.Hide();
+        ChestUi_M.Hide();
         animator.SetTrigger("Close");
         activeLootBox = null;
         activeState = BoxState.Close;
@@ -85,7 +86,7 @@ public class LootBox_Base : Intractable  {
 
     public void RemoveChestItem(ItemClass item) {
         ItemsRewards.Remove(item);
-        UiManager.UpdateUI(this);
+        ChestUi_M.UpdateUI(this);
         if(ItemsRewards.Count <= 0) {
             activeState = BoxState.Empty;
         }

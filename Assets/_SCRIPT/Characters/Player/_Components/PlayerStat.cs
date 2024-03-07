@@ -13,7 +13,7 @@ public class PlayerStat : CharacterStat
 
     private void Start() {
         playerScrip = GetComponent<PlayerScript>();
-        GetComponent<PlayerEquipmentManager>().onEquipmentChanged += OnEquipmentChanged;
+        GetComponentInChildren<PlayerEquipmentManager>().onEquipmentChanged += OnEquipmentChanged;
     }
 
     public override void TakeDamage(float damage, int knockBack,GameObject damageFrom) {
@@ -45,9 +45,9 @@ public class PlayerStat : CharacterStat
     #region Effect
 
     internal IEnumerator Stund() {
-        playerScrip.playerController.canMove = false; //make movement manager as base
+        playerScrip.canMove = false; //make movement manager as base
         yield return new WaitForSeconds(stundDuration);
-        playerScrip.playerController.canMove = true;
+        playerScrip.canMove = true;
     }
     #endregion
 }

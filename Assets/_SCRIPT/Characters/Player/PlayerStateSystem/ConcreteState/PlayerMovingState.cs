@@ -13,7 +13,7 @@ namespace OriginL
         [SerializeField] float moveSpeed;
         [SerializeField] float velPower;
         internal bool canMove = true;
-        float movement = 0;
+
 
         Vector2 inputMove;
 
@@ -22,10 +22,10 @@ namespace OriginL
         }
 
         public override void EnterState() {
-            accel = player.playerController.accel;
-            decell = player.playerController.decell;
-            moveSpeed = player.playerController.moveSpeed;
-            velPower = player.playerController.velPower;
+            accel = player.accel;
+            decell = player.decell;
+            moveSpeed = player.moveSpeed;
+            velPower = player.velPower;
             Debug.Log(" Moving State ");
             base.EnterState();
         }

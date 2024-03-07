@@ -18,15 +18,13 @@ namespace OriginL
         }
 
         void OpenDoor() {
-            animator.SetTrigger("Open");
-            Debug.Log("OpenDoor");
             isOpen = true;
+            animator.SetTrigger("Open");
             gameObject.GetComponent<Collider2D>().isTrigger = true;
         }
         void CloseDoor() {
-            animator.SetTrigger("Close");
-            Debug.Log("CloseDoor");
             isOpen = false;
+            animator.SetTrigger("Close"); 
             gameObject.GetComponent<Collider2D>().isTrigger = false;
         }
     }

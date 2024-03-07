@@ -20,9 +20,9 @@ namespace OriginL
         public override void EnterState() {
             base.EnterState();
             Debug.Log(" Jump State ");
-            jumpForce = player.playerController.jumpForce;
-            fallMultiplier = player.playerController.fallMultiplier;
-            jmpMoveSpeed = player.playerController.jmpMoveSpeed;
+            jumpForce = player.jumpForce;
+            fallMultiplier = player.fallMultiplier;
+            jmpMoveSpeed = player.jmpMoveSpeed;
 
             Jump();
         }
@@ -47,7 +47,7 @@ namespace OriginL
             }
 
             if(!player.playerCollider.GroundCheck() && player.playerInput._moveInput.x != 0) {
-                player.Rb.AddForce(jmpMoveSpeed * (player.playerInput._moveInput.x * 100) * Vector2.right, ForceMode2D.Force);
+                player.Rb.AddForce(jmpMoveSpeed * movement * Vector2.right, ForceMode2D.Force);
                 Debug.Log("Testing111");
             }
             #endregion

@@ -10,7 +10,6 @@ public class PlayerScript : MonoBehaviour
 
     #region ComponentsScript
     [Header("Scripts")]
-    internal PlayerController_PC playerController;
     internal PlayerCollider playerCollider;
     internal PlayerInput playerInput;
     internal PlayerAnimationController p_animCont;
@@ -62,14 +61,13 @@ public class PlayerScript : MonoBehaviour
 
         #region ComponentScriptLink
         playerCollider = GetComponent<PlayerCollider>();
-        playerController = GetComponent<PlayerController_PC>();
         playerInput = GetComponent<PlayerInput>();
         p_animCont = GetComponent<PlayerAnimationController>();
         playerHealth = GetComponent<PlayerStat>();
         playerQuestM = GetComponent<P_QuestManager>();
         playerCombact = GetComponent<PlayerCombact>();
         playerIntract = GetComponent<PlayerIntract>();
-        playerEquipmentM = GetComponent <PlayerEquipmentManager>();
+        playerEquipmentM = GetComponentInChildren<PlayerEquipmentManager>();
         #endregion
 
         #region StateScriptLink

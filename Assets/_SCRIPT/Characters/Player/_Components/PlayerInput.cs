@@ -39,7 +39,7 @@ public class PlayerInput : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.I)) {
-            GameObject ui = UiManager.Instance.InventoryUI.gameObject;
+            GameObject ui = UiManager.Instance.InventoryUI.InventoryUI_Obj;
             ui.SetActive(!ui.activeSelf);
             ui = null;
         }

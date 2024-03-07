@@ -4,7 +4,7 @@ using OriginL.System;
 namespace OriginL.UI {
     public class InventoryUI_M : MonoBehaviour {
         public Transform itemParent;
-        public GameObject InventoryUI;
+        public GameObject InventoryUI_Obj;
         InventoryManager inventory;
 
 
@@ -16,7 +16,7 @@ namespace OriginL.UI {
             slot = itemParent.GetComponentsInChildren<InventorySlot>();
         }
         void Start() {
-            InventoryUI.SetActive(false);
+            InventoryUI_Obj.SetActive(false);
         }
 
         private void OnEnable() {
@@ -38,10 +38,11 @@ namespace OriginL.UI {
         }
 
         public void Show() {
-            InventoryUI.SetActive(true);
+            InventoryUI_Obj.SetActive(true);
+            Debug.Log("hELLO");
         }
         public void Hide() {
-            InventoryUI.SetActive(false);
+            InventoryUI_Obj.SetActive(false);
         }
     }
 }
