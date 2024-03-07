@@ -11,16 +11,7 @@
                     "id": "96e1d996-dd30-4b89-a728-fcde466ba1a2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ShortJump",
-                    "type": "Button",
-                    "id": "36307c04-1b5c-419c-b22b-c7dfd26e6981",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -128,17 +119,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "e8e2bac2-6bce-4310-81c7-4b67d6de395d",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ShortJump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",

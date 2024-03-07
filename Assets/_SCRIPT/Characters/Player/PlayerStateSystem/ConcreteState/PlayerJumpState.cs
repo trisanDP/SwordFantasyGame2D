@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 namespace OriginL
 {
@@ -9,7 +11,7 @@ namespace OriginL
 
         [Header("Jump & Gravity ")]
         [SerializeField] float jumpForce;
-        [SerializeField] int fallMultiplier = 15;
+        [SerializeField] int fallMultiplier;
         [Range(0, 2)][SerializeField] float jmpMoveSpeed;
 
         public PlayerJumpState(PlayerScript player, PlayerStateMachine StateMachine) : base(player, StateMachine) {
@@ -17,9 +19,12 @@ namespace OriginL
 
         public override void EnterState() {
             base.EnterState();
-            if(player.playerCollider.GroundCheck()) {
-                Jump();
-            }
+            Debug.Log(" Jump State ");
+            jumpForce = player.playerController.jumpForce;
+            fallMultiplier = player.playerController.fallMultiplier;
+            jmpMoveSpeed = player.playerController.jmpMoveSpeed;
+
+            Jump();
         }
 
         public override void ExitState() {
@@ -28,8 +33,9 @@ namespace OriginL
 
         public override void FrameUpdate() {
             base.FrameUpdate();
-           
-
+            if(!player._isJumpPressed && player.Rb.velocity.y > 0f) {
+                ShortJumpFall();
+            }
         }
 
         public override void PhysicUpdate() {
@@ -40,9 +46,9 @@ namespace OriginL
                 player.Rb.velocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
             }
 
-            if(player.playerCollider.GroundCheck() == false) {
-                player.Rb.AddForce(jmpMoveSpeed * Vector2.right, ForceMode2D.Force);
-                Debug.Log(" Check ");
+            if(!player.playerCollider.GroundCheck() && player.playerInput._moveInput.x != 0) {
+                player.Rb.AddForce(jmpMoveSpeed * (player.playerInput._moveInput.x * 100) * Vector2.right, ForceMode2D.Force);
+                Debug.Log("Testing111");
             }
             #endregion
 
@@ -51,19 +57,21 @@ namespace OriginL
 
         protected override void CheckStateChange() {
             base.CheckStateChange();
-            if(player.playerInput.jumpPressed != true) {
-                player.ActiveState = PlayerScript.State.idel_State;  // Ideal
+/*            if(player.playerInput.jumpPressed != true) {
+                StateMachine.ChangeState(player.IdelState);  // Ideal
+            }*/
+            if(player.playerCollider.GroundCheck()) {
+                StateMachine.ChangeState(player.IdelState);
             }
 
-
         }
-
 
         void Jump() {
             player.Rb.velocity = new Vector2(player.Rb.velocity.x, jumpForce);
+            Debug.Log("Testing111");
         }
 
-        internal void ShortJump() {
+        internal void ShortJumpFall() {
             player.Rb.velocity = new Vector2(player.Rb.velocity.x, -fallMultiplier);
         }
 

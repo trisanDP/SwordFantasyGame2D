@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour
 
     [Header("Link")]
     internal bool attacking;
+    internal bool _Attack;
 
     [Header("Internal")]
     [SerializeField] internal bool jumpPressed = false;
@@ -28,26 +29,6 @@ public class PlayerInput : MonoBehaviour
         }
 
         #region OldInputSystem
-
-        #region Useless
-        #region Jump
-        //......................
-        /*if(Input.GetKeyDown(KeyCode.Space)) {
-            playerScrip.ActiveState = PlayerScript.State.Jumping_State; // Long Jump
-            jumpPressed = true;
-            Debug.Log("Pressed");
-        }
-
-
-
-        if(Input.GetKeyUp(KeyCode.Space) && playerScrip.Rb.velocity.y > 0) {  // Short Jump
-            playerScrip.playerController.ShortJump();
-        }*/
-        //.........................
-        #endregion
-
-
-        #endregion
 
         #region UIcommand
         if(Input.GetKeyDown(KeyCode.P)) {
@@ -84,23 +65,16 @@ public class PlayerInput : MonoBehaviour
     #region Jump
     public void OnJump(InputAction.CallbackContext context) {
         if(context.performed) {
-            Debug.Log("Jump");
-            playerScrip.playerController.ShortJump();
             jumpPressed = context.ReadValueAsButton();
         }
-    }
-
-    public void OnShortJump(InputAction.CallbackContext context) {
-        // Check if the action was canceled
+ 
         if(context.canceled) {
-            // Check if the player is still jumping
-            Debug.Log("Jump33434");
             if(playerScrip.Rb.velocity.y > 0) {
-                // Call the short jump method from the player controller
-                playerScrip.playerController.ShortJump();
+                jumpPressed = context.ReadValueAsButton();
             }
         }
     }
+
 
     #endregion
 
@@ -117,15 +91,16 @@ public class PlayerInput : MonoBehaviour
     #region Attack
     //.....................
     public void OnAttack1(InputAction.CallbackContext context) {
-        if(context.performed)
-            playerScrip.playerCombact.MeleeAttack1();
+        if(context.performed) {
+            if(context.action.name == "Attack1")
+                playerScrip.playerCombact.MeleeAttack1();
+            if(context.action.name == "Attack2") 
+                playerScrip.playerCombact.MeleeAttack2();
+            
+        }
+
     }
 
-    public void OnAttack2(InputAction.CallbackContext context) {
-        if(context.performed)
-            playerScrip.playerCombact.MeleeAttack2();
-         
-    }
     //........................
     #endregion
 

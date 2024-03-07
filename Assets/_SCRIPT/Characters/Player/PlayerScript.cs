@@ -6,12 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
 
-    internal enum State {
-        idel_State, Moving_State, Jumping_State, Attacking_State,Obj_Interaction
-    };
-
-    [SerializeField] internal State ActiveState;
-
     #region variables
 
     #region ComponentsScript
@@ -21,7 +15,6 @@ public class PlayerScript : MonoBehaviour
     internal PlayerInput playerInput;
     internal PlayerAnimationController p_animCont;
     internal PlayerStat playerHealth;
-    internal PlayerStateController playerStateController;
     internal P_QuestManager playerQuestM;
     internal PlayerCombact playerCombact;
     internal PlayerIntract playerIntract;
@@ -32,21 +25,39 @@ public class PlayerScript : MonoBehaviour
     public PlayerIdelState IdelState {  get; private set; }
     public PlayerMovingState MovingState {  get; private set; }
     public PlayerAttackingState playerAttackingState {  get; private set; }
+    public PlayerJumpState JumpState { get; private set; }
 
+    public PlayerStateMachine playerStateMachine; 
     #endregion
 
-    public PlayerStateMachine playerStateMachine;
-
+    #region Components
     [Header("Components")]
     internal Rigidbody2D Rb;
     public GameObject target;
-
-    [SerializeField] internal bool isDead = false;
-    private bool _isJumpPressed;
     #endregion
 
+    #region Primitives
+    [SerializeField] internal bool isDead = false;
+    internal bool _isJumpPressed;
+
+    [Header("Movement Attributes")]  //Copyed
+    [SerializeField] internal float accel;
+    [SerializeField] internal float decell;
+    [SerializeField] internal float moveSpeed;
+    [SerializeField] internal float velPower;
+    internal bool canMove = true;
+
+    [Header("Jump & Gravity ")]
+    [SerializeField] internal float jumpForce;
+    [SerializeField] internal int fallMultiplier = 15;
+    [Range(0, 2)][SerializeField] internal float jmpMoveSpeed;
+
+    #endregion
+
+    #endregion
+
+
     protected void Awake() {
-        ActiveState = State.idel_State;
         Rb = GetComponent<Rigidbody2D>();
 
         #region ComponentScriptLink
@@ -66,6 +77,7 @@ public class PlayerScript : MonoBehaviour
         IdelState = new PlayerIdelState(this,playerStateMachine);
         playerAttackingState = new PlayerAttackingState(this,playerStateMachine);
         MovingState = new PlayerMovingState(this,playerStateMachine);
+        JumpState = new PlayerJumpState(this,playerStateMachine);
 
         #endregion
 
@@ -80,8 +92,8 @@ public class PlayerScript : MonoBehaviour
         playerStateMachine.CurrentState.PhysicUpdate();
     }
 
-    void OnJumpPressed(InputAction.CallbackContext context) {
-        _isJumpPressed = context.performed;
+    public void OnJumpPressed(InputAction.CallbackContext context) {
+        _isJumpPressed = context.ReadValueAsButton();
     }
     #region Extra Scrip
 

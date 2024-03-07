@@ -4,14 +4,11 @@ using UnityEngine.InputSystem;
 
 namespace OriginL
 {
-    public class PlayerState 
-    {
+    public class PlayerState {
         public PlayerScript player;
         protected PlayerStateMachine StateMachine;
 
-        [SerializeField] private InputActionAsset controls;
-        private InputActionMap _inputActionMap;
-        private InputAction _jumpAction;
+
         public PlayerState(PlayerScript player, PlayerStateMachine StateMachine) {
             this.player = player;
             this.StateMachine = StateMachine;
@@ -22,7 +19,6 @@ namespace OriginL
         }
 
         public virtual void FrameUpdate() {
-            CheckStateChange();   
             CheckStateChange();
         }
 
@@ -33,14 +29,17 @@ namespace OriginL
         #endregion
 
         protected virtual void CheckStateChange() {
-            if(player.Rb.velocity == Vector2.zero) {
-                player.ActiveState = PlayerScript.State.idel_State;
+            CheckJumpPressed();
+        }
+
+
+        void CheckJumpPressed() {
+            if(player._isJumpPressed && player.playerCollider.GroundCheck()) {
+                StateMachine.ChangeState(player.JumpState);
+                return;
             }
         }
-        
-        void CheckJumpPressed() {
 
-        }
 
     }
 }

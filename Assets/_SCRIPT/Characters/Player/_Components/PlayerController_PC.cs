@@ -12,20 +12,20 @@ public class PlayerController_PC : MonoBehaviour
     internal PlayerScript playerScrip;
 
     [Header("Movement Attributes")]  //Copyed
-    [SerializeField] float accel;
-    [SerializeField] float decell;
-    [SerializeField] float moveSpeed;
-    [SerializeField] float velPower;
+    [SerializeField]internal float accel;
+    [SerializeField]internal float decell;
+    [SerializeField]internal float moveSpeed;
+    [SerializeField]internal float velPower;
     internal bool canMove = true;
 
     [Header("Jump & Gravity ")]
-    [SerializeField] float jumpForce;
-    [SerializeField] int fallMultiplier = 15;
-    [Range(0, 2)][SerializeField] float jmpMoveSpeed;
+    [SerializeField]internal float jumpForce;
+    [SerializeField]internal int fallMultiplier = 15;
+    [Range(0, 2)][SerializeField]internal float jmpMoveSpeed;
 
     [Header("Internal")]
-    Vector2 inputMove;
-    float movement = 0;
+/*    Vector2 inputMove;
+    float movement = 0;*/
     Rigidbody2D rb;
 
 
@@ -47,59 +47,48 @@ public class PlayerController_PC : MonoBehaviour
     }
 
     private void Update(){
-/*        if(canMove == true) {
-            inputMove = playerScrip.playerInput._moveInput;
-        }
-        Move();
-        switch(playerScrip.ActiveState) {
-            case PlayerScript.State.Jumping_State:
-            if(playerScrip.playerCollider.GroundCheck()) {
-                Jump();
-            }
-            break;
-        }*/
+
     }
 
     private void FixedUpdate() {
 
-        #region Jump_Fall
+/*        #region Jump_Fall
         // Apply extra gravity to make the player fall faster after reaching the peak of the jump
-        if (rb.velocity.y < 0f) {
-            rb.velocity +=  Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
+        if(rb.velocity.y < 0f) {
+            rb.velocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
         }
         #endregion
 
 
         #region Movement Physic
 
-/*        if (playerScrip.playerCollider.GroundCheck())
-        {
+        if(playerScrip.playerCollider.GroundCheck()) {
             rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
 
-        } else if(playerScrip.playerCollider.GroundCheck()==false && playerScrip.ActiveState == PlayerScript.State.Moving_State) { 
+        } else if(playerScrip.playerCollider.GroundCheck() == false && playerScrip.ActiveState == PlayerScript.State.Moving_State) {
             rb.AddForce(jmpMoveSpeed * movement * Vector2.right, ForceMode2D.Force);
         }
-            */
-        #endregion
+
+        #endregion*/
     }
 
 
     #region Jump
-    void Jump() {
+    internal void Jump() {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 
-    internal void ShortJump() {
+    internal void ShortJumpFall() {
         rb.velocity = new Vector2(rb.velocity.x, -fallMultiplier);
     }
 
 
-    void Move() {
+/*    void Move() {
         float targetSpeed = inputMove.x * moveSpeed;
         float speedDif = targetSpeed - rb.velocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01) ? accel : decell;
         movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
 
-    }
+    }*/
     #endregion
 }

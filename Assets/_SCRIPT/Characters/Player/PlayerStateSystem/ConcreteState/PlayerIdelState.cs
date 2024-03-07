@@ -10,6 +10,7 @@ namespace OriginL
         }
 
         public override void EnterState() {
+            Debug.Log(" Idel State ");
             base.EnterState();
             player.p_animCont.PlayIdelAnim(true);
         }
@@ -29,10 +30,20 @@ namespace OriginL
         }
 
         protected override void CheckStateChange() {
-            if(player.playerInput._moveInput.x != 0) {
+            base.CheckStateChange();
+            CheckAttack1();
+            if(player.playerInput._moveInput.x != 0 ) {
                 StateMachine.ChangeState(player.MovingState); 
             }
 
         }
+
+        void CheckAttack1() {
+            if(player.playerInput._Attack) {
+                StateMachine.ChangeState(player.playerAttackingState);
+                player.playerInput._Attack = false;
+            }
+        }
+
     }
 }

@@ -35,16 +35,7 @@ namespace OriginL.InputSystem
                     ""id"": ""96e1d996-dd30-4b89-a728-fcde466ba1a2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ShortJump"",
-                    ""type"": ""Button"",
-                    ""id"": ""36307c04-1b5c-419c-b22b-c7dfd26e6981"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -155,17 +146,6 @@ namespace OriginL.InputSystem
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e8e2bac2-6bce-4310-81c7-4b67d6de395d"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShortJump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""56fc4306-b1cd-4e59-8744-8d96df269776"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -194,7 +174,6 @@ namespace OriginL.InputSystem
             // Basic
             m_Basic = asset.FindActionMap("Basic", throwIfNotFound: true);
             m_Basic_Jump = m_Basic.FindAction("Jump", throwIfNotFound: true);
-            m_Basic_ShortJump = m_Basic.FindAction("ShortJump", throwIfNotFound: true);
             m_Basic_Move = m_Basic.FindAction("Move", throwIfNotFound: true);
             m_Basic_Attack1 = m_Basic.FindAction("Attack1", throwIfNotFound: true);
             m_Basic_Attack2 = m_Basic.FindAction("Attack2", throwIfNotFound: true);
@@ -260,7 +239,6 @@ namespace OriginL.InputSystem
         private readonly InputActionMap m_Basic;
         private List<IBasicActions> m_BasicActionsCallbackInterfaces = new List<IBasicActions>();
         private readonly InputAction m_Basic_Jump;
-        private readonly InputAction m_Basic_ShortJump;
         private readonly InputAction m_Basic_Move;
         private readonly InputAction m_Basic_Attack1;
         private readonly InputAction m_Basic_Attack2;
@@ -269,7 +247,6 @@ namespace OriginL.InputSystem
             private @PlayerControl m_Wrapper;
             public BasicActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
             public InputAction @Jump => m_Wrapper.m_Basic_Jump;
-            public InputAction @ShortJump => m_Wrapper.m_Basic_ShortJump;
             public InputAction @Move => m_Wrapper.m_Basic_Move;
             public InputAction @Attack1 => m_Wrapper.m_Basic_Attack1;
             public InputAction @Attack2 => m_Wrapper.m_Basic_Attack2;
@@ -285,9 +262,6 @@ namespace OriginL.InputSystem
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @ShortJump.started += instance.OnShortJump;
-                @ShortJump.performed += instance.OnShortJump;
-                @ShortJump.canceled += instance.OnShortJump;
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
@@ -304,9 +278,6 @@ namespace OriginL.InputSystem
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
-                @ShortJump.started -= instance.OnShortJump;
-                @ShortJump.performed -= instance.OnShortJump;
-                @ShortJump.canceled -= instance.OnShortJump;
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
@@ -336,7 +307,6 @@ namespace OriginL.InputSystem
         public interface IBasicActions
         {
             void OnJump(InputAction.CallbackContext context);
-            void OnShortJump(InputAction.CallbackContext context);
             void OnMove(InputAction.CallbackContext context);
             void OnAttack1(InputAction.CallbackContext context);
             void OnAttack2(InputAction.CallbackContext context);

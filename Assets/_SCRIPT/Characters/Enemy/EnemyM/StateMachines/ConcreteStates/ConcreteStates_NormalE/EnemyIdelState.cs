@@ -26,7 +26,6 @@ namespace OriginL.EnemySpace {
 
         public override void FrameUpdate() {
             base.FrameUpdate();
-            Debug.Log("Ideal State");
         }
 
         public override void PhysicUpdate() {

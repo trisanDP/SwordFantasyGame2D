@@ -22,6 +22,11 @@ namespace OriginL
         }
 
         public override void EnterState() {
+            accel = player.playerController.accel;
+            decell = player.playerController.decell;
+            moveSpeed = player.playerController.moveSpeed;
+            velPower = player.playerController.velPower;
+            Debug.Log(" Moving State ");
             base.EnterState();
         }
 
@@ -31,15 +36,18 @@ namespace OriginL
 
         public override void FrameUpdate() {
             base.FrameUpdate();
-            if(canMove == true) {
-                inputMove = player.playerInput._moveInput;
-            }
+            
+          
         }
 
         public override void PhysicUpdate() {
             base.PhysicUpdate();
             if(player.playerCollider.GroundCheck()) {
                 player.Rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
+            }
+            if(canMove == true) {
+                inputMove = player.playerInput._moveInput;
+                Move();
             }
         }
 
