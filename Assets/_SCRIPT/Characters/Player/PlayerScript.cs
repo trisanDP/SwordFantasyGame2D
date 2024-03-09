@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
 
     #region ComponentsScript
     [Header("Scripts")]
+    internal PlayerControllerPhy playerController;
     internal PlayerCollider playerCollider;
     internal PlayerInput playerInput;
     internal PlayerAnimationController p_animCont;
@@ -60,6 +61,7 @@ public class PlayerScript : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
 
         #region ComponentScriptLink
+        playerController = GetComponent<PlayerControllerPhy>(); 
         playerCollider = GetComponent<PlayerCollider>();
         playerInput = GetComponent<PlayerInput>();
         p_animCont = GetComponent<PlayerAnimationController>();

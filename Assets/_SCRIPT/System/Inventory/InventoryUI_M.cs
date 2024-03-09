@@ -37,6 +37,10 @@ namespace OriginL.UI {
             }
         }
 
+        public void Toggle() {
+            InventoryUI_Obj.SetActive(!InventoryUI_Obj.activeSelf);
+        }
+
         public void Show() {
             InventoryUI_Obj.SetActive(true);
             Debug.Log("hELLO");

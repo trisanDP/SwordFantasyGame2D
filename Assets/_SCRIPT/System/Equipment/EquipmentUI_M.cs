@@ -22,8 +22,6 @@ public class EquipmentUI_M : MonoBehaviour
     private void Awake() {
         slot = equipParent.GetComponentsInChildren<EquipmentSlot>();
         manager = GameManager.Instance.playerObj.GetComponent<PlayerEquipmentManager>();
-        if(manager == null )
-            gameObject.SetActive( false );
         stat = GameManager.Instance.playerObj.GetComponent<PlayerStat>();
     }
 

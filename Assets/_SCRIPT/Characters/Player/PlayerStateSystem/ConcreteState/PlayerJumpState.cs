@@ -8,72 +8,87 @@ namespace OriginL
 {
     public class PlayerJumpState : PlayerState {
 
-
-        [Header("Jump & Gravity ")]
-        [SerializeField] float jumpForce;
-        [SerializeField] int fallMultiplier;
-        [Range(0, 2)][SerializeField] float jmpMoveSpeed;
-
         public PlayerJumpState(PlayerScript player, PlayerStateMachine StateMachine) : base(player, StateMachine) {
         }
+        [SerializeField] int fallMultiplier = 15;
 
         public override void EnterState() {
             base.EnterState();
             Debug.Log(" Jump State ");
-            jumpForce = player.jumpForce;
+            player.playerController.Jump();
             fallMultiplier = player.fallMultiplier;
-            jmpMoveSpeed = player.jmpMoveSpeed;
+        }
+        public override void FrameUpdate() {
+            base.FrameUpdate();
 
-            Jump();
+
+            if(player.Rb.velocity.y < 0) {
+                Debug.Log("Testing111");
+                player.Rb.velocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
+            }
         }
 
         public override void ExitState() {
             base.ExitState();
+
         }
 
-        public override void FrameUpdate() {
-            base.FrameUpdate();
-            if(!player._isJumpPressed && player.Rb.velocity.y > 0f) {
-                ShortJumpFall();
-            }
-        }
+
 
         public override void PhysicUpdate() {
             base.PhysicUpdate();
-            #region Jump_Fall
-            // Apply extra gravity to make the player fall faster after reaching the peak of the jump
-            if(player.Rb.velocity.y < 0f) {
-                player.Rb.velocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
+            CheckFall();
+            if(player.playerInput._moveInput.x != 0) {
+                player.playerController.JumpMove();
             }
-
-            if(!player.playerCollider.GroundCheck() && player.playerInput._moveInput.x != 0) {
-                player.Rb.AddForce(jmpMoveSpeed * movement * Vector2.right, ForceMode2D.Force);
-                Debug.Log("Testing111");
-            }
-            #endregion
-
-
         }
+
+
+
+
 
         protected override void CheckStateChange() {
             base.CheckStateChange();
-/*            if(player.playerInput.jumpPressed != true) {
-                StateMachine.ChangeState(player.IdelState);  // Ideal
-            }*/
+            CheckIdelState();
+            CheckFall();
+            CheckGrounded();
+        }
+
+        #region State Check
+        void CheckIdelState() {
             if(player.playerCollider.GroundCheck()) {
                 StateMachine.ChangeState(player.IdelState);
             }
-
         }
 
-        void Jump() {
-            player.Rb.velocity = new Vector2(player.Rb.velocity.x, jumpForce);
-            Debug.Log("Testing111");
+        /*        void CheckFallState() {
+                    if(player.Rb.velocity.y < 0f) {
+                        if(player.)
+                        StateMachine.ChangeState(player.FallState);
+                    }
+                    if(player.Rb.velocity.y < 0 && !player._isJumpPressed) {
+                        player.playerController.ShortJumpFall();
+                    }
+                }
+        */
+        void CheckGrounded() {
+            if(player.playerCollider.GroundCheck()) {
+                StateMachine.ChangeState(player.IdelState);
+            }
         }
 
-        internal void ShortJumpFall() {
-            player.Rb.velocity = new Vector2(player.Rb.velocity.x, -fallMultiplier);
+        void CheckFall() {
+            if(player.Rb.velocity.y > 0 && !player.playerInput.isJumpPressed()) {
+                player.playerController.ShortJumpFall();
+            }
+
+
+            /*else
+                 player.Rb.velocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;*/
         }
+
+        #endregion
+
 
     }
 }

@@ -1,11 +1,9 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
-{
+public class PlayerInput : MonoBehaviour {
     #region VARIABLES
-
-    internal PlayerScript playerScrip;
+    internal PlayerScript player;
 
 
     public Vector2 _moveInput;
@@ -14,34 +12,30 @@ public class PlayerInput : MonoBehaviour
     internal bool attacking;
     internal bool _Attack;
 
-    [Header("Internal")]
-    [SerializeField] internal bool jumpPressed = false;
+
+    [SerializeField] public bool canJump { get; private set; }
+    internal bool _isJumpPressed = false;
+
     #endregion
 
     private void Start() {
-        playerScrip = GetComponent<PlayerScript>();
+        player = GetComponent<PlayerScript>();
+        canJump = true;
     }
 
     private void Update() {
-
-        if(playerScrip.playerCollider.GroundCheck() == false) {
-            jumpPressed = false;
-        }
-
         #region OldInputSystem
 
         #region UIcommand
         if(Input.GetKeyDown(KeyCode.P)) {
-            playerScrip.playerEquipmentM.equipmentUI.ToggleUi();  // PlayerScript => PlayerEquipmentScript => UimanagerScript (ToggleUi())
+            player.playerEquipmentM.equipmentUI.ToggleUi();  // PlayerScript => PlayerEquipmentScript => UimanagerScript (ToggleUi())
         }
         if(Input.GetKeyDown(KeyCode.U)) {
-            playerScrip.playerEquipmentM.UnEquipAll();
+            player.playerEquipmentM.UnEquipAll();
         }
 
         if(Input.GetKeyDown(KeyCode.I)) {
-            GameObject ui = UiManager.Instance.InventoryUI.InventoryUI_Obj;
-            ui.SetActive(!ui.activeSelf);
-            ui = null;
+            UiManager.Instance.InventoryUI.Toggle();
         }
         #endregion
 
@@ -63,16 +57,24 @@ public class PlayerInput : MonoBehaviour
     #region NewInputSystemF
 
     #region Jump
+
     public void OnJump(InputAction.CallbackContext context) {
-        if(context.performed) {
-            jumpPressed = context.ReadValueAsButton();
-        }
- 
-        if(context.canceled) {
-            if(playerScrip.Rb.velocity.y > 0) {
-                jumpPressed = context.ReadValueAsButton();
+        if(canJump == true && !_isJumpPressed) {
+            if(context.performed) {
+                _isJumpPressed = true;
+                canJump = false;
             }
         }
+        if(context.canceled) {
+            _isJumpPressed = false;
+            canJump = true;
+        }
+
+    }
+
+
+    public bool isJumpPressed() {
+        return _isJumpPressed;
     }
 
 
@@ -84,26 +86,26 @@ public class PlayerInput : MonoBehaviour
             _moveInput = context.ReadValue<Vector2>();
         } else
             _moveInput = new Vector2(0, 0);
+
     }
     #endregion
 
-
     #region Attack
     //.....................
-    public void OnAttack1(InputAction.CallbackContext context) {
+    public void OnAttack(InputAction.CallbackContext context) {
+        Debug.Log("Testing111");
         if(context.performed) {
             if(context.action.name == "Attack1")
-                playerScrip.playerCombact.MeleeAttack1();
-            if(context.action.name == "Attack2") 
-                playerScrip.playerCombact.MeleeAttack2();
-            
+                player.playerCombact.MeleeAttack1();
+
         }
+        if(context.action.name == "Attack2")
+            player.playerCombact.MeleeAttack2();
 
     }
 
     //........................
     #endregion
-
 
     #endregion
 
