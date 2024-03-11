@@ -64,5 +64,7 @@ namespace OriginL.EnemySpace {
         }
 
         #endregion
+
+
     }
 }

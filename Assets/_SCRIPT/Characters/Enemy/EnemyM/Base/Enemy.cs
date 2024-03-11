@@ -39,6 +39,9 @@ namespace OriginL.EnemySpace {
         #region Events
         #endregion
 
+        #region Type
+        #endregion
+
         private void Awake() {
             #region State instantiation 
             StateMachine = new EnemyStateMachine();

@@ -3,8 +3,7 @@ using UnityEngine;
 namespace OriginL.EnemySpace {
     public class EnemyIdelState : EnemyState {
 
-        protected bool canPetrol;
-
+        bool canPetrol;
 
 
         [Header("Petrol")]
@@ -17,6 +16,7 @@ namespace OriginL.EnemySpace {
 
         public override void EnterState() {
             base.EnterState();
+            canPetrol = false;
             //................................
             enemy.rb.velocity = Vector2.zero;
             enemy.enemyAnimCont.PlayIdelAnimation();

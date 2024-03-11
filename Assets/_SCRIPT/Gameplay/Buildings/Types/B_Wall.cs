@@ -4,7 +4,7 @@ using OriginL;
 namespace OriginL.Building
 {
     public class B_Wall : BuildingBase {
-
+        
         private void Start() {
             animator = GetComponent<Animator>();
             animator.SetTrigger("Building");
@@ -17,8 +17,5 @@ namespace OriginL.Building
             animator.SetTrigger("Destroy");
         }
 
-        public void TakeDamage(float damageAmount, int knockBackF, GameObject damageFrom) {
-            Debug.Log(damageAmount);
-        }
     }
 }
