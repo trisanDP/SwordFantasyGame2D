@@ -287,6 +287,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: jumpPressed
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Jump
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1305890937414553528}
   m_Solo: 0
@@ -645,43 +648,49 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Attack1
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Attack2
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IsGrounded
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: yVelocity
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: jumpPressed
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IsIdel
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: Jump
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -722,17 +731,17 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: 3461728675642246466}
   m_StateMachineTransitions:
-  - first: {fileID: -7928524824672474866}
-    second:
-    - {fileID: -4031527785046953606}
-    - {fileID: -3177367903462080174}
-  - first: {fileID: -705732802432991262}
-    second:
-    - {fileID: 877396483254162046}
   - first: {fileID: 4090717992765003145}
     second:
     - {fileID: -3000820344736471797}
     - {fileID: -9020117269988951029}
+  - first: {fileID: -705732802432991262}
+    second:
+    - {fileID: 877396483254162046}
+  - first: {fileID: -7928524824672474866}
+    second:
+    - {fileID: -4031527785046953606}
+    - {fileID: -3177367903462080174}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -710, y: -200, z: 0}
   m_EntryPosition: {x: -70, y: -310, z: 0}

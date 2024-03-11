@@ -23,7 +23,6 @@ public class UiManager : MonoBehaviour {
     #endregion
 
     #endregion
-
     #region Singleton
     public static UiManager Instance;
 

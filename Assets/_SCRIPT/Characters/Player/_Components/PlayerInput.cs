@@ -13,14 +13,15 @@ public class PlayerInput : MonoBehaviour {
     internal bool _Attack;
 
 
-    [SerializeField] public bool canJump { get; private set; }
-    internal bool _isJumpPressed = false;
+/*    [SerializeField]bool canJump; 
+    [SerializeField]bool _isJumpPressed;*/
 
     #endregion
 
     private void Start() {
         player = GetComponent<PlayerScript>();
-        canJump = true;
+/*        canJump = true;
+        _isJumpPressed = false;*/
     }
 
     private void Update() {
@@ -57,26 +58,22 @@ public class PlayerInput : MonoBehaviour {
     #region NewInputSystemF
 
     #region Jump
-
-    public void OnJump(InputAction.CallbackContext context) {
-        if(canJump == true && !_isJumpPressed) {
-            if(context.performed) {
+    /*
+        public void OnJump(InputAction.CallbackContext context) {
+    *//*        _isJumpPressed = context.ReadValueAsButton();*//*
+            if(context.performed && canJump) {
                 _isJumpPressed = true;
                 canJump = false;
-            }
-        }
-        if(context.canceled) {
-            _isJumpPressed = false;
-            canJump = true;
-        }
+            } else if(context.canceled) {
+                _isJumpPressed = false;
+                canJump = true;
+            } else
+                _isJumpPressed = false;
+        }*/
 
+    public bool JumpAction() {
+        return false;
     }
-
-
-    public bool isJumpPressed() {
-        return _isJumpPressed;
-    }
-
 
     #endregion
 
@@ -93,7 +90,6 @@ public class PlayerInput : MonoBehaviour {
     #region Attack
     //.....................
     public void OnAttack(InputAction.CallbackContext context) {
-        Debug.Log("Testing111");
         if(context.performed) {
             if(context.action.name == "Attack1")
                 player.playerCombact.MeleeAttack1();
@@ -104,6 +100,19 @@ public class PlayerInput : MonoBehaviour {
 
     }
 
+    public void OnTestAction(InputAction.CallbackContext context) {
+        Debug.Log(context.ReadValueAsButton());
+        if(context.started) {
+            Debug.Log("Started");
+        }
+        if(context.performed) {
+            Debug.Log("Performed");
+        }
+        if (context.canceled)
+        {
+            Debug.Log("Canceled");
+        }
+    }
     //........................
     #endregion
 

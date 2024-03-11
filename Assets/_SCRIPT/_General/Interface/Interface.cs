@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Interface : MonoBehaviour
@@ -16,9 +17,6 @@ public interface IConsumable
 }
 
 public interface IIntractable {
-  /*  protected InventoryManager GetInventoryM(InventoryManager manager) {
-        return manager;
-    }*/
-    public void OnEntract();
+    public void OnIntract();
 
 }

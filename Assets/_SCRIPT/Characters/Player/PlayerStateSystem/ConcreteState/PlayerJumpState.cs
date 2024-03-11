@@ -10,20 +10,19 @@ namespace OriginL
 
         public PlayerJumpState(PlayerScript player, PlayerStateMachine StateMachine) : base(player, StateMachine) {
         }
+
         [SerializeField] int fallMultiplier = 15;
 
         public override void EnterState() {
             base.EnterState();
-            Debug.Log(" Jump State ");
-            player.playerController.Jump();
             fallMultiplier = player.fallMultiplier;
+            GameManager.Instance.DebugMessage("JumpSpace");
+            player.playerController.Jump();
+
         }
         public override void FrameUpdate() {
             base.FrameUpdate();
-
-
             if(player.Rb.velocity.y < 0) {
-                Debug.Log("Testing111");
                 player.Rb.velocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
             }
         }
@@ -78,7 +77,7 @@ namespace OriginL
         }
 
         void CheckFall() {
-            if(player.Rb.velocity.y > 0 && !player.playerInput.isJumpPressed()) {
+            if(player.Rb.velocity.y > 0 && !player.playerInput.JumpAction()) {
                 player.playerController.ShortJumpFall();
             }
 

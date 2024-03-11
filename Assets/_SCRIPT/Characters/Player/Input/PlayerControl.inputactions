@@ -40,6 +40,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Test",
+                    "type": "Button",
+                    "id": "5e09236b-cb0a-4c4f-ad03-4d133006b102",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Entract",
+                    "type": "Button",
+                    "id": "acc6a39e-5e02-448d-8cbf-b06c9753e8c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -47,7 +65,7 @@
                     "name": "",
                     "id": "bd9dc166-8321-43eb-9d05-0b333988c779",
                     "path": "<Keyboard>/space",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "Press(pressPoint=0.1,behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
@@ -139,6 +157,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a733ce03-60c9-4267-9007-14a67f1e51f3",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Test",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "65eb9e44-592c-418e-9089-cacce7b6bf5d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Entract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -22,10 +22,10 @@ public class IntractablesUI_Manager : MonoBehaviour
     private void RefreshRefrences() {
 
     }
-    public void Show()  // called in PlayerIntract 
+    public void Show(string txt)  // called in PlayerIntract 
     {
         intractObj.SetActive(true); 
-        intractTxt.text = "Press E To Intract";
+        intractTxt.text = txt; 
 
     }
     public void Hide() // Called in Player INtract

@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     #region StateScripts
     public PlayerIdelState IdelState {  get; private set; }
     public PlayerMovingState MovingState {  get; private set; }
-    public PlayerAttackingState playerAttackingState {  get; private set; }
+    public PlayerAttackingState PlayerAttackingState {  get; private set; }
     public PlayerJumpState JumpState { get; private set; }
 
     public PlayerStateMachine playerStateMachine; 
@@ -38,14 +38,12 @@ public class PlayerScript : MonoBehaviour
 
     #region Primitives
     [SerializeField] internal bool isDead = false;
-    internal bool _isJumpPressed;
 
     [Header("Movement Attributes")]  //Copyed
     [SerializeField] internal float accel;
     [SerializeField] internal float decell;
     [SerializeField] internal float moveSpeed;
     [SerializeField] internal float velPower;
-    internal bool canMove = true;
 
     [Header("Jump & Gravity ")]
     [SerializeField] internal float jumpForce;
@@ -75,7 +73,7 @@ public class PlayerScript : MonoBehaviour
         #region StateScriptLink
         playerStateMachine = new PlayerStateMachine();
         IdelState = new PlayerIdelState(this,playerStateMachine);
-        playerAttackingState = new PlayerAttackingState(this,playerStateMachine);
+        PlayerAttackingState = new PlayerAttackingState(this,playerStateMachine);
         MovingState = new PlayerMovingState(this,playerStateMachine);
         JumpState = new PlayerJumpState(this,playerStateMachine);
 
@@ -91,11 +89,4 @@ public class PlayerScript : MonoBehaviour
     private void FixedUpdate() {
         playerStateMachine.CurrentState.PhysicUpdate();
     }
-
-    public void OnJumpPressed(InputAction.CallbackContext context) {
-        _isJumpPressed = context.ReadValueAsButton();
-    }
-    #region Extra Scrip
-
-    #endregion
 }

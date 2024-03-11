@@ -45,9 +45,9 @@ public class PlayerStat : CharacterStat
     #region Effect
 
     internal IEnumerator Stund() {
-        playerScrip.canMove = false; //make movement manager as base
+        playerScrip.playerController.canMove = false; //make movement manager as base
         yield return new WaitForSeconds(stundDuration);
-        playerScrip.canMove = true;
+        playerScrip.playerController.canMove = true;
     }
     #endregion
 }

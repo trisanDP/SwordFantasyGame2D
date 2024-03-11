@@ -31,7 +31,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         animator_Player.SetBool("IsGrounded", playerScrip.playerCollider.GroundCheck());
         animator_Player.SetFloat("yVelocity", playerScrip.Rb.velocity.y);
-        animator_Player.SetBool("jumpPressed", playerScrip.playerInput._isJumpPressed);
+        animator_Player.SetBool("jumpPressed", playerScrip.playerInput.JumpAction());
         animator_Player.SetInteger("Speed", (int)playerScrip.playerInput._moveInput.x);
 
     }
@@ -51,4 +51,9 @@ public class PlayerAnimationController : MonoBehaviour
     internal void PlayIdelAnim(bool isIdel) {
         animator_Player.SetBool("IsIdel", isIdel);
     }
+/*
+    internal void JumpPressedAnim(bool var) {
+        animator_Player.SetBool("jumpPressed", var);
+        animator_Player.SetBool("CanJump", var);
+    }*/
 }

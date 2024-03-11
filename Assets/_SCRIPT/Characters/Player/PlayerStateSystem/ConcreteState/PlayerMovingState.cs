@@ -8,21 +8,20 @@ namespace OriginL {
 
         [Header("Movement Attributes")]
 
-        [Range(0, 2)][SerializeField] float jmpMoveSpeed;
         Vector2 inputMove;
+
         public PlayerMovingState(PlayerScript player, PlayerStateMachine StateMachine) : base(player, StateMachine) {
         }
 
         public override void EnterState() {
-            Debug.Log(" Moving State ");
+            GameManager.Instance.DebugMessage("Moving State");
             base.EnterState();
-            jmpMoveSpeed = player.playerController.jmpMoveSpeed;
-            player.p_animCont.animator_Player.SetInteger("Speed", 1);
+/*            player.p_animCont.animator_Player.SetInteger("Speed", 1);*/
         }
 
         public override void ExitState() {
             base.ExitState();
-            player.p_animCont.animator_Player.SetInteger("Speed", 0);
+/*            player.p_animCont.animator_Player.SetInteger("Speed", 0);*/
 
         }
 
@@ -53,18 +52,10 @@ namespace OriginL {
         }
 
         void CheckJumpState() {
-            if(player.playerInput._isJumpPressed) {
+            if(player.playerInput.JumpAction()) {
                 StateMachine.ChangeState(player.JumpState);
             }
         }
-        /*
-                void CheckMoveJump() {
-                    if(player.playerInput.isJumpPressed() && !player.playerCollider.GroundCheck()) {
-                        StateMachine.ChangeState(player.JumpMoveState);
-                        player.playerController.Move(true);
-                        Debug.Log("Testing111");
-                    }
-                }*/
 
     }
 }

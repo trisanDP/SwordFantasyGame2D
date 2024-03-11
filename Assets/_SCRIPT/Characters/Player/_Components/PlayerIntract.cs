@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerIntract : MonoBehaviour
 {
@@ -13,7 +12,9 @@ public class PlayerIntract : MonoBehaviour
     #endregion
     private void Awake() {
         intractablesUI = UiManager.Instance.intractableUi;
+        Debug.Log("Testing111");
     }
+
     private void Start(){
         playerScrip = GetComponent<PlayerScript>();
         
@@ -22,34 +23,41 @@ public class PlayerIntract : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //Intract Input
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Intractable intra = HasIntractObj();
-            if (intra != null)
-            {
-                intra.OnEntract();
-            }
-        }
+    private void Update() { 
         #region Intract UI 
-        if (HasIntractObj() != null) {
-            intractablesUI.Show();
-        } 
-        else {
-            intractablesUI.Hide();
-        }
+        DisplayUI();
         #endregion
     }
 
+    #region Input
+    public void PressedE(InputAction.CallbackContext context) {
+        if(context.performed) {
+            Debug.Log("Pressed E");
+            Intractable intra = HasIntractObj();
+            if(intra != null) {
+                intra.OnEntract();
+            }
+        }
+    }
+
+    #endregion
+
+    #region Ui
+    void DisplayUI() {
+        if(HasIntractObj() != null) {
+            intractablesUI.Show(HasIntractObj().Message);
+        } else {
+            intractablesUI.Hide();
+        }
+    }
+    #endregion
+
     #region IntractDetect:
-    public Intractable HasIntractObj()
-    {
-
+    public Intractable HasIntractObj() { 
         List<Intractable> intractableList = new();
-
-        Collider2D[] colArr = Physics2D.OverlapCircleAll(transform.position, range); // To find All Intractable Objects in Range
+        // To find All Intractable Objects in Range
+        #region FindALlOBJ
+        Collider2D[] colArr = Physics2D.OverlapCircleAll(transform.position, range); 
         foreach (Collider2D col in colArr)
         {
             if (col.TryGetComponent(out Intractable intract))
@@ -57,10 +65,12 @@ public class PlayerIntract : MonoBehaviour
                 intractableList.Add(intract);
             }
         }
+        #endregion
 
-
+        // To Find Closest Object
+        #region FindClosestOBJ
         Intractable closest = null;
-        foreach (Intractable objs in intractableList)  // To Find Closest Object
+        foreach (Intractable objs in intractableList)  
         {
             if (closest == null)
             {
@@ -73,14 +83,14 @@ public class PlayerIntract : MonoBehaviour
                 }
             }
         }
+        #endregion
 
         return closest;
     }
     #endregion
 
     #region Gizmos
-    private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos(){
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, range);
     }

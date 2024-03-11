@@ -64,6 +64,24 @@ namespace OriginL.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Test"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e09236b-cb0a-4c4f-ad03-4d133006b102"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Entract"",
+                    ""type"": ""Button"",
+                    ""id"": ""acc6a39e-5e02-448d-8cbf-b06c9753e8c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -71,7 +89,7 @@ namespace OriginL.InputSystem
                     ""name"": """",
                     ""id"": ""bd9dc166-8321-43eb-9d05-0b333988c779"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": ""Press(pressPoint=0.1,behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
@@ -165,6 +183,28 @@ namespace OriginL.InputSystem
                     ""action"": ""Attack2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a733ce03-60c9-4267-9007-14a67f1e51f3"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Test"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65eb9e44-592c-418e-9089-cacce7b6bf5d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Entract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +217,8 @@ namespace OriginL.InputSystem
             m_Basic_Move = m_Basic.FindAction("Move", throwIfNotFound: true);
             m_Basic_Attack1 = m_Basic.FindAction("Attack1", throwIfNotFound: true);
             m_Basic_Attack2 = m_Basic.FindAction("Attack2", throwIfNotFound: true);
+            m_Basic_Test = m_Basic.FindAction("Test", throwIfNotFound: true);
+            m_Basic_Entract = m_Basic.FindAction("Entract", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -242,6 +284,8 @@ namespace OriginL.InputSystem
         private readonly InputAction m_Basic_Move;
         private readonly InputAction m_Basic_Attack1;
         private readonly InputAction m_Basic_Attack2;
+        private readonly InputAction m_Basic_Test;
+        private readonly InputAction m_Basic_Entract;
         public struct BasicActions
         {
             private @PlayerControl m_Wrapper;
@@ -250,6 +294,8 @@ namespace OriginL.InputSystem
             public InputAction @Move => m_Wrapper.m_Basic_Move;
             public InputAction @Attack1 => m_Wrapper.m_Basic_Attack1;
             public InputAction @Attack2 => m_Wrapper.m_Basic_Attack2;
+            public InputAction @Test => m_Wrapper.m_Basic_Test;
+            public InputAction @Entract => m_Wrapper.m_Basic_Entract;
             public InputActionMap Get() { return m_Wrapper.m_Basic; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -271,6 +317,12 @@ namespace OriginL.InputSystem
                 @Attack2.started += instance.OnAttack2;
                 @Attack2.performed += instance.OnAttack2;
                 @Attack2.canceled += instance.OnAttack2;
+                @Test.started += instance.OnTest;
+                @Test.performed += instance.OnTest;
+                @Test.canceled += instance.OnTest;
+                @Entract.started += instance.OnEntract;
+                @Entract.performed += instance.OnEntract;
+                @Entract.canceled += instance.OnEntract;
             }
 
             private void UnregisterCallbacks(IBasicActions instance)
@@ -287,6 +339,12 @@ namespace OriginL.InputSystem
                 @Attack2.started -= instance.OnAttack2;
                 @Attack2.performed -= instance.OnAttack2;
                 @Attack2.canceled -= instance.OnAttack2;
+                @Test.started -= instance.OnTest;
+                @Test.performed -= instance.OnTest;
+                @Test.canceled -= instance.OnTest;
+                @Entract.started -= instance.OnEntract;
+                @Entract.performed -= instance.OnEntract;
+                @Entract.canceled -= instance.OnEntract;
             }
 
             public void RemoveCallbacks(IBasicActions instance)
@@ -310,6 +368,8 @@ namespace OriginL.InputSystem
             void OnMove(InputAction.CallbackContext context);
             void OnAttack1(InputAction.CallbackContext context);
             void OnAttack2(InputAction.CallbackContext context);
+            void OnTest(InputAction.CallbackContext context);
+            void OnEntract(InputAction.CallbackContext context);
         }
     }
 }

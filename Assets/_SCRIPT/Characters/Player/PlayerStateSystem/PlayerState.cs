@@ -29,16 +29,10 @@ namespace OriginL
         #endregion
 
         protected virtual void CheckStateChange() {
-            CheckJumpPressed();
         }
 
 
-        void CheckJumpPressed() {
-            if(player._isJumpPressed && player.playerCollider.GroundCheck()) {
-                StateMachine.ChangeState(player.JumpState);
-                return;
-            }
-        }
+
 
 
     }
