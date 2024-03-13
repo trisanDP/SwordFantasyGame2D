@@ -29,7 +29,7 @@ namespace OriginL.EnemySpace {
 
         internal Rigidbody2D rb;
 
-        internal GameObject Target { get; private set; }
+        [SerializeField] internal GameObject Target;
 
         internal bool isGrounded;
         internal bool hasAggroed;
@@ -90,11 +90,12 @@ namespace OriginL.EnemySpace {
 
         private void Start() {
             StateMachine.Initialize(IdelState);
+            petrolSpeed = Random.Range(petrolSpeed * 1f, petrolSpeed);
+            chasingSpeed = Random.Range(chasingSpeed * 0.85f, chasingSpeed);
         }
 
         private void Update() {
             StateMachine.CurrentState.FrameUpdate();
-
         }
 
         private void FixedUpdate() {
@@ -104,6 +105,7 @@ namespace OriginL.EnemySpace {
         internal void AggroTo(GameObject target) {
             hasAggroed = true;
             this.Target = target;
+            Debug.Log("TargetSet");
         }
         internal void CancelAgroo() {
             hasAggroed = false;

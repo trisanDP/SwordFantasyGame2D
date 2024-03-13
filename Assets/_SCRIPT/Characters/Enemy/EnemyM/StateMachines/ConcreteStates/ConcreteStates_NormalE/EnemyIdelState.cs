@@ -16,6 +16,7 @@ namespace OriginL.EnemySpace {
 
         public override void EnterState() {
             base.EnterState();
+            petrolSpeed = enemy.petrolSpeed;
             canPetrol = false;
             //................................
             enemy.rb.velocity = Vector2.zero;

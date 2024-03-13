@@ -25,7 +25,8 @@ namespace OriginL.EnemySpace {
         }
         public override void PhysicUpdate() {
             base.PhysicUpdate();
-            StartChasing(targetObj);
+            if(targetObj == null) { Debug.Log("Testing111"); }
+            StartChasing(enemy.Target);
         }
 
         public override void ExitState() {

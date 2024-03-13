@@ -19,7 +19,7 @@ namespace OriginL.EnemySpace {
         #endregion
 
         #region Petrol Movement
-        internal virtual void StartPetrolMovement() {
+/*        internal virtual void StartPetrolMovement() {
             // Petrol Movement
             if(enemyScrip.enemyAnimCont._facingRight) {
                 enemyScrip.rb.AddForce(Vector2.right * activeSpeed, ForceMode2D.Force);
@@ -27,11 +27,14 @@ namespace OriginL.EnemySpace {
                 enemyScrip.rb.AddForce(Vector2.left * activeSpeed, ForceMode2D.Force);
             }
 
-        }
+        }*/
         #endregion
 
         internal void MoveToObj(GameObject obj, float activeSpeed) {
             enemyScrip.enemyAI.LookAt(obj);
+            if(enemyScrip.enemyAI == null) {
+                Debug.Log("Null");
+            }
             enemyScrip.rb.AddForce(((obj.transform.position) - enemyScrip.transform.position).normalized * activeSpeed, ForceMode2D.Force);
 
         }

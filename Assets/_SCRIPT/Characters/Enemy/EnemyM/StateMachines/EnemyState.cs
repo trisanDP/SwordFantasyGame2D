@@ -50,6 +50,7 @@ namespace OriginL.EnemySpace {
         #region Event Function
         protected virtual void GetDistanceFromTarget() {
             if(enemy.enemyCollider.InDetectRange()) {
+                Debug.Log("Scanning1");
                 targetObj = enemy.Target;
                 distFromTarget = Vector2.Distance(targetObj.transform.position, enemy.transform.position);
             }

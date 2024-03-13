@@ -2,10 +2,26 @@ using UnityEngine;
 
 namespace OriginL.EnemySpace {
 
-    public class EnemyCollider  {
+    public class EnemyCollider :MonoBehaviour  {
+
+    
+
+        #region Variable
+
+
+        [Header("Components")]
+        [SerializeField] GameObject wallDetectPoint;
+        [SerializeField] GameObject hitPos;
+        [SerializeField] LayerMask hitLayer;
+        [SerializeField] LayerMask groundLayer;
+        LayerMask playerLayer;
+
+
+        [Header("Vectors")]
+        [SerializeField] Vector3 size;
 
         [Header("Internal")]
-        internal Enemy enemyScript;
+        internal Enemy enemy;
 
 
 
@@ -15,47 +31,30 @@ namespace OriginL.EnemySpace {
 
         [Header("Range")]
         [SerializeField] float attackRange = 4;
-        [SerializeField] float detectRange;
-
-        #region Variable
-
-
-        [Header("Components")]
-        [SerializeField] internal GameObject wallDetectPoint;
-        [SerializeField] GameObject hitPos;
-        [SerializeField] LayerMask hitLayer;
-        [SerializeField] LayerMask platformLayor;
-        [SerializeField] LayerMask playerLayer;
-
-
-        [Header("Vectors")]
-        [SerializeField] Vector3 size;
-        Transform transform;
-
-        public EnemyCollider(Enemy enemyScript,Transform transform) {
-            this.enemyScript = enemyScript;
-            this.transform = transform;
-        }
-
-
-
+        [SerializeField] float detectRange = 10;
         #endregion
 
-        private void Awake() {
-/*            enemyScript = GetComponent<Enemy>();*/
-        }
 
-        private void Start() { 
-            if(hitLayer == 0 || platformLayor == 0) {
+        private void Awake() {
+            if(wallDetectPoint == null) {
+                wallDetectPoint = transform.Find("WallDetect").gameObject;
+                Debug.LogWarning("Wall detect was empty, So assigned using Script");
+            }if(hitPos == null) {
+                hitPos = transform.Find("HitPos").gameObject;
+                Debug.LogWarning("HitPos was empty, So assigned using Script");
+            }
+            if(hitLayer == 0 || groundLayer == 0) {
                 Debug.LogError("EnemyCollider/LayerMask not set");
-            }            
+            }
+            playerLayer = LayerMask.GetMask("Player");
+            enemy = GetComponent<Enemy>();
         }
 
         #region Collision
 
         private void OnCollisionStay(Collision collision) {
             if(collision.collider.CompareTag("Ground") || collision.collider.CompareTag("Platform")) {
-                enemyScript.isGrounded = true;
+                enemy.isGrounded = true;
             }
         }
 
@@ -63,7 +62,7 @@ namespace OriginL.EnemySpace {
 
 
         internal bool HasHitWall() {
-            if(Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, platformLayor)) {
+            if(Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, groundLayer)) {
                 return true;
             } else
                 return false;
@@ -78,13 +77,24 @@ namespace OriginL.EnemySpace {
 
         internal bool InDetectRange() {
             Collider2D hit = Physics2D.OverlapCircle(transform.position, GetDetectRange(), playerLayer);
-            if(hit != null && !enemyScript.hasAggroed) {
-                enemyScript.AggroTo(hit.gameObject);
+            if(hit != null && !enemy.hasAggroed) {
+                enemy.AggroTo(hit.gameObject);
+
             }
             return hit;
         }
 
 
+        internal float GetDetectRange() {
+            if(enemy.hasAggroed)
+                return detectRange * 1.5f;
+            else
+                return detectRange;
+        }
+
+        internal float GetAttackRange() {
+            return attackRange;
+        }
 
         #region Extra And Gizmos
         private void OnDrawGizmos() {
@@ -99,7 +109,7 @@ namespace OriginL.EnemySpace {
 
 
             //Detect Range
-            if(enemyScript != null) {
+            if(enemy != null) {
                 Gizmos.color = Color.white;
                 Gizmos.DrawWireSphere(transform.position, GetDetectRange());
 
@@ -109,19 +119,6 @@ namespace OriginL.EnemySpace {
             Gizmos.DrawWireSphere(transform.position, attackRange);
         }
 
-        internal float GetDetectRange() {
-            if(enemyScript.hasAggroed)
-                return detectRange * 1.5f;
-            else
-                return detectRange;
-        }
-
-        internal float GetAttackRange() {
-            if(enemyScript.hasAggroed)
-                return attackRange;
-            else
-                return 0;
-        }
         #endregion
     }
 }

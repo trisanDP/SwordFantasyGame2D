@@ -72,21 +72,21 @@ namespace OriginL.Building
         #region StageSelector
         protected virtual void SetStage(Stage active) {
             activeStage = active;
+            
             switch(activeStage) {
                 case Stage.Node:
-                Debug.Log("Node");
+                    GameManager.Instance.DebugMessage("Node",GameManager.MessageField.Others);
                 break;
                 case Stage.Build1:
-                animator.SetTrigger("Build");
-                Debug.Log("Node2");
-
+                    GameManager.Instance.DebugMessage("Build1", GameManager.MessageField.Others);
+                animator.SetTrigger("Build1");
                 break;
                 case Stage.Build2:
-                Debug.Log("Node3");
+                    GameManager.Instance.DebugMessage("Build2", GameManager.MessageField.Others);
 
                 break;
                 case Stage.Build3:
-                    Debug.Log("Node4");
+                    GameManager.Instance.DebugMessage("Build3", GameManager.MessageField.Others);
                 break;
 
             }
