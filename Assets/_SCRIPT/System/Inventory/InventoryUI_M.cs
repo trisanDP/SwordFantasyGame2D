@@ -43,7 +43,6 @@ namespace OriginL.UI {
 
         public void Show() {
             InventoryUI_Obj.SetActive(true);
-            Debug.Log("hELLO");
         }
         public void Hide() {
             InventoryUI_Obj.SetActive(false);

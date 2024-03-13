@@ -8,10 +8,12 @@ public abstract class ItemClass : ScriptableObject
     public Sprite itemIcon = null;
     public bool isDefault = false;
 
+    public string message;
+
 
     public virtual void Use()
     {
-/*        Debug.Log("Using " + name);*/
+
     }
 
     public void RemoveFromInventory()

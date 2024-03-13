@@ -55,6 +55,6 @@ public class EquipmentUI_M : MonoBehaviour
         damageTxt.text = ""+ stat.physicalDamage.GetValue();
         ArmorTxt.text = "" + stat.armor.GetValue();
         ResistanceTxt.text = "" + stat.resistance.GetValue();
-        health.text = "" + stat.currentHealth;
+        health.text = "" + stat.CurrentHealth;
     }
 }

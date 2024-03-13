@@ -78,7 +78,6 @@ GameObject:
   - component: {fileID: 2246215093499373340}
   - component: {fileID: 4381406162799916987}
   - component: {fileID: 68390951279173744}
-  - component: {fileID: 7479079552720202967}
   - component: {fileID: 2695968337665519382}
   - component: {fileID: 7714033340846483729}
   - component: {fileID: 2248565013102978392}
@@ -145,7 +144,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -339847733
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -8712264719427376405, guid: 1ff25c612f109254dbbe2e55dd4eb3fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -253,7 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2823f5f6b26119e4996fcf39baf19167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drops: []
+  chasingSpeed: 0
+  activeSpeed: 0
+  petrolSpeed: 0
 --- !u!114 &4381406162799916987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idelDuration: 1
-  x: -5.45
 --- !u!114 &68390951279173744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,8 +281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitSize: 0
-  detectRange: 10
   attackRange: 5
+  detectRange: 10
   wallDetectPoint: {fileID: 6521829285465155666}
   hitPos: {fileID: 318133204651472337}
   hitLayer:
@@ -295,22 +295,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   size: {x: 1, y: 5, z: 0}
---- !u!114 &7479079552720202967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6672188456483286461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5b00f8bb510144e96f2c8ddcb14d7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 0
-  ChasingSpeed: 200
-  activeSpeed: 0
-  petrolSpeed: 150
 --- !u!114 &2695968337665519382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +319,6 @@ MonoBehaviour:
     modifiers: 
   stundDuration: 0
   dropBox: {fileID: 0}
-  drops: []
 --- !u!114 &7714033340846483729
 MonoBehaviour:
   m_ObjectHideFlags: 0

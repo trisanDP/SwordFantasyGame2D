@@ -24,7 +24,7 @@ namespace OriginL.EnemySpace {
 
         #region Virtual State Functions
         public virtual void EnterState() {
-            attackR = enemy.enemyCollider.attackRange;
+            attackR = enemy.enemyCollider.GetAttackRange();
             detectR = enemy.enemyCollider.GetDetectRange();
 
         }
@@ -52,19 +52,17 @@ namespace OriginL.EnemySpace {
             if(enemy.enemyCollider.InDetectRange()) {
                 targetObj = enemy.Target;
                 distFromTarget = Vector2.Distance(targetObj.transform.position, enemy.transform.position);
-                Debug.Log("Testing111");
             }
         }
 
         void CheckHealth() {
-            if(enemy.enemyStatus.currentHealth <= 0) {
+            if(enemy.enemyStatus.CurrentHealth <= 0) {
                 enemyStateMachine.ChangeState(enemy.DeadState);
                 Debug.Log("Change to death");
             }
         }
 
         #endregion
-
 
     }
 }

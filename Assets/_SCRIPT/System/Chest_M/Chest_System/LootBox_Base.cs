@@ -4,7 +4,7 @@ using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using static Chest;
 
-public class LootBox_Base : Intractable  {
+public abstract class LootBox_Base : MonoBehaviour, IIntractable  {
 
     #region Variables
 
@@ -14,8 +14,10 @@ public class LootBox_Base : Intractable  {
     protected ChestUI_Manager ChestUi_M;
 
     protected int range;
-    protected bool isOpen = false;
+    protected bool isOpen;
     protected LayerMask playerLayer;
+
+    public string message;
 
     #region IMP_Extras
     [HideInInspector] public static LootBox_Base activeLootBox;
@@ -32,6 +34,7 @@ public class LootBox_Base : Intractable  {
         playerLayer = 1 << LayerMask.NameToLayer("Player");
         animator = GetComponent<Animator>();
         ChestUi_M = UiManager.Instance.chestUI;
+        isOpen = false;
 
     }
 
@@ -56,19 +59,7 @@ public class LootBox_Base : Intractable  {
 
     }
 
-    #region IntractableF
-    public override void OnEntract() {
-        if (isOpen == false) {
-            activeLootBox = this;
-            ChestUi_M.UpdateUI(this);
-            OpenChest();
-        } else {
-            CloseChest();
-        }
-
-    }
-    #endregion
-
+    #region ChestFunctions
     protected void OpenChest() { // Called In OnEntract()
         isOpen = true;
         ChestUi_M.Show();
@@ -91,6 +82,25 @@ public class LootBox_Base : Intractable  {
             activeState = BoxState.Empty;
         }
     }
+    #endregion
+
+    #region IntractableFunctions
+    public void OnIntract() {
+        if(isOpen == false) {
+            activeLootBox = this;
+            ChestUi_M.UpdateUI(this);
+            OpenChest();
+        } else {
+            CloseChest();
+        }
+
+    }
+    public abstract string Message();
+
+    public GameObject GetGameObject() {
+        return gameObject;
+    }
+    #endregion
 
     #region Extra/Collider
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -105,5 +115,6 @@ public class LootBox_Base : Intractable  {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+
     #endregion
 }

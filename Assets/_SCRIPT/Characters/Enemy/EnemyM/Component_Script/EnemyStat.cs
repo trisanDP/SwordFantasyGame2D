@@ -70,7 +70,7 @@ namespace OriginL.EnemySpace {
         internal IEnumerator Stund() {
             enemy.enemyController.StopEnemyMovement();  //make movement manager as base
             yield return new WaitForSeconds(stundDuration);
-            enemy.enemyController.activeSpeed = enemy.enemyController.ChasingSpeed;
+            enemy.enemyController.activeSpeed = enemy.chasingSpeed;
         }
 
 

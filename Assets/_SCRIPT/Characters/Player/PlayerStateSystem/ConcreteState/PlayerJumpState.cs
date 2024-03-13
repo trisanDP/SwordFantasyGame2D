@@ -16,7 +16,7 @@ namespace OriginL
         public override void EnterState() {
             base.EnterState();
             fallMultiplier = player.fallMultiplier;
-            GameManager.Instance.DebugMessage("JumpSpace");
+            GameManager.Instance.DebugMessage("JumpSpace", GameManager.MessageField.PlayerState);
             player.playerController.Jump();
 
         }

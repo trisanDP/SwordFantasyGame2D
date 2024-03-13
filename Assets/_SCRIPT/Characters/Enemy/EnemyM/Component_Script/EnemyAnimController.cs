@@ -21,7 +21,7 @@ namespace OriginL.EnemySpace {
         }
 
         private void Update() {
-            anim.SetInteger("Speed", (int)enemyScrip.rb.velocity.x);
+            anim.SetInteger("Speed", (int)enemyScrip.rb.velocity.x);    
             anim.SetBool("isGrounded", enemyScrip.isGrounded);
         }
 

@@ -14,12 +14,18 @@ public class LootDrop : LootBox_Base
 
     protected override void Update() {
         base.Update();
-        if (ItemsRewards.Count == 0)
+        if(ItemsRewards.Count == 0)
             Destroy(gameObject, 2);
     }
 
     private void OnDestroy() {
         CloseChest();
     }
+
+    public override string Message() {
+        return message + "" + dropedFrom;
+    }
+
+
 
 }

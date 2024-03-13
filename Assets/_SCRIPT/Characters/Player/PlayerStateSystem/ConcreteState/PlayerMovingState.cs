@@ -14,7 +14,7 @@ namespace OriginL {
         }
 
         public override void EnterState() {
-            GameManager.Instance.DebugMessage("Moving State");
+            GameManager.Instance.DebugMessage("Moving State", GameManager.MessageField.PlayerState);
             base.EnterState();
 /*            player.p_animCont.animator_Player.SetInteger("Speed", 1);*/
         }

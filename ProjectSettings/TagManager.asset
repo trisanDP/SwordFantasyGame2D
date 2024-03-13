@@ -11,14 +11,14 @@ TagManager:
   - Bullet
   - AttackCollider
   - Wall
-  - Trap1
   - QuestTriggers
   - Items
+  - BUILDING
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BUILDING
   - Water
   - UI
   - Enemy

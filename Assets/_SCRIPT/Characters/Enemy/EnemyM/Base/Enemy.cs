@@ -40,6 +40,10 @@ namespace OriginL.EnemySpace {
         #endregion
 
         #region Type
+        [SerializeField] internal float petrolSpeed;
+        [SerializeField] internal float chasingSpeed;
+        [SerializeField] internal float activeSpeed;
+
         #endregion
 
         private void Awake() {
@@ -53,8 +57,9 @@ namespace OriginL.EnemySpace {
 
             #endregion
             #region ScriptLinker
+            enemyController = new EnemyController(this, activeSpeed);
+
             enemyAI = GetComponent<EnemyAI>();
-            enemyController = GetComponent<EnemyController>();
             enemyCombact = GetComponent<EnemyCombact>();
             enemyAnimCont = GetComponent<EnemyAnimController>();
             enemyCollider = GetComponent<EnemyCollider>();

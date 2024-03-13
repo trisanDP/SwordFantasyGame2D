@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Healing Potion
   itemIcon: {fileID: 21300000, guid: c64f547ed3dc8cc4c80c569def3ef202, type: 3}
   isDefault: 0
+  message: Pick Up Healing Potion
   type: 0
   grade: 0

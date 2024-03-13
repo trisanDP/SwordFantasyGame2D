@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OriginL.EnemySpace {
 
-    public class EnemyCollider : MonoBehaviour {
+    public class EnemyCollider  {
 
         [Header("Internal")]
         internal Enemy enemyScript;
@@ -14,8 +14,8 @@ namespace OriginL.EnemySpace {
 
 
         [Header("Range")]
-        [SerializeField] internal float attackRange = 4;
-        [SerializeField] private float detectRange { get; set; }
+        [SerializeField] float attackRange = 4;
+        [SerializeField] float detectRange;
 
         #region Variable
 
@@ -30,23 +30,25 @@ namespace OriginL.EnemySpace {
 
         [Header("Vectors")]
         [SerializeField] Vector3 size;
+        Transform transform;
+
+        public EnemyCollider(Enemy enemyScript,Transform transform) {
+            this.enemyScript = enemyScript;
+            this.transform = transform;
+        }
 
 
 
         #endregion
 
-        private void Start() {
-            detectRange = 10;
-            attackRange = 4;
-            if(hitLayer == 0 || platformLayor == 0) {
-                Debug.LogError("EnemyCollider/LayerMask not set");
-            }
-
-            enemyScript = GetComponent<Enemy>();
+        private void Awake() {
+/*            enemyScript = GetComponent<Enemy>();*/
         }
 
-        private void OnEnable() {
-
+        private void Start() { 
+            if(hitLayer == 0 || platformLayor == 0) {
+                Debug.LogError("EnemyCollider/LayerMask not set");
+            }            
         }
 
         #region Collision
@@ -58,6 +60,7 @@ namespace OriginL.EnemySpace {
         }
 
         #endregion
+
 
         internal bool HasHitWall() {
             if(Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, platformLayor)) {
@@ -111,6 +114,13 @@ namespace OriginL.EnemySpace {
                 return detectRange * 1.5f;
             else
                 return detectRange;
+        }
+
+        internal float GetAttackRange() {
+            if(enemyScript.hasAggroed)
+                return attackRange;
+            else
+                return 0;
         }
         #endregion
     }

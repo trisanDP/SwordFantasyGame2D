@@ -6,7 +6,7 @@ public class CharacterStat : MonoBehaviour, IDamageable
 
     [Header("Health")]
     [Min(0)]public int maxHealth = 100;
-    public int currentHealth { get; private set; }
+    public int CurrentHealth { get; private set; }
 
     [Header("Stats")]
     public Stat physicalDamage;
@@ -15,7 +15,7 @@ public class CharacterStat : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        CurrentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
 
     }
@@ -24,27 +24,25 @@ public class CharacterStat : MonoBehaviour, IDamageable
     {
         damage -= armor.GetValue();
         damage = Mathf.Clamp(damage, 0,int.MaxValue);
-        currentHealth -= (int)damage;
+        CurrentHealth -= (int)damage;
         Debug.Log(name + " takes " + damage + " damage");
         KnockBack(knockBack, damageFrom);
-        if(currentHealth <= 0)
+        if(CurrentHealth <= 0)
         {
             Die();
         }
     }
     public void AddHealth(int add)
     {
-        if (currentHealth > 0)
+        if (CurrentHealth > 0)
         {
-            currentHealth += add;
+            CurrentHealth += add;
             Debug.Log("added " + add + " Health to" + name);
             
         }
     }
 
-    public virtual void Die()
-    {
-        Debug.Log(name + " Died");
+    public virtual void Die() { 
     }
 
 
@@ -52,7 +50,6 @@ public class CharacterStat : MonoBehaviour, IDamageable
     public virtual void  KnockBack(int force,GameObject target) {
         Vector2 direction = (transform.position - target.transform.position).normalized;
         rb.AddForce(force * direction, ForceMode2D.Impulse);
-        Debug.Log(" Getting Knocked ");
     }
     #endregion
 }

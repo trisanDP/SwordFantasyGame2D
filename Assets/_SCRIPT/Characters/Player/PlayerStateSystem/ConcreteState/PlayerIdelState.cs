@@ -10,7 +10,7 @@ namespace OriginL
         }
 
         public override void EnterState() {
-            GameManager.Instance.DebugMessage("IdelState");
+            GameManager.Instance.DebugMessage("IdelState",GameManager.MessageField.Player);
             base.EnterState();
             player.p_animCont.PlayIdelAnim(true);
         }

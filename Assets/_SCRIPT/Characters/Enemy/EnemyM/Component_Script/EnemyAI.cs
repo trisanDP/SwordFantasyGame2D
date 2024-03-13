@@ -20,13 +20,8 @@ namespace OriginL.EnemySpace {
             rb = GetComponent<Rigidbody2D>();
         }
 
-
-
-        private void FixedUpdate() {
-
-        }
-
         #region New
+/*
         internal virtual void StartPetrol() {
             StartCoroutine(Petrol());
         }
@@ -40,7 +35,7 @@ namespace OriginL.EnemySpace {
             enemyScript.enemyAnimCont.Flip();
             canMove = false;
         }
-
+*/
 
         #region ShareAbles:
         internal void LookAt(GameObject target)  // Shouldnt be at any state cause, i maight make a enemy that looks at player not doing anything

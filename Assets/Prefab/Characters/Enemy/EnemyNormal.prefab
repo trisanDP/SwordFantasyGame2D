@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3197064950808197786}
   - component: {fileID: 3197064950808197793}
   - component: {fileID: 527108549792102049}
+  - component: {fileID: 2989805618449960436}
   - component: {fileID: 1176303641822468622}
   - component: {fileID: 1912643436275880242}
   - component: {fileID: 8185540670389640524}
@@ -25,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3197064950808197798
 Transform:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -339847733
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a70b3fff8c0d54e41b799a19a9a33a3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,6 +179,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2989805618449960436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197064950808197787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2823f5f6b26119e4996fcf39baf19167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1176303641822468622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitSize: 0
   attackRange: 4
-  wallDetectPoint: {fileID: 0}
+  detectRange: 0
+  wallDetectPoint: {fileID: 3665493969028231164}
   hitPos: {fileID: 7323884501655461481}
   hitLayer:
     serializedVersion: 2
@@ -269,7 +283,6 @@ MonoBehaviour:
     modifiers: 
   stundDuration: 2
   dropBox: {fileID: 0}
-  drops: []
 --- !u!114 &7715581528549720867
 MonoBehaviour:
   m_ObjectHideFlags: 0

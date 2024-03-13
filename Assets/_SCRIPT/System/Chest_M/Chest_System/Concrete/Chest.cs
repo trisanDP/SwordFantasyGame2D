@@ -23,6 +23,9 @@ public class Chest : LootBox_Base
         chestID++;
     }
 
+    public override string Message() {
+        return message + "" + chest_name;
+    }
 
     #endregion
 

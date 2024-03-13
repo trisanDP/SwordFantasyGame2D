@@ -16,7 +16,7 @@ public class IntractablesUI_Manager : MonoBehaviour
     private void OnEnable() {
         ScenesManager.Instance.OnSceneChange += RefreshRefrences;
     }
-    private void OnDisable() {
+    private void OnDestroy() {
         ScenesManager.Instance.OnSceneChange -= RefreshRefrences;
     }
     private void RefreshRefrences() {

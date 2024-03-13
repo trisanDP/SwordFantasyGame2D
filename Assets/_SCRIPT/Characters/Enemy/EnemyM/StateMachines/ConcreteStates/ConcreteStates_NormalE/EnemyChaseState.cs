@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEditor.Build.Content;
 
 namespace OriginL.EnemySpace {
     public class EnemyChaseState : EnemyState {
@@ -11,9 +12,10 @@ namespace OriginL.EnemySpace {
 
         public override void EnterState() {
             targetObj = enemy.Target;
-            ChaseSpeed = enemy.enemyController.ChasingSpeed;
+            ChaseSpeed = enemy.chasingSpeed;
             /*        Debug.Log("Chase State");*/
             base.EnterState();
+           
         }
 
 

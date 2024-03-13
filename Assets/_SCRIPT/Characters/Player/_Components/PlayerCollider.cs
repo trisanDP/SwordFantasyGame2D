@@ -59,9 +59,9 @@ public class PlayerCollider : MonoBehaviour
         #endregion
 
         #region Traps
-        if (collision.gameObject.CompareTag("Trap1")) {
+/*        if (collision.gameObject.CompareTag("Trap1")) {
             Destroy(gameObject);
-        }
+        }*/
         #endregion
 
 

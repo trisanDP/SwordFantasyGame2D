@@ -2,20 +2,21 @@ using UnityEngine;
 
 namespace OriginL
 {
-    public class Door : Intractable {
+    public class Door : MonoBehaviour, IIntractable {
 
-        [SerializeField] Animator animator;
+        [Header("Component")]
+        Animator animator;
+
+        [Header("Basic")]
         bool isOpen;
+        public string DoorName;
+        public string message;
+
         private void Awake() {
             animator = GetComponent<Animator>();
             isOpen = false;
         }
-        public override void OnEntract() {
-            if(isOpen)
-                CloseDoor();
-            else
-                OpenDoor();
-        }
+        #region DoorFunction
 
         void OpenDoor() {
             isOpen = true;
@@ -24,8 +25,28 @@ namespace OriginL
         }
         void CloseDoor() {
             isOpen = false;
-            animator.SetTrigger("Close"); 
+            animator.SetTrigger("Close");
             gameObject.GetComponent<Collider2D>().isTrigger = false;
         }
+
+
+        #endregion
+
+        #region Interface Function  
+        public void OnIntract() {
+            if(isOpen)
+                CloseDoor();
+            else
+                OpenDoor();
+        }
+        public string Message() {
+            return message + ""+ DoorName;
+        }
+
+        public GameObject GetGameObject() {
+            return gameObject;
+        }
+
+        #endregion
     }
 }
