@@ -1,7 +1,5 @@
-using System;
 using UnityEditor;
 using UnityEngine;
-/*using static UnityEngine.Rendering.DebugUI.Table;*/
 
 public class QuestInputWindow : EditorWindow
 {

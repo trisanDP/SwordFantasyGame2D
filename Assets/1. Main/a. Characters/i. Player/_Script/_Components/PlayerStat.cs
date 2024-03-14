@@ -1,53 +1,51 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
 using UnityEngine;
-using UnityEngine.Events;
+using OriginL.Item;
 
-public class PlayerStat : CharacterStat
-{
-    PlayerScript playerScrip;
+namespace OriginL.Player {
+    public class PlayerStat : CharacterStat {
+        PlayerScript playerScrip;
 
-    public float stundDuration;
+        public float stundDuration;
 
-    private void Start() {
-        playerScrip = GetComponent<PlayerScript>();
-        GetComponentInChildren<PlayerEquipmentManager>().onEquipmentChanged += OnEquipmentChanged;
-    }
-
-    public override void TakeDamage(float damage, int knockBack,GameObject damageFrom) {
-        base.TakeDamage(damage, knockBack,damageFrom);
-    }
-
-    public override void Die(){
-        base.Die();
-        playerScrip.isDead = true;
-        gameObject.SetActive(false);
-        GameManager.Instance.GameOver();
-    }
-
-    private void OnEquipmentChanged(Equipment newItem, Equipment oldItem ){
-        if (newItem != null){
-            armor.AddModifier(newItem.armorModifier);
-            physicalDamage.AddModifier(newItem.damageModifier);
-            resistance.AddModifier(newItem.resistanceModifier);
+        private void Start() {
+            playerScrip = GetComponent<PlayerScript>();
+            GetComponentInChildren<PlayerEquipmentManager>().onEquipmentChanged += OnEquipmentChanged;
         }
-        if(oldItem != null){
-            armor.RemoveModifier(oldItem.armorModifier);
-            physicalDamage.RemoveModifier(oldItem.damageModifier);
-            resistance.RemoveModifier(oldItem.resistanceModifier);
+
+        public override void TakeDamage(float damage, int knockBack, GameObject damageFrom) {
+            base.TakeDamage(damage, knockBack, damageFrom);
         }
+
+        public override void Die() {
+            base.Die();
+            playerScrip.isDead = true;
+            gameObject.SetActive(false);
+            GameManager.Instance.GameOver();
+        }
+
+        private void OnEquipmentChanged(Equipment newItem, Equipment oldItem) {
+            if(newItem != null) {
+                armor.AddModifier(newItem.armorModifier);
+                physicalDamage.AddModifier(newItem.damageModifier);
+                resistance.AddModifier(newItem.resistanceModifier);
+            }
+            if(oldItem != null) {
+                armor.RemoveModifier(oldItem.armorModifier);
+                physicalDamage.RemoveModifier(oldItem.damageModifier);
+                resistance.RemoveModifier(oldItem.resistanceModifier);
+            }
+        }
+
+
+
+        #region Effect
+
+        internal IEnumerator Stund() {
+            playerScrip.playerController.canMove = false; //make movement manager as base
+            yield return new WaitForSeconds(stundDuration);
+            playerScrip.playerController.canMove = true;
+        }
+        #endregion
     }
-
-
-
-    #region Effect
-
-    internal IEnumerator Stund() {
-        playerScrip.playerController.canMove = false; //make movement manager as base
-        yield return new WaitForSeconds(stundDuration);
-        playerScrip.playerController.canMove = true;
-    }
-    #endregion
 }

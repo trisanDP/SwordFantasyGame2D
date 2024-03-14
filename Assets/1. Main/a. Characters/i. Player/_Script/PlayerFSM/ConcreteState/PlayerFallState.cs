@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace OriginL
+namespace OriginL.Player
 {
     public class PlayerFallState : PlayerState {
         public PlayerFallState(PlayerScript player, PlayerStateMachine StateMachine) : base(player, StateMachine) {

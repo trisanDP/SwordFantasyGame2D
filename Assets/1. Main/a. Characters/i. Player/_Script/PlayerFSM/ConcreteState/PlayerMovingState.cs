@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.EventSystems.StandaloneInputModule;
 
-namespace OriginL {
+namespace OriginL.Player {
     public class PlayerMovingState : PlayerState {
 
         [Header("Movement Attributes")]

@@ -1,7 +1,7 @@
 using UnityEngine;
-using OriginL.System;
 
-namespace OriginL.UI {
+
+namespace OriginL.Inventory {
     public class InventoryUI_M : MonoBehaviour {
         public Transform itemParent;
         public GameObject InventoryUI_Obj;

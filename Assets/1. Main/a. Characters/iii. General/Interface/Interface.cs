@@ -15,10 +15,3 @@ public interface IConsumable
 {
     void Consume();
 }
-
-public interface IIntractable {
-    public void OnIntract();
-    public string Message();
-    public GameObject GetGameObject();
-
-}

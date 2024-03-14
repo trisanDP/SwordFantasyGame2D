@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
-using OriginL.System;
+using OriginL.Item;
 
-namespace OriginL.UI {
+namespace OriginL.Inventory{
     public class InventorySlot : MonoBehaviour {
         ItemClass item;
         public Image icon;

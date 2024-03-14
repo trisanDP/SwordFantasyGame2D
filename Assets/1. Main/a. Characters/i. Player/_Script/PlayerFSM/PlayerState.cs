@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-
-namespace OriginL
+namespace OriginL.Player
 {
     public class PlayerState {
         public PlayerScript player;

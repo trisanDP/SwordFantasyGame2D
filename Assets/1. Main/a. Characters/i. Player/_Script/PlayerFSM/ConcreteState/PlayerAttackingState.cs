@@ -1,9 +1,6 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace OriginL
+namespace OriginL.Player
 {
     public class PlayerAttackingState : PlayerState {
         public PlayerAttackingState(PlayerScript player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine) {

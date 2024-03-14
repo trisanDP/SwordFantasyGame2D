@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using OriginL.Item;
 
-namespace OriginL.System {
+namespace OriginL {
     public class InventoryManager : MonoBehaviour {
 
         public List<ItemClass> items = new(); 

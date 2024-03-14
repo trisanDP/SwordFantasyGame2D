@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+
+namespace OriginL.ChestSpace{ 
 public class ChestUI_Manager : MonoBehaviour
 {
     public Transform itemParent;
@@ -9,7 +9,6 @@ public class ChestUI_Manager : MonoBehaviour
 
     ChestSlot[] slot;
     
-
     void Start() {
         if(itemParent != null)
             slot = itemParent.GetComponentsInChildren<ChestSlot>();
@@ -36,4 +35,5 @@ public class ChestUI_Manager : MonoBehaviour
     }
 
    
+}
 }

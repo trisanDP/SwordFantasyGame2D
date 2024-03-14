@@ -1,73 +1,71 @@
 using System;
 using UnityEngine;
-using OriginL.System;
+using OriginL.Item;
 
-public class PlayerEquipmentManager : MonoBehaviour
-{
-    InventoryManager inventoryManager;
+namespace OriginL {
+    public class PlayerEquipmentManager : MonoBehaviour {
+        InventoryManager inventoryManager;
 
-    public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
-    public OnEquipmentChanged onEquipmentChanged;
+        public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
+        public OnEquipmentChanged onEquipmentChanged;
 
-    public Equipment[] currentEquipment;
+        public Equipment[] currentEquipment;
 
-    public EquipmentUI_M equipmentUI;
+        public EquipmentUI_M equipmentUI;
 
-    void Start()
-    {
-        inventoryManager = GetComponent<InventoryManager>();
-        equipmentUI = UiManager.Instance.equipmentUI;
+        void Start() {
+            inventoryManager = GetComponent<InventoryManager>();
+            equipmentUI = UiManager.Instance.equipmentUI;
 
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlotType)).Length;
-        
-        currentEquipment = new Equipment[numSlots];
-    }
+            int numSlots = System.Enum.GetNames(typeof(EquipmentSlotType)).Length;
 
-    #region Basic Equipment Function
-
-    public void Equip(Equipment newItem)
-    {
-        int slotIndex = (int)newItem.equipment_Slot;
-        Equipment oldItem = null;
-        if (currentEquipment[slotIndex] != null )
-        {
-            oldItem = currentEquipment[slotIndex];
-            inventoryManager.AddItem(oldItem);
+            currentEquipment = new Equipment[numSlots];
         }
 
-        currentEquipment[slotIndex] = newItem;
-        onEquipmentChanged?.Invoke(newItem, oldItem);
-        equipmentUI.UpdateUI(slotIndex);
+        #region Basic Equipment Function
 
-    }
-    public void UnEquip(Equipment Item) {  // For Button in  Equipment Slot
-        int slotIndex = Array.IndexOf(currentEquipment, Item);
+        public void Equip(Equipment newItem) {
+            int slotIndex = (int)newItem.equipment_Slot;
+            Equipment oldItem = null;
+            if(currentEquipment[slotIndex] != null) {
+                oldItem = currentEquipment[slotIndex];
+                inventoryManager.AddItem(oldItem);
+            }
 
-        if (slotIndex >= 0) {
-            Equipment oldItem = currentEquipment[slotIndex];
-            inventoryManager.AddItem(oldItem);
+            currentEquipment[slotIndex] = newItem;
+            onEquipmentChanged?.Invoke(newItem, oldItem);
+            equipmentUI.UpdateUI(slotIndex);
 
-            currentEquipment[slotIndex] = null;
-            onEquipmentChanged?.Invoke(null, oldItem);
-            equipmentUI.UpdateUI2(slotIndex);
         }
-    }
+        public void UnEquip(Equipment Item) {  // For Button in  Equipment Slot
+            int slotIndex = Array.IndexOf(currentEquipment, Item);
 
+            if(slotIndex >= 0) {
+                Equipment oldItem = currentEquipment[slotIndex];
+                inventoryManager.AddItem(oldItem);
 
-
-    public void UnEquipAll() {
-        // Create a copy of the currentEquipment array to iterate over
-        Equipment[] currentEquipmentCopy = (Equipment[])currentEquipment.Clone();
-
-        for (int i = 0; i < currentEquipmentCopy.Length; i++) {
-            if (currentEquipmentCopy[i] != null) {
-                UnEquip(currentEquipmentCopy[i]);
+                currentEquipment[slotIndex] = null;
+                onEquipmentChanged?.Invoke(null, oldItem);
+                equipmentUI.UpdateUI2(slotIndex);
             }
         }
+
+
+
+        public void UnEquipAll() {
+            // Create a copy of the currentEquipment array to iterate over
+            Equipment[] currentEquipmentCopy = (Equipment[])currentEquipment.Clone();
+
+            for(int i = 0; i < currentEquipmentCopy.Length; i++) {
+                if(currentEquipmentCopy[i] != null) {
+                    UnEquip(currentEquipmentCopy[i]);
+                }
+            }
+        }
+        #endregion
+
+
+
+
     }
-    #endregion
-
-
-
-
 }

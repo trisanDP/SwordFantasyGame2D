@@ -1,9 +1,5 @@
-using OriginL.EnemySpace;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace OriginL
+namespace OriginL.Player
 {
     public class PlayerStateMachine
     {

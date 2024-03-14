@@ -1,8 +1,8 @@
 {
-    "name": "EnemySpace",
+    "name": "EditorAssemble",
     "rootNamespace": "",
     "references": [
-        "GUID:ddc20ee1575897c44a1af0b128fda2e2"
+        "GUID:eda7519540f7c0b40b88128b3c05d8af"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,7 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine;
-
-
 
 namespace OriginL.EnemySpace {
     public class Enemy : MonoBehaviour {

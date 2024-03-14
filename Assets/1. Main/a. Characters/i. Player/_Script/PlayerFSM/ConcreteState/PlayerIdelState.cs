@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace OriginL
+namespace OriginL.Player
 {
     public class PlayerIdelState : PlayerState {
         public PlayerIdelState(PlayerScript player, PlayerStateMachine StateMachine) : base(player, StateMachine) {
