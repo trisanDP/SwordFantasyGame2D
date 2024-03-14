@@ -54,14 +54,6 @@ namespace OriginL.Player {
 
             }
             #endregion
-
-            #region Traps
-            /*        if (collision.gameObject.CompareTag("Trap1")) {
-                        Destroy(gameObject);
-                    }*/
-            #endregion
-
-
         }
 
 
@@ -79,8 +71,7 @@ namespace OriginL.Player {
         #endregion
 
         #region EnemyDetect
-
-        internal Collider2D[] ColInRange() {
+        internal Collider2D[] HitColRange() {
             Collider2D[] hit = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, hitLayer);
             return hit;
         }

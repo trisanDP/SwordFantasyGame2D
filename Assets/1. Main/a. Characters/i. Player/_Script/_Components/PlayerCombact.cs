@@ -39,7 +39,7 @@ namespace OriginL.Player {
         #region Animation_Attack_Caller
 
         public void AttackCall() {  // Attack Function is called within animation frame     
-            foreach(Collider2D hit in playerScrip.playerCollider.ColInRange()) {
+            foreach(Collider2D hit in playerScrip.playerCollider.HitColRange()) {
                 if(hit.TryGetComponent<IDamageable>(out var damageable)) {
                     /*playerScrip.target = hit.gameObject;*/
                     damageable.TakeDamage(Attack1.TPhysicalDamage(gameObject), Attack1.knockBackF, this.gameObject);
@@ -48,7 +48,7 @@ namespace OriginL.Player {
         }
 
         internal void CallAttack2() {
-            foreach(Collider2D hit in playerScrip.playerCollider.ColInRange()) {
+            foreach(Collider2D hit in playerScrip.playerCollider.HitColRange()) {
                 if(hit.TryGetComponent<IDamageable>(out var damageable)) {
                     damageable.TakeDamage(Attack2.TMagicalDamage(), Attack2.knockBackF, this.gameObject);
                 }

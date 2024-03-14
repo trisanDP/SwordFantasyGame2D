@@ -4,20 +4,20 @@ using UnityEngine;
 namespace OriginL.Building
 {
     public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable {
+
         #region Variables
 
         [Header("BasicComponent")]
-        [SerializeField] protected Animator animator;
-        [SerializeField] protected SpriteRenderer spriteRenderer;
-        [SerializeField] protected Sprite sprite;
+        protected Animator animator;
+        protected SpriteRenderer spriteRenderer;
+        protected Sprite sprite;
         protected Collider2D col;
 
         [Header("Building_Component")]
         public string BuildingName;
         [SerializeField] protected string message;
-
-        public float Health { get; private set;}
-        public float MaxHealth { get; private set;}
+        [SerializeField] protected float MaxHealth;
+        [SerializeField] protected float Health;
 
         [Header("DetectionVar")]
         [SerializeField]protected LayerMask player;
@@ -38,16 +38,13 @@ namespace OriginL.Building
 
         #region DefaultFunctions
 
-        private void Awake() {
+        protected virtual void Awake() {
             col = GetComponent<Collider2D>();
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            MaxHealth = 100;
-            SetStage(Stage.Node);
-
             sprite = spriteRenderer.sprite;
             GetComponent<Collider2D>().isTrigger = true;
-
+            SetStage(Stage.Node);
         }
 
         protected virtual void Update() {
@@ -63,16 +60,24 @@ namespace OriginL.Building
         #region Basie
 
         void DestroyGameObj() {
-/*            node.SetActive(true);*/
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+/*            node.SetActive(true);
+            Destroy(gameObject);*/
         }
 
         #endregion
 
         #region StageSelector
+
+        protected virtual void UpgradeStage() {
+            if((int)activeStage < Enum.GetNames(typeof(Stage)).Length)
+                SetStage(activeStage + 1);
+            else
+                Debug.Log("Fully Upgraded");
+        }
+
         protected virtual void SetStage(Stage active) {
             activeStage = active;
-            
             switch(activeStage) {
                 case Stage.Node:
                     GameManager.Instance.DebugMessage("Node",GameManager.MessageField.Others);
@@ -92,12 +97,6 @@ namespace OriginL.Building
             }
         }
 
-        protected virtual void UpgradeStage() {
-            if((int)activeStage < Enum.GetNames(typeof(Stage)).Length) 
-                SetStage(activeStage + 1);
-            else
-                Debug.Log("Fully Upgraded");
-        }
         #endregion
 
         #region Intractable
@@ -117,6 +116,7 @@ namespace OriginL.Building
         #region Damageable
         public virtual void TakeDamage(float damageAmount, int knockBackF, GameObject damageFrom) {
             Health -= damageAmount;
+            Debug.Log(Health);
             if(Health <= 0) {
                 DestroyGameObj();
             }
