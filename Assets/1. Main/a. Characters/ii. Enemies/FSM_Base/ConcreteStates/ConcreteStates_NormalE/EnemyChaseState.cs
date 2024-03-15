@@ -5,15 +5,17 @@ namespace OriginL.EnemySpace {
     public class EnemyChaseState : EnemyState {
 
         float ChaseSpeed;
-
+        bool interupted;
         public EnemyChaseState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine) {
 
         }
 
         public override void EnterState() {
+            interupted = false;
             targetObj = enemy.Target;
             ChaseSpeed = enemy.chasingSpeed;
-            /*        Debug.Log("Chase State");*/
+            enemy.State = "ChaseState";
+            GameManager.Instance.DebugMessage("Chase State", GameManager.MessageField.Enemy);
             base.EnterState();
            
         }
@@ -21,12 +23,11 @@ namespace OriginL.EnemySpace {
 
         public override void FrameUpdate() {
             base.FrameUpdate();
-            Debug.Log("Chase");
         }
         public override void PhysicUpdate() {
             base.PhysicUpdate();
-            if(targetObj == null) { Debug.Log("Testing111"); }
-            StartChasing(enemy.Target);
+            if(!interupted)
+                StartChasing(enemy.Target);
         }
 
         public override void ExitState() {
@@ -40,16 +41,30 @@ namespace OriginL.EnemySpace {
 
         public override void StateChangeCheaker() {
             base.StateChangeCheaker();
-
-            if(distFromTarget < attackR) {//On Entering Attacking Range
-                enemyStateMachine.ChangeState(enemy.AttackState);
-            } else if(!enemy.enemyCollider.InDetectRange()) {     //Out of Detect range then start chasing again:
-                enemyStateMachine.ChangeState(enemy.IdelState);
-            }
-
-
+            CheckAttactSwitch();
+            CheckIdelSwitch();
+            OnHitWall();
+            
         }
 
+        void CheckIdelSwitch() {
+            if(!enemy.enemyCollider.InDetectRange()) {     //Out of Detect range then start chasing again:
+                enemyStateMachine.ChangeState(enemy.IdelState);
+            }
+        }
 
+        void CheckAttactSwitch() {
+            if(distFromTarget < attackR) {//On Entering Attacking Range
+                enemyStateMachine.ChangeState(enemy.AttackState);
+            }
+        }
+
+        void OnHitWall() {
+            if(enemy.enemyCollider.HasHitWall()) {
+                enemyStateMachine.ChangeState(enemy.AttackState);
+                interupted = true;
+            } else
+                interupted = false;
+        }
     }
 }

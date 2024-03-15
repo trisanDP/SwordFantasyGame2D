@@ -16,13 +16,13 @@ namespace OriginL.EnemySpace {
 
         public override void EnterState() {
             base.EnterState();
+            Debug.Log("Idel State");
+            enemy.State = "IdelState";
             petrolSpeed = enemy.petrolSpeed;
             canPetrol = false;
             //................................
             enemy.rb.velocity = Vector2.zero;
             enemy.enemyAnimCont.PlayIdelAnimation();
-
-
         }
 
         public override void FrameUpdate() {

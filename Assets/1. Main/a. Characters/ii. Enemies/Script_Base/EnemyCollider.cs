@@ -1,3 +1,5 @@
+using OriginL.Building;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace OriginL.EnemySpace {
@@ -13,7 +15,7 @@ namespace OriginL.EnemySpace {
         [SerializeField] GameObject wallDetectPoint;
         [SerializeField] GameObject hitPos;
         [SerializeField] LayerMask hitLayer;
-        [SerializeField] LayerMask groundLayer;
+        [SerializeField] LayerMask wallLayer;
         LayerMask playerLayer;
 
 
@@ -43,7 +45,7 @@ namespace OriginL.EnemySpace {
                 hitPos = transform.Find("HitPos").gameObject;
                 Debug.LogWarning("HitPos was empty, So assigned using Script");
             }
-            if(hitLayer == 0 || groundLayer == 0) {
+            if(hitLayer == 0 || wallLayer == 0) {
                 Debug.LogError("EnemyCollider/LayerMask not set");
             }
             playerLayer = LayerMask.GetMask("Player");
@@ -61,11 +63,13 @@ namespace OriginL.EnemySpace {
         #endregion
 
 
-        internal bool HasHitWall() {
-            if(Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, groundLayer)) {
-                return true;
-            } else
-                return false;
+        internal Collider2D HasHitWall() {
+            Collider2D hit = Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, wallLayer);
+            if(hit != null && hit.gameObject.GetComponent<BuildingBase>().activeStage != 0) {
+                enemy.AggroTo(hit.gameObject);
+                return hit; 
+            }else 
+                return null;
         }
 
 
@@ -79,7 +83,6 @@ namespace OriginL.EnemySpace {
             Collider2D hit = Physics2D.OverlapCircle(transform.position, GetDetectRange(), playerLayer);
             if(hit != null && !enemy.hasAggroed) {
                 enemy.AggroTo(hit.gameObject);
-
             }
             return hit;
         }

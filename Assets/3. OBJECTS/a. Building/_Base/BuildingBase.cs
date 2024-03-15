@@ -116,7 +116,6 @@ namespace OriginL.Building
         #region Damageable
         public virtual void TakeDamage(float damageAmount, int knockBackF, GameObject damageFrom) {
             Health -= damageAmount;
-            Debug.Log(Health);
             if(Health <= 0) {
                 DestroyGameObj();
             }

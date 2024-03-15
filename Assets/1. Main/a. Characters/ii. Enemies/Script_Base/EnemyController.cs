@@ -32,9 +32,6 @@ namespace OriginL.EnemySpace {
 
         internal void MoveToObj(GameObject obj, float activeSpeed) {
             enemyScrip.enemyAI.LookAt(obj);
-            if(enemyScrip.enemyAI == null) {
-                Debug.Log("Null");
-            }
             enemyScrip.rb.AddForce(((obj.transform.position) - enemyScrip.transform.position).normalized * activeSpeed, ForceMode2D.Force);
 
         }

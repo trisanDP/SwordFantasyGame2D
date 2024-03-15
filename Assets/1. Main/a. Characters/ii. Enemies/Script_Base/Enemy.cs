@@ -43,6 +43,7 @@ namespace OriginL.EnemySpace {
 
         #endregion
 
+        public string State;
         private void Awake() {
             #region State instantiation 
             StateMachine = new EnemyStateMachine();
@@ -62,8 +63,7 @@ namespace OriginL.EnemySpace {
             enemyCollider = GetComponent<EnemyCollider>();
             enemyStatus = GetComponent<EnemyStat>();
 
-
-
+            #region NullCheck
             if(enemyCollider == null)
                 Debug.LogWarning("enemyCollider is null!");
             if(enemyStatus == null)
@@ -76,6 +76,7 @@ namespace OriginL.EnemySpace {
                 Debug.LogWarning("enemyCombact is null!");
             if(enemyAI == null)
                 Debug.LogWarning("enemyAI is null!");
+            #endregion
 
             #endregion
 
@@ -102,7 +103,6 @@ namespace OriginL.EnemySpace {
         internal void AggroTo(GameObject target) {
             hasAggroed = true;
             this.Target = target;
-            Debug.Log("TargetSet");
         }
         internal void CancelAgroo() {
             hasAggroed = false;

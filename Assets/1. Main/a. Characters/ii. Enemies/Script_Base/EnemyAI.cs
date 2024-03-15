@@ -40,8 +40,6 @@ namespace OriginL.EnemySpace {
         #region ShareAbles:
         internal void LookAt(GameObject target)  // Shouldnt be at any state cause, i maight make a enemy that looks at player not doing anything
         {   // Looks towards player When ever called
-            Debug.Log("Testing111");
-            Debug.Log(target.name);
             if((target.transform.position.x > transform.position.x && !enemyScript.enemyAnimCont._facingRight) ||
                 (target.transform.position.x < transform.position.x && enemyScript.enemyAnimCont._facingRight)) {
                 enemyScript.enemyAnimCont.Flip();
