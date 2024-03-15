@@ -33,6 +33,7 @@ namespace OriginL.EnemySpace {
                     canMove = false;
                 }
         */
+
         private void Start() {
             enemyScript = GetComponent<Enemy>();
         }

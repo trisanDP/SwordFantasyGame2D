@@ -33,7 +33,6 @@ namespace OriginL.EnemySpace {
         internal void MoveToObj(GameObject obj, float activeSpeed) {
             enemyScrip.enemyAI.LookAt(obj);
             enemyScrip.rb.AddForce(((obj.transform.position) - enemyScrip.transform.position).normalized * activeSpeed, ForceMode2D.Force);
-
         }
 
         internal void EnemyMoveDirectionCont(Vector2 direction, float activeSpeed) {
