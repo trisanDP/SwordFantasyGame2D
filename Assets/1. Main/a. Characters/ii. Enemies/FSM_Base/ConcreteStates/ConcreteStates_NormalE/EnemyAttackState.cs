@@ -13,7 +13,6 @@ namespace OriginL.EnemySpace {
         }
 
         public override void FrameUpdate() {
-
             base.FrameUpdate();
             AttackingState();
 
@@ -25,7 +24,6 @@ namespace OriginL.EnemySpace {
 
         public override void ExitState() {
             base.ExitState();
-            Debug.Log("ChangeState");
         }
 
         internal void AttackingState() {
@@ -35,23 +33,23 @@ namespace OriginL.EnemySpace {
         public override void StateChangeCheaker() {
             base.StateChangeCheaker();
             CheckSwitch_Chase();
-            CheckSwitch_Idel();
-
+/*            CheckSwitch_Idel();
+*/
 
 
         }
         void CheckSwitch_Chase() {
-            if(!enemy.enemyCollider.HasHitWall() && enemy.Target != null) {
+            if(distFromTarget > attackR) {
                 enemyStateMachine.ChangeState(enemy.ChaseState);
                 Debug.Log("cHECK cHASE");
             }
-        }
+        }/*
         void CheckSwitch_Idel() {
-            if(!enemy.enemyCollider.HasHitWall() && enemy.Target == null) {
+            if(!enemy.enemyCollider.HasHitWall() && enemy.GetTarget() == null) {
                 enemyStateMachine.ChangeState(enemy.IdelState);
                 Debug.Log(" cHECK iDEL ");
             }
 
-        }
+        }*/
     }
 }

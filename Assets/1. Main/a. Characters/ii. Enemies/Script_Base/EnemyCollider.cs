@@ -16,8 +16,7 @@ namespace OriginL.EnemySpace {
         [SerializeField] GameObject hitPos;
         [SerializeField] LayerMask hitLayer;
         [SerializeField] LayerMask wallLayer;
-        LayerMask playerLayer;
-
+        [SerializeField] LayerMask detectLayer;
 
         [Header("Vectors")]
         [SerializeField] Vector3 size;
@@ -48,7 +47,11 @@ namespace OriginL.EnemySpace {
             if(hitLayer == 0 || wallLayer == 0) {
                 Debug.LogError("EnemyCollider/LayerMask not set");
             }
-            playerLayer = LayerMask.GetMask("Player");
+            if(detectLayer == 0) {
+                detectLayer = LayerMask.GetMask("Player");
+                Debug.LogWarning("DetectLayer Empty");
+            }
+            
             enemy = GetComponent<Enemy>();
         }
 
@@ -64,11 +67,11 @@ namespace OriginL.EnemySpace {
 
 
         internal Collider2D HasHitWall() {
-            Collider2D hit = Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, wallLayer);
+          /*  Collider2D hit = Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, wallLayer);
             if(hit != null && hit.gameObject.GetComponent<BuildingBase>().activeStage != 0) {
                 enemy.AggroTo(hit.gameObject);
-                return hit; 
-            }else 
+                return hit;
+            } else*/
                 return null;
         }
 
@@ -79,12 +82,22 @@ namespace OriginL.EnemySpace {
             return hit;
         }
 
-        internal bool InDetectRange() {
-            Collider2D hit = Physics2D.OverlapCircle(transform.position, GetDetectRange(), playerLayer);
+        internal Collider2D InDetectRange() {
+            Collider2D hit = Physics2D.OverlapCircle(transform.position, GetDetectRange(), detectLayer);
+            enemy.AggroTo(hit.gameObject);
+            return hit;            
+/*
+
             if(hit != null && !enemy.hasAggroed) {
                 enemy.AggroTo(hit.gameObject);
+                Debug.Log("Agrrroo");
+                return hit;
+            } else{ 
+                enemy.CancelAgroo();
+                Debug.Log("Cancle");
+                return null;
             }
-            return hit;
+*/
         }
 
 

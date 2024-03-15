@@ -26,7 +26,7 @@ namespace OriginL.EnemySpace {
 
         internal Rigidbody2D rb;
 
-        [SerializeField] internal GameObject Target;
+        [SerializeField]GameObject Target;
 
         internal bool isGrounded;
         internal bool hasAggroed;
@@ -103,6 +103,10 @@ namespace OriginL.EnemySpace {
         internal void AggroTo(GameObject target) {
             hasAggroed = true;
             this.Target = target;
+        }
+
+        internal GameObject GetTarget() {
+            return Target;
         }
         internal void CancelAgroo() {
             hasAggroed = false;

@@ -12,7 +12,7 @@ namespace OriginL.EnemySpace {
 
         public override void EnterState() {
             interupted = false;
-            targetObj = enemy.Target;
+            targetObj = enemy.GetTarget();
             ChaseSpeed = enemy.chasingSpeed;
             enemy.State = "ChaseState";
             GameManager.Instance.DebugMessage("Chase State", GameManager.MessageField.Enemy);
@@ -27,7 +27,7 @@ namespace OriginL.EnemySpace {
         public override void PhysicUpdate() {
             base.PhysicUpdate();
             if(!interupted)
-                StartChasing(enemy.Target);
+                StartChasing(enemy.GetTarget());
         }
 
         public override void ExitState() {
@@ -41,8 +41,8 @@ namespace OriginL.EnemySpace {
 
         public override void StateChangeCheaker() {
             base.StateChangeCheaker();
-            CheckAttactSwitch();
             CheckIdelSwitch();
+            CheckAttactSwitch();
             OnHitWall();
             
         }
