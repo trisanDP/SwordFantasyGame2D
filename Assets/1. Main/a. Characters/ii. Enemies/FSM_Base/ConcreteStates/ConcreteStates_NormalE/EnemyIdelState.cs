@@ -16,7 +16,7 @@ namespace OriginL.EnemySpace {
 
         public override void EnterState() {
             base.EnterState();
-            Debug.Log("Idel State");
+            GameManager.Instance.DebugMessage("Idel State", GameManager.MessageField.Enemy);
             enemy.State = "IdelState";
             petrolSpeed = enemy.petrolSpeed;
 /*            canPetrol = false;*/

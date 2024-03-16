@@ -56,7 +56,6 @@ namespace OriginL.EnemySpace {
         void CheckAttactSwitch() {
             if(distFromTarget < attackR && interupted == false) {//On Entering Attacking Range
                 enemyStateMachine.ChangeState(enemy.AttackState);
-                Debug.Log("2");
             }
         }
 
@@ -64,7 +63,6 @@ namespace OriginL.EnemySpace {
             if(enemy.enemyCollider.HasHitWall()) {
                 enemyStateMachine.ChangeState(enemy.AttackState);
                 interupted = true;
-                Debug.Log("1");
             } else
                 interupted = false;
         }

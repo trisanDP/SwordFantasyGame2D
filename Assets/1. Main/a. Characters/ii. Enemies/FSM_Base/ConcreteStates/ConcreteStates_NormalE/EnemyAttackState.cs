@@ -8,7 +8,7 @@ namespace OriginL.EnemySpace {
         public override void EnterState() {
             enemy.rb.velocity = Vector2.zero;
             enemy.State = "AttackState";
-            Debug.Log("Attack");    
+            GameManager.Instance.DebugMessage("Attack State", GameManager.MessageField.Enemy);
             base.EnterState();
         }
 

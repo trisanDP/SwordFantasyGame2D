@@ -81,24 +81,44 @@ namespace OriginL.Building
             activeStage = active;
             switch(activeStage) {
                 case Stage.Node:
-                    GameManager.Instance.DebugMessage("Node",GameManager.MessageField.Others);
+                    Stage_Node();
+                    
                 break;
                 case Stage.Build1:
-                    GameManager.Instance.DebugMessage("Build1", GameManager.MessageField.Others);
-                animator.SetTrigger("Build1");
-                break;
-                case Stage.Build2:
-                    GameManager.Instance.DebugMessage("Build2", GameManager.MessageField.Others);
+                    Stage_Build1();
 
                 break;
+                case Stage.Build2:
+                    Stage_Build2();
+                break;
                 case Stage.Build3:
-                    GameManager.Instance.DebugMessage("Build3", GameManager.MessageField.Others);
+                    Stage_Build3();
+                    
                 break;
 
             }
         }
 
         #endregion
+
+        #region StagesFunctions_Virtual
+
+        protected virtual void Stage_Node() {
+            GameManager.Instance.DebugMessage("Node", GameManager.MessageField.Others);
+        }
+        protected virtual void Stage_Build1() {
+            GameManager.Instance.DebugMessage("Build1", GameManager.MessageField.Others);
+        }
+
+        protected virtual void Stage_Build2() {
+            GameManager.Instance.DebugMessage("Build2", GameManager.MessageField.Others);
+        }
+
+        protected virtual void Stage_Build3() {
+            GameManager.Instance.DebugMessage("Build3", GameManager.MessageField.Others);
+        }
+        #endregion
+
 
         #region Intractable
         public virtual void OnIntract() {
