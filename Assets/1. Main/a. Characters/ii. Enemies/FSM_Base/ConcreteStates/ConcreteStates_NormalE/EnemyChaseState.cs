@@ -12,7 +12,6 @@ namespace OriginL.EnemySpace {
 
         public override void EnterState() {
             interupted = false;
-            targetObj = enemy.GetTarget();
             ChaseSpeed = enemy.chasingSpeed;
             enemy.State = "ChaseState";
             GameManager.Instance.DebugMessage("Chase State", GameManager.MessageField.Enemy);
@@ -46,16 +45,18 @@ namespace OriginL.EnemySpace {
             OnHitWall();
             
         }
-
+        #region StateCheckers
         void CheckIdelSwitch() {
             if(!enemy.enemyCollider.InDetectRange()) {     //Out of Detect range then start chasing again:
                 enemyStateMachine.ChangeState(enemy.IdelState);
             }
+
         }
 
         void CheckAttactSwitch() {
-            if(distFromTarget < attackR) {//On Entering Attacking Range
+            if(distFromTarget < attackR && interupted == false) {//On Entering Attacking Range
                 enemyStateMachine.ChangeState(enemy.AttackState);
+                Debug.Log("2");
             }
         }
 
@@ -63,8 +64,10 @@ namespace OriginL.EnemySpace {
             if(enemy.enemyCollider.HasHitWall()) {
                 enemyStateMachine.ChangeState(enemy.AttackState);
                 interupted = true;
+                Debug.Log("1");
             } else
                 interupted = false;
         }
     }
+    #endregion
 }

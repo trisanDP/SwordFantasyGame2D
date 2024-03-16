@@ -82,7 +82,6 @@ namespace OriginL.EnemySpace {
 
             #region Components
             rb = GetComponent<Rigidbody2D>();
-            Target = GameObject.FindGameObjectWithTag("Player");
             #endregion
         }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace OriginL.EnemySpace {
     public class EnemyIdelState : EnemyState {
 
-        bool canPetrol;
+/*        bool canPetrol;*/
 
 
         [Header("Petrol")]
@@ -19,7 +19,7 @@ namespace OriginL.EnemySpace {
             Debug.Log("Idel State");
             enemy.State = "IdelState";
             petrolSpeed = enemy.petrolSpeed;
-            canPetrol = false;
+/*            canPetrol = false;*/
             //................................
             enemy.rb.velocity = Vector2.zero;
             enemy.enemyAnimCont.PlayIdelAnimation();
@@ -31,9 +31,9 @@ namespace OriginL.EnemySpace {
 
         public override void PhysicUpdate() {
             base.PhysicUpdate();
-            if(canPetrol == true) {
+/*            if(canPetrol == true) {
                 StartPetrolMovement();
-            }
+            }*/
         }
         public override void ExitState() {
             base.ExitState();
@@ -41,7 +41,9 @@ namespace OriginL.EnemySpace {
 
         public override void StateChangeCheaker() {
             base.StateChangeCheaker();
-            if(enemy.hasAggroed) {                 // Entering Detect Range
+/*            if(distFromTarget < detectR)
+                enemyStateMachine.ChangeState(enemy.ChaseState);*/
+            if(enemy.enemyCollider.InDetectRange()) {                 // Entering Detect Range
                 enemyStateMachine.ChangeState(enemy.ChaseState);
             }
 

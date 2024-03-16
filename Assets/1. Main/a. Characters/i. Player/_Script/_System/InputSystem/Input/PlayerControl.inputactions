@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SpawnEnemy",
+                    "type": "Button",
+                    "id": "b43a33a9-af03-427d-881a-9b52996346a8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -179,6 +188,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Entract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96181d77-5fbe-4675-a9f9-ef64097d3953",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnEnemy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

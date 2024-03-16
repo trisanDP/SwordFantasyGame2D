@@ -65,41 +65,25 @@ namespace OriginL.EnemySpace {
 
         #endregion
 
-
-        internal Collider2D HasHitWall() {
-          /*  Collider2D hit = Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, wallLayer);
-            if(hit != null && hit.gameObject.GetComponent<BuildingBase>().activeStage != 0) {
-                enemy.AggroTo(hit.gameObject);
-                return hit;
-            } else*/
-                return null;
+        internal Collider2D HasHitWall() { // returns WALL If Has Hit Wall
+            Collider2D hit = Physics2D.OverlapBox(wallDetectPoint.transform.position, size, 0, wallLayer);
+            if(hit != null ) {
+                BuildingBase building = hit.gameObject.GetComponent<BuildingBase>();
+                if(building.activeStage != 0) {
+                    enemy.AggroTo(hit.gameObject);
+                    return hit;
+                }
+            }
+            return null;
         }
 
-
-
-        internal Collider2D[] HitRange() {  // returns damageables object collider
-            Collider2D[] hit = Physics2D.OverlapCircleAll(hitPos.transform.position, HitSize, hitLayer);
+        internal bool InDetectRange() { // Returns Player If Hasnot Hit Wall
+            Collider2D hit = Physics2D.OverlapCircle(transform.position, GetDetectRange(), detectLayer);
+            if(hit != null && !HasHitWall()) {
+                enemy.AggroTo(hit.gameObject);
+            }
             return hit;
         }
-
-        internal Collider2D InDetectRange() {
-            Collider2D hit = Physics2D.OverlapCircle(transform.position, GetDetectRange(), detectLayer);
-            enemy.AggroTo(hit.gameObject);
-            return hit;            
-/*
-
-            if(hit != null && !enemy.hasAggroed) {
-                enemy.AggroTo(hit.gameObject);
-                Debug.Log("Agrrroo");
-                return hit;
-            } else{ 
-                enemy.CancelAgroo();
-                Debug.Log("Cancle");
-                return null;
-            }
-*/
-        }
-
 
         internal float GetDetectRange() {
             if(enemy.hasAggroed)
@@ -110,6 +94,12 @@ namespace OriginL.EnemySpace {
 
         internal float GetAttackRange() {
             return attackRange;
+        }
+
+
+        internal Collider2D[] HitRange() {  // returns damageables object collider
+            Collider2D[] hit = Physics2D.OverlapCircleAll(hitPos.transform.position, HitSize, hitLayer);
+            return hit;
         }
 
         #region Extra And Gizmos

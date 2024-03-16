@@ -7,10 +7,9 @@ namespace OriginL.Player {
 
         #region Variable
 
-        [SerializeField] int knockBack_F;
-        [SerializeField] Transform groundCheck;
+        [SerializeField]Transform groundCheck;
         [SerializeField] Vector2 size;
-        [SerializeField] LayerMask groundLayerMask;
+
 
 
         [Header("Attack Attributes")]
@@ -18,6 +17,7 @@ namespace OriginL.Player {
         [SerializeField] float attackRate;
         [SerializeField] GameObject attackPoint;
         [SerializeField] LayerMask hitLayer;
+        [SerializeField] LayerMask groundLayerMask;
 
 
 
@@ -51,7 +51,6 @@ namespace OriginL.Player {
             #region Enemy
             if(collision.gameObject.CompareTag("Enemy")) {
                 KnockBack(collision.gameObject);
-
             }
             #endregion
         }
@@ -81,7 +80,7 @@ namespace OriginL.Player {
         #region Special 
         void KnockBack(GameObject col) {
             Vector2 direction = (transform.position - col.transform.position).normalized;
-            playerScrip.Rb.AddForce(knockBack_F * direction, ForceMode2D.Impulse);
+            playerScrip.Rb.AddForce(100 * direction, ForceMode2D.Impulse);
         }
 
         #endregion

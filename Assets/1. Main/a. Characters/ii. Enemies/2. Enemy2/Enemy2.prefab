@@ -256,6 +256,7 @@ MonoBehaviour:
   petrolSpeed: 0.13
   chasingSpeed: 150
   activeSpeed: 0
+  State: 
 --- !u!114 &2695968337665519382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,12 +338,15 @@ MonoBehaviour:
   hitLayer:
     serializedVersion: 2
     m_Bits: 136
-  groundLayer:
+  wallLayer:
     serializedVersion: 2
-    m_Bits: 256
-  size: {x: 1, y: 5, z: 0}
+    m_Bits: 8
+  detectLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  size: {x: 1.5, y: 5, z: 0}
   HitSize: 2
-  attackRange: 4
+  attackRange: 4.6
   detectRange: 10
 --- !u!114 &417384611138425643
 MonoBehaviour:

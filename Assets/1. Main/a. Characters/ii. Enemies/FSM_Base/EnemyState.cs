@@ -7,7 +7,6 @@ namespace OriginL.EnemySpace {
         [Header("Components")]
         protected Enemy enemy;
         protected EnemyStateMachine enemyStateMachine;
-        protected GameObject targetObj = null;
 
         [Header("Ranges")]
         protected float attackR;
@@ -41,17 +40,18 @@ namespace OriginL.EnemySpace {
 
         #endregion
 
-        #region Extra Function
+        #region StateChangeCheck
 
-        public virtual void StateChangeCheaker() { }
+        public virtual void StateChangeCheaker() { 
+            
+        }
 
         #endregion
 
-        #region Event Function
+        #region mainFunctions
         protected virtual void GetDistanceFromTarget() {
             if(enemy.enemyCollider.InDetectRange()) {
-                targetObj = enemy.GetTarget();
-                distFromTarget = Vector2.Distance(targetObj.transform.position, enemy.transform.position);
+                distFromTarget = Vector2.Distance(enemy.GetTarget().transform.position, enemy.transform.position);
             }
         }
 

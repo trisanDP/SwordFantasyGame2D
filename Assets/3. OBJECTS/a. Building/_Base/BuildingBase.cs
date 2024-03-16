@@ -18,6 +18,7 @@ namespace OriginL.Building
         [SerializeField] protected string message;
         [SerializeField] protected float MaxHealth;
         [SerializeField] protected float Health;
+        [SerializeField] protected bool isDestroyed;
 
         [Header("DetectionVar")]
         [SerializeField]protected LayerMask player;

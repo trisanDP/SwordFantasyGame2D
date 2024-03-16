@@ -21,8 +21,6 @@ namespace OriginL.Player {
 
         private void Start() {
             player = GetComponent<PlayerScript>();
-            /*        canJump = true;
-                    _isJumpPressed = false;*/
         }
 
         private void Update() {
@@ -115,6 +113,12 @@ namespace OriginL.Player {
         }
         //........................
         #endregion
+
+        public void SpawnEnemy(InputAction.CallbackContext context) {
+            if(context.performed) {
+                EnemySpawner.instance.SpawnRandomEnemy();
+            }
+        }
 
         #endregion
 
