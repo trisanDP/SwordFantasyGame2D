@@ -21,7 +21,7 @@ namespace OriginL.Building {
             base.Awake();
         }
 
-        protected override void SetStage(Stage active) {
+        protected override void SetStage(State active) {
             base.SetStage(active);
         }
 

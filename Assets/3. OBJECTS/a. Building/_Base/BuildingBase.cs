@@ -14,6 +14,7 @@ namespace OriginL.Building
         protected Sprite sprite;
         protected Collider2D col;
 
+
         [Header("Building_Component")]
         public string BuildingName;
         [SerializeField] protected string message;
@@ -22,16 +23,20 @@ namespace OriginL.Building
         [SerializeField] protected bool isDestroyed;
 
         [Header("DetectionVar")]
-        [SerializeField]protected LayerMask player;
         [SerializeField]protected float range;
+        protected LayerMask playerLayer;
 
         GameAssets gameAssets;
         #region BuildingStage
-        public enum Stage {
+
+
+        [Header("State")]
+        [Range(1, 3)]
+        public int stateLimit ;
+        public enum State {
             Node, Build1, Build2, Build3
         }
-        [Header("Stage")]
-        public Stage activeStage;
+        public State activeStage;
 
         Sprite DefaultSprite;
         protected Sprite mode1Sprite;
@@ -49,45 +54,60 @@ namespace OriginL.Building
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             sprite = spriteRenderer.sprite;
+/*            playerLayer = LayerMask.NameToLayer("Player");*/
             GetComponent<Collider2D>().isTrigger = true;
-            SetStage(Stage.Node);
+            SetStage(State.Node);
             gameAssets = GameAssets.i;
+            SetUp();
+        }
+
+        protected virtual void Start() {
+            SetSprite();
+            Debug.Log("Test");
         }
 
         protected virtual void Update() {
-            Collider2D colArr = Physics2D.OverlapCircle(transform.position, range, player); // To find All Intractable Objects in Range
-            if(colArr != null) {
-                ShowPreviewBuilding();
-/*                animator.SetTrigger("Destroy");*/
+            Collider2D colArr = Physics2D.OverlapCircle(transform.position, range, playerLayer);
+            if(activeStage == State.Node) {
+                if(colArr != null) {
+                    ShowPreviewBuilding();
+                } else { // Preview Off
+                    spriteRenderer.sprite = null;
+                }
+            } else { // Reset Opacity from Preview
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1);
             }
+        }
 
+        void SetUp() {
+            int PlayerLayerIndex = LayerMask.NameToLayer("Player");
+            playerLayer = 1 << PlayerLayerIndex;
         }
         #endregion
 
         #region StageSelector
 
         protected virtual void UpgradeStage() {
-            if((int)activeStage < Enum.GetNames(typeof(Stage)).Length)
+            if((int)activeStage < Enum.GetNames(typeof(State)).Length)
                 SetStage(activeStage + 1);
             else
                 Debug.Log("Fully Upgraded");
         }
 
-        protected virtual void SetStage(Stage active) {
+        protected virtual void SetStage(State active) {
             activeStage = active;
             switch(activeStage) {
-                case Stage.Node:
+                case State.Node:
                     Stage_Node();
-                    
                 break;
-                case Stage.Build1:
+                case State.Build1:
                     Stage_Build1();
 
                 break;
-                case Stage.Build2:
+                case State.Build2:
                     Stage_Build2();
                 break;
-                case Stage.Build3:
+                case State.Build3:
                     Stage_Build3();
                     
                 break;
@@ -101,9 +121,12 @@ namespace OriginL.Building
 
         protected virtual void Stage_Node() {
             GameManager.Instance.DebugMessage("Node", GameManager.MessageField.Others);
+            
+            
         }
         protected virtual void Stage_Build1() {
             GameManager.Instance.DebugMessage("Build1", GameManager.MessageField.Others);
+            spriteRenderer.sprite = mode2Sprite;
         }
 
         protected virtual void Stage_Build2() {
@@ -115,7 +138,9 @@ namespace OriginL.Building
         }
         #endregion
 
+        #region Abstract
         public abstract void SetSprite();
+        #endregion
 
         #region Intractable
         public virtual void OnIntract() {
@@ -146,8 +171,10 @@ namespace OriginL.Building
 
         #region QualityOfLIfe
         void ShowPreviewBuilding() {
-
+            spriteRenderer.sprite = mode1Sprite;
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.5f);
         }
+
         #endregion
 
         #region Gizmos
