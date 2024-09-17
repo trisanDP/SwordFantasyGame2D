@@ -59,5 +59,9 @@ namespace OriginL
             Destroy(Bullet, 5);*/
         }
 
+        public override void SetSprite() {
+            GameAssets gameAssets = GameAssets.i;
+            mode1Sprite = gameAssets.Shooter1;
+        }
     }
 }

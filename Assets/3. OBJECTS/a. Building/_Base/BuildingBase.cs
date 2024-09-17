@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+
 namespace OriginL.Building
 {
     public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable {
@@ -23,8 +24,8 @@ namespace OriginL.Building
         [Header("DetectionVar")]
         [SerializeField]protected LayerMask player;
         [SerializeField]protected float range;
-      
 
+        GameAssets gameAssets;
         #region BuildingStage
         public enum Stage {
             Node, Build1, Build2, Build3
@@ -32,6 +33,10 @@ namespace OriginL.Building
         [Header("Stage")]
         public Stage activeStage;
 
+        Sprite DefaultSprite;
+        protected Sprite mode1Sprite;
+        protected Sprite mode2Sprite;
+        protected Sprite mode3Sprite;
         #endregion
         #endregion
 
@@ -46,6 +51,7 @@ namespace OriginL.Building
             sprite = spriteRenderer.sprite;
             GetComponent<Collider2D>().isTrigger = true;
             SetStage(Stage.Node);
+            gameAssets = GameAssets.i;
         }
 
         protected virtual void Update() {
@@ -56,16 +62,6 @@ namespace OriginL.Building
             }
 
         }
-        #endregion
-
-        #region Basie
-
-        void DestroyGameObj() {
-            gameObject.SetActive(false);
-/*            node.SetActive(true);
-            Destroy(gameObject);*/
-        }
-
         #endregion
 
         #region StageSelector
@@ -119,6 +115,7 @@ namespace OriginL.Building
         }
         #endregion
 
+        public abstract void SetSprite();
 
         #region Intractable
         public virtual void OnIntract() {
@@ -140,6 +137,10 @@ namespace OriginL.Building
             if(Health <= 0) {
                 DestroyGameObj();
             }
+        }
+
+        void DestroyGameObj() {
+            gameObject.SetActive(false);
         }
         #endregion
 

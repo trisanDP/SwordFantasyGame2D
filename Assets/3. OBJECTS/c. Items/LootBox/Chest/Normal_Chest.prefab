@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464676349
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -159,7 +159,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464676349
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0.047245532, b: 0.7169812, a: 1}
@@ -191,6 +191,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d85212ddf203c7545a96d2b457bc202f, type: 2}
   - {fileID: 11400000, guid: 7b88842d003a7404c843950d76947691, type: 2}
   - {fileID: 11400000, guid: 8c7131f13333b5e468e4e33a9b596a00, type: 2}
+  message: Press E to Open
   chest_name: Chest1
   type: 0
 --- !u!61 &1976322292993166202

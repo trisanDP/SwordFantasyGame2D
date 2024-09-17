@@ -27,6 +27,8 @@ namespace OriginL.Building
             base.Stage_Build3();
         }
 
-
+        public override void SetSprite() {
+            throw new System.NotImplementedException();
+        }
     }
 }
