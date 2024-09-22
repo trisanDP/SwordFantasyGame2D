@@ -1,8 +1,10 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace OriginL {
     public class EquipmentUI_M : MonoBehaviour {
+
         public Transform equipParent;
         public GameObject equipmentUiObj;
         OriginL.Player.PlayerStat stat;
@@ -15,17 +17,19 @@ namespace OriginL {
         public TextMeshProUGUI ArmorTxt;
         public TextMeshProUGUI ResistanceTxt;
         public TextMeshProUGUI health;
+        public TextMeshProUGUI Energy;
 
         private void Awake() {
             slot = equipParent.GetComponentsInChildren<EquipmentSlot>();
             if(GameManager.Instance.playerObj != null && GameManager.Instance.isGameOver == false) {
                 manager = GameManager.Instance.playerObj.GetComponent<PlayerEquipmentManager>();
-                stat = GameManager.Instance.playerObj.GetComponent<OriginL.Player.PlayerStat>();
+                stat = GameManager.Instance.playerObj.GetComponent<Player.PlayerStat>();
             }
         }
 
         void Start() {
             equipmentUiObj.SetActive(false);
+            SetEnergy();
         }
 
         public void ToggleUi() {
@@ -53,7 +57,13 @@ namespace OriginL {
                 ArmorTxt.text = "" + armor;
                 ResistanceTxt.text = "" + resistance;
                 this.health.text = "" + health;
+                SetEnergy();
             }
+        }
+
+
+        void SetEnergy() {
+            Energy.text = stat.Energy.GetValue().ToString(); 
         }
         /*
             public void Update() {

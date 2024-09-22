@@ -24,6 +24,7 @@ namespace OriginL.Intractable {
 
         }
 
+        #region Intractable Function
         public void OnIntract() {
 
             bool wasPickedUp = inventory.AddItem(item);
@@ -40,5 +41,8 @@ namespace OriginL.Intractable {
         public GameObject GetGameObject() {
             return gameObject;
         }
+        #endregion
+
+
     }
 }

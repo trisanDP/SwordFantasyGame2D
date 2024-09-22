@@ -1,88 +1,78 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace OriginL.Player {
     public class PlayerIntract : MonoBehaviour {
         #region Variables
-        public int range;
-        IntractablesUI_Manager intractablesUI;
+        public float range;  // Changed to float for precision
+        private PlayerScript player;
+
+        public static PlayerIntract instance;
 
         #endregion
+
+        #region MonoBehaviour Methods
         private void Awake() {
-            intractablesUI = UiManager.Instance.intractableUi;
+            if(instance == null) {
+                instance = this;
+                DontDestroyOnLoad(gameObject);  // Optional, depending on usage
+            } else {
+                Destroy(gameObject);  // Destroy duplicate instance
+            }
         }
 
         private void Start() {
-            if(intractablesUI == null) {
-                Debug.Log(" intractable UI missing ");
+            player = GetComponent<PlayerScript>();
+            if(player == null) {
+                Debug.LogWarning("PlayerScript not found on the GameObject!");
             }
         }
 
         private void Update() {
-            #region Intract UI 
-            DisplayUI();
-            #endregion
+            // Handle UI or other updates if needed
         }
+        #endregion
 
         #region Input
         public void PressedE(InputAction.CallbackContext context) {
             if(context.performed) {
-                IIntractable intra = HasIntractObj();
-                intra?.OnIntract();
-            }
-        }
-
-        #endregion
-
-        #region Ui
-        void DisplayUI() {
-            if(HasIntractObj() != null) {
-                intractablesUI.Show(HasIntractObj().Message());
-            } else {
-                intractablesUI.Hide();
+                IIntractable intract = HasIntractObj();
+                intract?.OnIntract();  // Only call if object is not null
             }
         }
         #endregion
 
-        #region IntractDetect:
+        #region Intract Detection
         public IIntractable HasIntractObj() {
-            List<IIntractable> intractableList = new();
-            // To find All Intractable Objects in Range
-            #region FindALlOBJ
             Collider2D[] colArr = Physics2D.OverlapCircleAll(transform.position, range);
+            IIntractable closest = null;
+            float closestDistanceSqr = float.MaxValue; // Use squared distance to avoid square root calculations
+
             foreach(Collider2D col in colArr) {
                 if(col.TryGetComponent(out IIntractable intract)) {
-                    intractableList.Add(intract);
-                }
-            }
-            #endregion
-
-            // To Find Closest Object
-            #region FindClosestOBJ
-            IIntractable closest = null;
-            foreach(IIntractable objs in intractableList) {
-                GameObject objGameObject = objs.GetGameObject();
-                if(closest == null) {
-                    closest = objs;
-                } else {
-                    if(Vector2.Distance(transform.position, objGameObject.transform.position) < Vector2.Distance(transform.position, closest.GetGameObject().transform.position)) //....
-                    {
-                        closest = objs;
+                    float distanceSqr = (col.transform.position - transform.position).sqrMagnitude;
+                    if(distanceSqr < closestDistanceSqr) {
+                        closest = intract;
+                        closestDistanceSqr = distanceSqr;
                     }
                 }
             }
-            #endregion
 
-            return closest;
+            return closest; // Returns null if no intractable objects found
         }
         #endregion
 
         #region Gizmos
+#if UNITY_EDITOR
         private void OnDrawGizmos() {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, range);
         }
+#endif
         #endregion
     }
+
 }

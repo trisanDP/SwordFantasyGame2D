@@ -42,7 +42,7 @@ namespace OriginL.Player {
             jumpForce = player.jumpForce;
             jmpMoveSpeed = player.jmpMoveSpeed;
             fallMultiplier = player.fallMultiplier;
-            rb = player.Rb;
+            rb = player.rb;
         }
 
         private void Update() {
@@ -67,7 +67,7 @@ namespace OriginL.Player {
             float accelRate = (Mathf.Abs(targetSpeed) > 0.01) ? accel : decell;
             movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
             if(isGrounded)
-                player.Rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
+                player.rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
             else
                 rb.AddForce(jmpMoveSpeed * movement * Vector2.right, ForceMode2D.Force);
         }

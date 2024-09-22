@@ -32,7 +32,7 @@ namespace OriginL
 
         #endregion
 
-        #region Interface Function  
+        #region Interface Functions  
         public void OnIntract() {
             if(isOpen)
                 CloseDoor();

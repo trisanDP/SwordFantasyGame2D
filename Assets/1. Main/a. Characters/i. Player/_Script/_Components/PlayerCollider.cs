@@ -80,7 +80,7 @@ namespace OriginL.Player {
         #region Special 
         void KnockBack(GameObject col) {
             Vector2 direction = (transform.position - col.transform.position).normalized;
-            playerScrip.Rb.AddForce(100 * direction, ForceMode2D.Impulse);
+            playerScrip.rb.AddForce(100 * direction, ForceMode2D.Impulse);
         }
 
         #endregion

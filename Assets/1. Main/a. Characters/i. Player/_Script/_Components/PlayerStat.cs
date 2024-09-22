@@ -8,9 +8,12 @@ namespace OriginL.Player {
 
         public float stundDuration;
 
+        public Stat Energy;
+
         private void Start() {
             playerScrip = GetComponent<PlayerScript>();
             GetComponentInChildren<PlayerEquipmentManager>().onEquipmentChanged += OnEquipmentChanged;
+            Energy.SetBaseValue(10);
         }
 
         public override void TakeDamage(float damage, int knockBack, GameObject damageFrom) {

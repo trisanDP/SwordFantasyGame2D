@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System.IO;
+using System.Collections;
+using TMPro;
 
 
 namespace OriginL {
@@ -11,7 +13,7 @@ namespace OriginL {
             Pause, Play, Pause_Main, Pause_Setting, GameOver
         }
 
-        public GameUIState ActiveState;
+        public GameUIState ActiveState { get; private set; }
         #endregion
 
         #region Variable
@@ -19,19 +21,43 @@ namespace OriginL {
         [SerializeField] GameObject pauseUiGrp;
         [SerializeField] GameObject pauseBut_inSettingsGrp;
         [SerializeField] GameObject GameOverGrp;
-
-
+        [SerializeField] GameObject OnScreenMessageGrp;
+        [SerializeField] TextMeshProUGUI onScreenMessageTxt;
 
 
         internal bool isPaused = false;
 
         #endregion
+
+        private string logFilePath;
+
+        public static GameUI instance;
+
+
         private void Awake() {
             UiManager.Instance.activeState = UiManager.State.Game1;
         }
         private void Start() {
             ToggleAllUI(false);
             ActiveState = GameUIState.Play;
+            if(instance == null) {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            } else {
+                Destroy(instance);
+            }
+
+            #region messageFilePath/ OnScreen Message
+            logFilePath = Application.persistentDataPath + "/MessageLog.txt";
+
+            // Optional: create a new log file or clear the existing one at the start of the game
+            if(!File.Exists(logFilePath)) {
+                File.WriteAllText(logFilePath, "Log Book Created: " + System.DateTime.Now + "\n\n");
+            }
+
+            //OnScreenMessageGrp Deactivate
+            OnScreenMessageGrp.SetActive(false);
+            #endregion
         }
 
         void Update() {
@@ -68,49 +94,75 @@ namespace OriginL {
             }
 
         }
-        /*
 
-        void ActivateState(GameUIState activeState) {
-            ToggleAllUI(false);
-            switch(activeState) {
-                case GameUIState.Play:
-                    PlayState();
-                    if(Input.GetKeyDown(KeyCode.Escape)) {
-                        ActivateState(GameUIState.Pause);
-                    }   
-                break;
 
-                case GameUIState.Pause:
-                    PauseState();
-                    if(Input.GetKeyDown(KeyCode.Escape)) {
-                        ActivateState(GameUIState.Play);
-                    }
-                break;
+        #region message display
+        public IEnumerator DisplayMessage(string message, int time) {
+            OnScreenMessageGrp.SetActive(true);
+            onScreenMessageTxt.enabled = true;
+            onScreenMessageTxt.text = message;   // Display the message
+            
+            LogMessage(message);
+            yield return new WaitForSeconds(time);  // Wait for the specified time
+            onScreenMessageTxt.enabled = false;  // Hide the message
+            OnScreenMessageGrp.SetActive(false) ;
 
-                case GameUIState.Pause_Main:
-                    pauseBut_MainGrp.SetActive(true);
+        }
 
-                    if(Input.GetKeyDown(KeyCode.Escape)) {
-                        pauseBut_MainGrp.SetActive(false);  // Deactivate Owns UI
-                        ChangeState(GameUIState.Pause);  //Change State
-                    }
-                break;
+        private void LogMessage(string message) {
+            string timeStamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string logEntry = timeStamp + ": " + message + "\n";
 
-                case GameUIState.Pause_Setting:
-                    PauseSettingState();
+            // Append the log entry to the log file
+            File.AppendAllText(logFilePath, logEntry);
+        }
+    
 
-                    if(Input.GetKeyDown(KeyCode.Escape)) {
+        #endregion
 
-                        pauseBut_inSettingsGrp.SetActive(false);
-                        ChangeState(GameUIState.Pause);
-                    }
-                break;
+    /*
 
-                case GameUIState.GameOver:
-                break;
+void ActivateState(GameUIState activeState) {
+    ToggleAllUI(false);
+    switch(activeState) {
+        case GameUIState.Play:
+            PlayState();
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                ActivateState(GameUIState.Pause);
+            }   
+        break;
 
+        case GameUIState.Pause:
+            PauseState();
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                ActivateState(GameUIState.Play);
             }
-        }*/
+        break;
+
+        case GameUIState.Pause_Main:
+            pauseBut_MainGrp.SetActive(true);
+
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                pauseBut_MainGrp.SetActive(false);  // Deactivate Owns UI
+                ChangeState(GameUIState.Pause);  //Change State
+            }
+        break;
+
+        case GameUIState.Pause_Setting:
+            PauseSettingState();
+
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+
+                pauseBut_inSettingsGrp.SetActive(false);
+                ChangeState(GameUIState.Pause);
+            }
+        break;
+
+        case GameUIState.GameOver:
+        break;
+
+    }
+}*/
 
         //...................................................
         #region DefaultFUnction
@@ -125,7 +177,7 @@ namespace OriginL {
         }
 
 
-        #endregion
+    #endregion
 
 
         #region Functions
@@ -134,7 +186,7 @@ namespace OriginL {
 
 
         }
-        #endregion
+    #endregion
         //...................................................
 
         #region State Function
@@ -159,19 +211,19 @@ namespace OriginL {
 
         //...................................................
         #region ToggleFunctions
-        void ToggleAllUI(bool var) {
-            GameOverGrp.SetActive(var);
-            pauseUiGrp.SetActive(var);
-            pauseBut_inSettingsGrp.SetActive(var);
-        }
+    void ToggleAllUI(bool var) {
+        GameOverGrp.SetActive(var);
+        pauseUiGrp.SetActive(var);
+        pauseBut_inSettingsGrp.SetActive(var);
+    }
 
-        public void GameOverUI() {
-            ChangeState(GameUIState.GameOver);
-            GameOverGrp.SetActive(true);
-        }
+    public void GameOverUI() {
+        ChangeState(GameUIState.GameOver);
+        GameOverGrp.SetActive(true);
+    }
 
 
-        #endregion
+    #endregion
 
         //...................................................
         #region Buttons
@@ -193,8 +245,6 @@ namespace OriginL {
         }
 
         #endregion
-
-
 
 
     }

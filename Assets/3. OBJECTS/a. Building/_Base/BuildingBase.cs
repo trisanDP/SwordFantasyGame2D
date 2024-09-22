@@ -1,10 +1,12 @@
+using OriginL.Player;
 using System;
+using System.Resources;
 using UnityEngine;
 
 
 namespace OriginL.Building
 {
-    public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable {
+    public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable, IEnergyConsumer {
 
         #region Variables
 
@@ -13,6 +15,7 @@ namespace OriginL.Building
         protected SpriteRenderer spriteRenderer;
         protected Sprite sprite;
         protected Collider2D col;
+        protected GameManager gameManager;
 
 
         [Header("Building_Component")]
@@ -20,18 +23,22 @@ namespace OriginL.Building
         [SerializeField] protected string message;
         [SerializeField] protected float MaxHealth;
         [SerializeField] protected float Health;
+        [SerializeField] protected int energyCost;
         [SerializeField] protected bool isDestroyed;
+        public ResourceCost[] buildCost;
+
 
         [Header("DetectionVar")]
         [SerializeField]protected float range;
         protected LayerMask playerLayer;
-
+        protected ResourceManager resourceManager;
         GameAssets gameAssets;
+
         #region BuildingStage
 
 
         [Header("State")]
-        [Range(1, 3)]
+        [Range(0, 3)]
         public int stateLimit ;
         public enum State {
             Node, Build1, Build2, Build3
@@ -43,6 +50,7 @@ namespace OriginL.Building
         protected Sprite mode2Sprite;
         protected Sprite mode3Sprite;
         #endregion
+        
         #endregion
 
         // Functions
@@ -50,6 +58,8 @@ namespace OriginL.Building
         #region DefaultFunctions
 
         protected virtual void Awake() {
+            gameManager = GameManager.Instance;
+            resourceManager = FindObjectOfType<ResourceManager>();
             col = GetComponent<Collider2D>();
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -61,9 +71,12 @@ namespace OriginL.Building
             SetUp();
         }
 
+        
         protected virtual void Start() {
             SetSprite();
-            Debug.Log("Test");
+            if(resourceManager == null) {
+                Debug.LogError("ResourceManager not found in the scene.");
+            }
         }
 
         protected virtual void Update() {
@@ -88,10 +101,12 @@ namespace OriginL.Building
         #region StageSelector
 
         protected virtual void UpgradeStage() {
-            if((int)activeStage < Enum.GetNames(typeof(State)).Length)
+            if(activeStage < (State)(Enum.GetValues(typeof(State)).Length - 1) && stateLimit > (int)activeStage) {
                 SetStage(activeStage + 1);
-            else
+            } else {
                 Debug.Log("Fully Upgraded");
+            }
+
         }
 
         protected virtual void SetStage(State active) {
@@ -142,9 +157,15 @@ namespace OriginL.Building
         public abstract void SetSprite();
         #endregion
 
-        #region Intractable
+        #region Interface Functions
+
+        #region Interactable
         public virtual void OnIntract() {
-            UpgradeStage();
+            if(CanAfford()) {
+                UpgradeStage();
+                DeductCost();
+                gameManager.playerObj.GetComponent<PlayerStat>().Energy.DecreaseStat(EnergyCost());
+            }
         }
 
         public string Message() {
@@ -153,6 +174,10 @@ namespace OriginL.Building
 
         public GameObject GetGameObject() {
             return gameObject;
+        }
+
+        public int EnergyCost() {
+            return energyCost;
         }
         #endregion
 
@@ -169,11 +194,41 @@ namespace OriginL.Building
         }
         #endregion
 
+        #endregion
+
         #region QualityOfLIfe
         void ShowPreviewBuilding() {
             spriteRenderer.sprite = mode1Sprite;
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.5f);
         }
+
+        #endregion
+
+
+        #region ResourceCost
+        public bool CanAfford() {
+            foreach(var cost in buildCost) {
+                if(resourceManager.GetResourceAmount(cost.resourceName) < cost.amountRequired) {
+                    Debug.Log($"Not enough {cost.resourceName}");
+                    StartCoroutine(GameUI.instance.DisplayMessage("Cannot Afford", 1));
+                    return false;
+                }else if(gameManager.playerObj.GetComponent<PlayerScript>().playerStat.Energy.GetValue() < EnergyCost()) {
+                    StartCoroutine(GameUI.instance.DisplayMessage("Not Enough Energy",1));
+                    return false;
+
+                }
+            }
+            return true;
+
+        }
+
+        // Deduct the resources after building the miner
+        public void DeductCost() {
+            foreach(var cost in buildCost) {
+                resourceManager.SubtractResource(cost.resourceName, cost.amountRequired);
+            }
+        }
+
 
         #endregion
 
@@ -184,7 +239,14 @@ namespace OriginL.Building
         }
 
 
-
         #endregion
+    }
+
+
+
+    [System.Serializable]
+    public class ResourceCost {
+        public string resourceName;
+        public int amountRequired;
     }
 }

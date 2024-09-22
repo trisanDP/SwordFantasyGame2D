@@ -14,18 +14,28 @@ public class Stat {
         return finalValue;
     }
 
-    public void AddModifier(int modifier)
-    {
+    public void AddModifier(int modifier){
         if(modifier != 0)
         {
             modifiers.Add(modifier);
         }
     }
 
-    public void RemoveModifier(int modifier)
-    {
+    public void RemoveModifier(int modifier){
         if(modifier != 0)
             modifiers.Remove(modifier);
+    }
+    
+    public void SetBaseValue(int baseAmount) {
+        baseValue = baseAmount;
+    }
+    
+    public void IncreaseStat(int amount) {
+        baseValue += amount;
+    }
+
+    public void DecreaseStat(int amount) {
+        baseValue -= amount; 
     }
 
 }

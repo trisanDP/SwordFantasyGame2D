@@ -15,7 +15,10 @@ namespace OriginL {
 
         void Start() {
             inventoryManager = GetComponent<InventoryManager>();
-            equipmentUI = UiManager.Instance.equipmentUI;
+            if(UiManager.Instance != null) {
+                equipmentUI = UiManager.Instance.equipmentUI;
+            } else
+                Debug.LogWarning("UiManager is Missing");
 
             int numSlots = System.Enum.GetNames(typeof(EquipmentSlotType)).Length;
 

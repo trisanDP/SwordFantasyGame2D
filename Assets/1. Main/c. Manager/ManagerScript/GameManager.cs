@@ -81,5 +81,9 @@ public class GameManager : MonoBehaviour {
         }
 
     }
+
+    public void onScreenMessage(string message) {
+        
+    }
     #endregion
 }

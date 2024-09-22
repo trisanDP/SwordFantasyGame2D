@@ -18,8 +18,8 @@ namespace OriginL.Player
         }
         public override void FrameUpdate() {
             base.FrameUpdate();
-            if(player.Rb.velocity.y < 0) {
-                player.Rb.velocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
+            if(player.rb.velocity.y < 0) {
+                player.rb.velocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
             }
         }
 
@@ -73,7 +73,7 @@ namespace OriginL.Player
         }
 
         void CheckFall() {
-            if(player.Rb.velocity.y > 0 && !player.playerInput.JumpAction()) {
+            if(player.rb.velocity.y > 0 && !player.playerInput.JumpAction()) {
                 player.playerController.ShortJumpFall();
             }
 

@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cee993f7eb32d845b096676ea73b035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   isDead: 0
   accel: 2
   decell: 2
@@ -261,18 +260,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa342b2ced732e49b1d3a4d39521618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockBack_F: 100
   groundCheck: {fileID: 1284231901118064006}
   size: {x: 1, y: 0.5}
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 320
   attackRange: 1.5
   attackRate: 0.3
   attackPoint: {fileID: 9050407962421929432}
   hitLayer:
     serializedVersion: 2
-    m_Bits: 832
+    m_Bits: 840
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 320
 --- !u!114 &540673306964476357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,14 +326,14 @@ MonoBehaviour:
   Attack1:
     Rate: 0.28
     CanAttack: 1
-    knockBackF: 250
+    knockBackF: 150
     baseDamage: 0
     physicalD_Mod: 0
     magicD_Mod: 0
   Attack2:
     Rate: 0.55
     CanAttack: 1
-    knockBackF: 500
+    knockBackF: 200
     baseDamage: 50
     physicalD_Mod: 0
     magicD_Mod: 0
@@ -401,18 +399,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7824893870846364572}
-        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
-        m_MethodName: OnJumpPressed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 96e1d996-dd30-4b89-a728-fcde466ba1a2
     m_ActionName: Basic/Jump[/Keyboard/space]
   - m_PersistentCalls:
@@ -435,7 +421,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 540673306964476357}
         m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: OnAttack1
+        m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -451,7 +437,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 540673306964476357}
         m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: OnAttack1
+        m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -463,6 +449,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9bca4b88-7a6f-4cbc-b3cb-1412ff18ec08
     m_ActionName: Basic/Attack2[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 540673306964476357}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: OnTestAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e09236b-cb0a-4c4f-ad03-4d133006b102
+    m_ActionName: Basic/Test[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7821298419735953423}
+        m_TargetAssemblyTypeName: PlayerIntract, Assembly-CSharp
+        m_MethodName: PressedE
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: acc6a39e-5e02-448d-8cbf-b06c9753e8c9
+    m_ActionName: Basic/Entract[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 540673306964476357}
+        m_TargetAssemblyTypeName: OriginL.Player.PlayerInput, Assembly-CSharp
+        m_MethodName: SpawnEnemy
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b43a33a9-af03-427d-881a-9b52996346a8
+    m_ActionName: Basic/SpawnEnemy[/Keyboard/b]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Basic
@@ -480,13 +514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193fdfa0a68205a4bbfe5e9e99929279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accel: 2
-  decell: 2
-  moveSpeed: 150
-  velPower: 1
-  jumpForce: 50
-  fallMultiplier: 15
-  jmpMoveSpeed: 1.17
 --- !u!1 &1881819621013963489
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,11 +4,20 @@ using UnityEngine;
 
 namespace OriginL.Building {
     public class MinerScript : BuildingBase {
-        int generatedAmount = 0;
-        bool onNode;
 
-        public override void OnIntract() {
-            base.OnIntract();
+        public string resourceName;  // Name of the resource the miner will mine
+
+
+        private float miningTimer;
+
+        public int miningAmount;
+        public float miningRate = 1f;
+
+        protected override void Awake() {
+            base.Awake();
+        }
+        protected override void Start() {
+            base.Start();
         }
 
         public override void SetSprite() {
@@ -17,36 +26,35 @@ namespace OriginL.Building {
             mode3Sprite = GameAssets.i.Miner3;
         }
 
-        protected override void Awake() {
-            base.Awake();
+        protected override void Update() {
+            base.Update();
+            if(resourceManager != null && activeStage != State.Node) {
+                miningTimer += Time.deltaTime;
+                if(miningTimer >= miningRate) {
+                    resourceManager.AddResource(resourceName, miningAmount); // Adjust the amount as needed
+                    miningTimer = 0f;
+                    Debug.Log("Mining");
+                }
+            }
         }
 
-        protected override void SetStage(State active) {
-            base.SetStage(active);
-        }
-
-        protected override void Stage_Build1() {
-            base.Stage_Build1();
-        }
-
-        protected override void Stage_Build2() {
-            base.Stage_Build2();
-        }
-
-        protected override void Stage_Build3() {
-            base.Stage_Build3();
-        }
 
         protected override void Stage_Node() {
             base.Stage_Node();
         }
 
-        protected override void Update() {
-            base.Update();
+        protected override void Stage_Build1() {
+            base.Stage_Build1();
+            miningAmount = 1;
         }
 
-        protected override void UpgradeStage() {
-            base.UpgradeStage();
+        protected override void Stage_Build2() {
+            base.Stage_Build2();
+            miningAmount = 10;
+        }
+
+        protected override void Stage_Build3() {
+            base.Stage_Build3();
         }
     }
 }
