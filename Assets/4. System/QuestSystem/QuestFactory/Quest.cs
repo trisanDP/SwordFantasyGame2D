@@ -12,12 +12,13 @@ public class Quest
     QuestDatabase questDB;
     #region QuestDetail
     public int questID;
+
     public string questName;
     public string questDes;
     public string questTask;
     public string questRewardTxt;
 
-    public QuestGoal goal;
+    public List<QuestGoal> tasks;
     public Reward rewards;
 
 
@@ -28,9 +29,11 @@ public class Quest
     public bool HasRejected;
     public bool hasLaunched;
     public bool isActive;
+    public bool isCompleted;
 
 
-    #region accepted
+    #region Quest status
+
     public void Started()
     {
         questDB = Resources.Load<QuestDatabase>("QuestDatabase");
@@ -44,14 +47,21 @@ public class Quest
         isActive = false;
 
     }
-    #endregion
-
+    public bool CheckCompletion() {
+        foreach(QuestGoal task in tasks) {
+            if(!task.isCompleted) return false;
+        }
+        isCompleted = true;
+        return true;
+    }
 
     public void Rejected()
     {
         HasRejected = true;
 
     }
+
+    #endregion
 
 }
 

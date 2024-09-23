@@ -15,6 +15,7 @@ public class QuestGoal
     public int current;    
     public Vector2 goalPosition;
     public string Notetag;
+    public bool isCompleted;
 
     
     public QuestGoal(GoalType goalTyp,int req, string tag)

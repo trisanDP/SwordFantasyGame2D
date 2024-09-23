@@ -11,7 +11,6 @@ namespace OriginL.Player {
         [SerializeField] Vector2 size;
 
 
-
         [Header("Attack Attributes")]
         [SerializeField] float attackRange;
         [SerializeField] float attackRate;
@@ -39,7 +38,6 @@ namespace OriginL.Player {
             if(raycasthit.collider != null) {
                 return true;
             } else {
-
                 return false;
             }
         }

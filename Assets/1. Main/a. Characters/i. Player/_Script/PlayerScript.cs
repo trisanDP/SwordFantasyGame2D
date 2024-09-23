@@ -62,6 +62,8 @@ namespace OriginL.Player {
 
         private void Update() {
             PlayerStateMachine.CurrentState.FrameUpdate();
+            if(rb.velocity.y < 0)
+                Debug.Log("Here");
         }
 
         private void FixedUpdate() {

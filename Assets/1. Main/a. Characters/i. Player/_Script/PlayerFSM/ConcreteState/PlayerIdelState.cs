@@ -8,12 +8,12 @@ namespace OriginL.Player
         public override void EnterState() {
             GameManager.Instance.DebugMessage("IdelState",GameManager.MessageField.Player);
             base.EnterState();
-            player.p_animCont.PlayIdelAnim(true);
+            player.p_animCont.PlayIdleAnim(true);
         }
 
         public override void ExitState() {
             base.ExitState();
-            player.p_animCont.PlayIdelAnim(false);
+            player.p_animCont.PlayIdleAnim(false);
         }
 
         public override void FrameUpdate() {

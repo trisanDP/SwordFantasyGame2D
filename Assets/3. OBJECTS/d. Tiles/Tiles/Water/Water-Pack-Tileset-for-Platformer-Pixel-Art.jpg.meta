@@ -1,0 +1,281 @@
+fileFormatVersion: 2
+guid: 125e4d72ad5c08d41acd38c8738503b9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Water-Pack-Tileset-for-Platformer-Pixel-Art_72
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 331
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0a445e4eae65c14b85cd269e65bcced
+      internalID: 526173044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water-Pack-Tileset-for-Platformer-Pixel-Art_82
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 350
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26667424eb075ab4c9ccfb465d01e2d3
+      internalID: -1693362915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_0: -141842379
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_1: -1429984088
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_10: -461320336
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_100: -1850986111
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_101: -776955801
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_102: 274833891
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_103: -2138631728
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_104: 1551554010
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_105: 1243793160
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_106: 599905095
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_107: -2126769575
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_108: -1831088579
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_109: -723016666
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_11: -910827867
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_110: -1158622210
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_111: -274591083
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_12: -1591925261
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_13: -202542720
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_14: -1207588975
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_15: -339631155
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_16: 1098758120
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_17: 1773205310
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_18: 1521333421
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_19: 350197591
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_2: -837274881
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_20: 1727248621
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_21: 304103721
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_22: 125738003
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_23: 1576625464
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_24: 1028962208
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_25: -1584300089
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_26: -450693515
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_27: -1528473325
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_28: 1768219717
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_29: 1254403715
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_3: -699595405
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_30: 802936590
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_31: 1983249225
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_32: -2012370215
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_33: -807621254
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_34: 538543717
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_35: -1286046679
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_36: 854688383
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_37: -1986071878
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_38: 1473753299
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_39: -1098616629
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_4: 459390637
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_40: 863503154
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_41: -1042361394
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_42: -1088351615
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_43: -1614756881
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_44: -155280554
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_45: -153209255
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_46: -182284821
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_47: -1303867097
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_48: 283732391
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_49: -642681721
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_5: -426563233
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_50: -1396003115
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_51: -628416988
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_52: -1548653373
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_53: -799794936
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_54: -131175466
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_55: 1321460896
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_56: -150287923
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_57: -1153589923
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_58: -922459678
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_59: 469340301
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_6: 1291132352
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_60: 624668669
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_61: 1837076116
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_62: -772303980
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_63: 984695400
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_64: 1977066900
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_65: 271310794
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_66: 1854781484
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_67: -1057240093
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_68: 635648976
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_69: 389907540
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_7: -969176590
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_70: 252585495
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_71: -539080537
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_72: 526173044
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_73: -1962718894
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_74: 1948397778
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_75: 2037100784
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_76: -1403205031
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_77: -1050841842
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_78: -44841503
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_79: 1818556760
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_8: 1418913249
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_80: -325788513
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_81: 2060955177
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_82: -1693362915
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_83: 515868344
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_84: 1313879020
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_85: -1492497350
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_86: -101974200
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_87: 1264000315
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_88: 1613743359
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_89: -269640350
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_9: -897775759
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_90: -119350125
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_91: 1231296863
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_92: -66234239
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_93: 1143470146
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_94: 245665234
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_95: 105866438
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_96: 86409284
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_97: -329276655
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_98: 1383935579
+      Water-Pack-Tileset-for-Platformer-Pixel-Art_99: -1806144774
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

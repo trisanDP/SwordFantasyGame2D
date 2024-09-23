@@ -44,7 +44,8 @@ namespace OriginL.Player {
             animator_Player.SetTrigger(type);       // Attack Function is called within animation frame
         }
 
-        internal void PlayIdelAnim(bool isIdel) {
+
+        internal void PlayIdleAnim(bool isIdel) {
             animator_Player.SetBool("IsIdel", isIdel);
         }
         /*

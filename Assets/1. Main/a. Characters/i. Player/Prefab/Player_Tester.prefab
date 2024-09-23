@@ -180,8 +180,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0040361406, y: -0.35238123}
-  m_Size: {x: 1.2093846, y: 2.7024176}
+  m_Offset: {x: 0.0040361285, y: -0.36051035}
+  m_Size: {x: 1.2093846, y: 2.7186756}
   m_Direction: 0
 --- !u!61 &2892418339124105517
 BoxCollider2D:
@@ -215,7 +215,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010282934, y: -1.817018}
+  m_Offset: {x: -0.059480906, y: -1.7442701}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -226,7 +226,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1302491, y: 0.18420088}
+  m_Size: {x: 1.2697768, y: 0.07339811}
   m_EdgeRadius: 0
 --- !u!114 &6215837455251139775
 MonoBehaviour:
@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cee993f7eb32d845b096676ea73b035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
   accel: 2
   decell: 2
   moveSpeed: 150
@@ -248,6 +247,7 @@ MonoBehaviour:
   jumpForce: 50
   fallMultiplier: 15
   jmpMoveSpeed: 0.6
+  isDead: 0
 --- !u!114 &4225063605200848566
 MonoBehaviour:
   m_ObjectHideFlags: 0
