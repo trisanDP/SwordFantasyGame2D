@@ -1,106 +1,65 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEditor;
 
+
+[CreateAssetMenu(fileName = "NewQuest", menuName = "Quest System/Quest")]
 
 [System.Serializable]
-public class Quest
-{
-
-    QuestDatabase questDB;
-    #region QuestDetail
-    public int questID;
-
+public class Quest : ScriptableObject {
+    public string questID;
     public string questName;
-    public string questDes;
-    public string questTask;
-    public string questRewardTxt;
-
-    public List<QuestGoal> tasks;
-    public Reward rewards;
+    public string description;
+    public List<Quest> dependentQuests;
 
 
-    #endregion
+    // Quest criteria (you can extend this)
+    public List<QuestObjective> objectives;
+    public List<Reward> rewards;
 
-    [Header("Status")]
-    public bool HasAccepted;
-    public bool HasRejected;
-    public bool hasLaunched;
-    public bool isActive;
-    public bool isCompleted;
+    public bool isRepeatable;
 
+    // Rewards for completing the quest
 
-    #region Quest status
-
-    public void Started()
-    {
-        questDB = Resources.Load<QuestDatabase>("QuestDatabase");
-        HasAccepted = true;
-        questDB.AcceptedQuests.Add(this);
-        isActive = true;
-    }
-
-    public void Complete()
-    {
-        isActive = false;
-
-    }
-    public bool CheckCompletion() {
-        foreach(QuestGoal task in tasks) {
-            if(!task.isCompleted) return false;
+    public bool IsCompleted() {
+        foreach(var objective in objectives) {
+            if(!objective.isCompleted) return false;
         }
-        isCompleted = true;
         return true;
     }
 
-    public void Rejected()
-    {
-        HasRejected = true;
+    public string GetRewardsTxt() {
+        string a = "";
 
+        foreach(var reward in rewards) {
+            a += reward.itemID.ToString() + "\n";
+        }
+
+        return a;
     }
-
-    #endregion
-
 }
 
-#region RewardsSystem
+
 [System.Serializable]
-public class Reward
-{
-    public RewardType Type;
-    public int Value;
-
-    public Reward(RewardType type, int value)
-    {
-        Type = type;
-        Value = value;
-
-    }
-    
-    public void AddHealth()
-    {
-        Debug.LogWarning("here");
-       /* GameManager.Instance.playerScript.playerHealth.AddHealth(this.Value);*/
-    }
-
-    public void AddCoin()
-    {
-        Debug.Log("Add Coin");
-    }
-
-    public void AddItem()
-    {
-        
-        Debug.Log("Item Added");
-    }
+public class QuestObjective {
+    public string description;
+    public bool isCompleted;
+    public ObjectiveType type;
+    public int targetAmount;
+    public int currentAmount;
 }
 
-public enum RewardType
-{
-    IncreaseHealth,
-    AddCoin,
-    AddItem
+public enum ObjectiveType {
+    Collect,
+    Kill,
+    Deliver,
+    Build
 }
-#endregion
+
+[System.Serializable]
+public class Reward {
+    public string itemID;
+    public int quantity;
+
+
+}

@@ -1,4 +1,3 @@
-using OriginL.Player;
 using TMPro;
 using UnityEngine;
 

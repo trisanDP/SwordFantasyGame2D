@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a57d80d6dd3eac4fb6b11d302de86a8, type: 3}
-  m_Name: QuestDatabase
+  m_Script: {fileID: 11500000, guid: b02eb801e8cb0c0408e5653dbc5b232b, type: 3}
+  m_Name: NPCDatabase
   m_EditorClassIdentifier: 
-  quests:
-  - {fileID: 0}
+  npcList:
+  - {fileID: 11400000, guid: 5aa92ba17aa9e0b4694fe55a1a249c0b, type: 2}
+  - {fileID: 11400000, guid: e75d7bc055111be41a5220bf2d11b28e, type: 2}

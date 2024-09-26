@@ -1,10 +1,6 @@
-using OriginL.Building;
-using OriginL.EnemySpace;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace OriginL
+namespace OriginL.Building
 {
     public class B_Shooter1 : BuildingBase {
         [SerializeField]private float AttackRange;

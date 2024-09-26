@@ -1,8 +1,7 @@
-using OriginL.Player;
 using System;
 using System.Resources;
 using UnityEngine;
-
+using OriginL;
 
 namespace OriginL.Building
 {

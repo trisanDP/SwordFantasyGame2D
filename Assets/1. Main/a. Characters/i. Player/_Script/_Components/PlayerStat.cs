@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using OriginL.Item;
 
 namespace OriginL.Player {
     public class PlayerStat : CharacterStat {
