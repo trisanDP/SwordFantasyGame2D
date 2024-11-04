@@ -1,7 +1,6 @@
 using UnityEngine;
 
-namespace OriginL.Building
-{
+namespace OriginL.Building {
     public class B_Shooter1 : BuildingBase {
         [SerializeField]private float AttackRange;
         [SerializeField]private LayerMask AttackLayers;

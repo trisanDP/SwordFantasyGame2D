@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace OriginL.Player {
     public class PlayerInput : MonoBehaviour {
@@ -41,7 +42,7 @@ namespace OriginL.Player {
             #region GameCommand
             //GameOver....
             if(Input.GetKeyDown(KeyCode.O)) {
-                GameManager.Instance.GameOver();
+                GameManager.Instance.HandleGameOver();
 
             }
 
@@ -76,6 +77,7 @@ namespace OriginL.Player {
         #endregion
 
         #region Movement
+
         public void OnMove(InputAction.CallbackContext context) {
             if(context.performed) {
                 _moveInput = context.ReadValue<Vector2>();

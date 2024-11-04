@@ -63,7 +63,7 @@ namespace OriginL.Player {
         #region Movement
         internal void Move(bool isGrounded) {
             float targetSpeed = inputMove.x * moveSpeed;
-            float speedDif = targetSpeed - rb.velocity.x;
+            float speedDif = targetSpeed - rb.linearVelocity.x;
             float accelRate = (Mathf.Abs(targetSpeed) > 0.01) ? accel : decell;
             movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
             if(isGrounded)
@@ -76,7 +76,7 @@ namespace OriginL.Player {
 
         #region Jump
         internal void Jump() {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
 
@@ -90,12 +90,12 @@ namespace OriginL.Player {
 
         #region FallPhy
         internal void ShortJumpFall() {
-            rb.velocity = new Vector2(rb.velocity.x, -fallMultiplier);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -fallMultiplier);
         }
 
         internal void NormalFall() {
-            if(rb.velocity.y < 0f) {
-                rb.velocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
+            if(rb.linearVelocity.y < 0f) {
+                rb.linearVelocity += Physics2D.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime * Vector2.up;
             }
         }
         #endregion

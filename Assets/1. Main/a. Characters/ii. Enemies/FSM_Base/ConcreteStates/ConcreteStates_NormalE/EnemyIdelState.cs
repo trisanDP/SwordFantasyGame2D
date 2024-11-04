@@ -21,7 +21,7 @@ namespace OriginL.EnemySpace {
             petrolSpeed = enemy.petrolSpeed;
 /*            canPetrol = false;*/
             //................................
-            enemy.rb.velocity = Vector2.zero;
+            enemy.rb.linearVelocity = Vector2.zero;
             enemy.enemyAnimCont.PlayIdelAnimation();
         }
 

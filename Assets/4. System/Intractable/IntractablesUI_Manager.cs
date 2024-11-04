@@ -1,3 +1,4 @@
+using OriginL.Player;
 using TMPro;
 using UnityEngine;
 
@@ -6,13 +7,13 @@ public class IntractablesUI_Manager : MonoBehaviour
     public GameObject intractObj;
     public TextMeshProUGUI intractTxt;
     PlayerIntract playerIntract;
-
+    
     private void Awake() {
         if(intractObj == null)
             Debug.Log("IntractObj is Null");
         if(intractTxt == null)
             Debug.Log("Intract Txt is Null");
-        playerIntract = PlayerIntract.instance;
+        playerIntract = PlayerScript.Instance.playerIntract;
     }
 
     private void Update() {

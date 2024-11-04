@@ -1,3 +1,4 @@
+using OriginL.Item;
 using System.Collections;
 using UnityEngine;
 
@@ -23,9 +24,8 @@ namespace OriginL.Player {
             base.Die();
             playerScrip.isDead = true;
             gameObject.SetActive(false);
-            GameManager.Instance.GameOver();
+            GameManager.Instance.HandleGameOver();
         }
-
         private void OnEquipmentChanged(Equipment newItem, Equipment oldItem) {
             if(newItem != null) {
                 armor.AddModifier(newItem.armorModifier);

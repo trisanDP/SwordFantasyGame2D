@@ -10,20 +10,13 @@ namespace OriginL.Player {
         public float range;  // Changed to float for precision
         private PlayerScript player;
 
-        public static PlayerIntract instance;
 
         #endregion
 
         #region MonoBehaviour Methods
         private void Awake() {
-            if(instance == null) {
-                instance = this;
-                DontDestroyOnLoad(gameObject);  // Optional, depending on usage
-            } else {
-                Destroy(gameObject);  // Destroy duplicate instance
-            }
-        }
 
+        }
         private void Start() {
             player = GetComponent<PlayerScript>();
             if(player == null) {

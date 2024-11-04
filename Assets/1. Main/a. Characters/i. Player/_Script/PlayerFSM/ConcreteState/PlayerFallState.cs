@@ -41,7 +41,7 @@ namespace OriginL.Player
 
 
         internal void ShortJumpFall() {
-            player.rb.velocity = new Vector2(player.rb.velocity.x, -fallMultiplier);
+            player.rb.linearVelocity = new Vector2(player.rb.linearVelocity.x, -fallMultiplier);
         }
 /*
         void CheckIdelState() {

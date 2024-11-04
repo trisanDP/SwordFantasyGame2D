@@ -1,16 +1,16 @@
 using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 using System.Linq;
 
 public class CameraManager : MonoBehaviour
 {
-    private CinemachineVirtualCamera[] cameras;
+    private CinemachineCamera[] cameras;
     private int currentCameraIndex = 0;
 
     void Start()
     {
         // Get all CinemachineVirtualCameras in the scene and add them to the array
-        cameras = FindObjectsOfType<CinemachineVirtualCamera>();
+        cameras = Object.FindObjectsByType<CinemachineCamera>(FindObjectsSortMode.None);
     }
 
     void Update()

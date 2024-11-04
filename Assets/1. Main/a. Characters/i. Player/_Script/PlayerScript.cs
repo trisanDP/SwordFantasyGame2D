@@ -48,11 +48,20 @@ namespace OriginL.Player {
 
         #endregion
 
+        public static PlayerScript Instance;
         #region MonoBehaviour Methods
 
         private void Awake() {
             InitializeComponents();
             InitializeStateMachine();
+
+            if(Instance == null) {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);  // Optional, depending on usage
+            } else {
+                Destroy(gameObject);  // Destroy duplicate instance
+            }
+        
         }
 
         private void Start() {
@@ -61,7 +70,7 @@ namespace OriginL.Player {
 
         private void Update() {
             PlayerStateMachine.CurrentState.FrameUpdate();
-            if(rb.velocity.y < 0)
+            if(rb.linearVelocity.y < 0)
                 Debug.Log("Here");
         }
 

@@ -105,7 +105,7 @@ namespace OriginL.ChestSpace {
         private void OnTriggerEnter2D(Collider2D collision) {
             if(collision.CompareTag("Ground")) {
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-                gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                gameObject.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
             }
         }
 

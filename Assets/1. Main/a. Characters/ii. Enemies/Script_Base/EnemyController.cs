@@ -41,8 +41,8 @@ namespace OriginL.EnemySpace {
         }
 
         internal void StopEnemyMovement() {
-            if(enemyScrip.rb.velocity.x != 0) {
-                enemyScrip.rb.velocity = new Vector2(0, enemyScrip.rb.velocity.y);
+            if(enemyScrip.rb.linearVelocity.x != 0) {
+                enemyScrip.rb.linearVelocity = new Vector2(0, enemyScrip.rb.linearVelocity.y);
                 return;
             }
         }

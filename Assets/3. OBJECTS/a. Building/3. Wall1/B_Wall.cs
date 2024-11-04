@@ -1,8 +1,6 @@
 using UnityEngine;
-using OriginL;
 
-namespace OriginL.Building
-{  
+namespace OriginL.Building {
     public class B_Wall : BuildingBase {
 
         protected override void Awake() {

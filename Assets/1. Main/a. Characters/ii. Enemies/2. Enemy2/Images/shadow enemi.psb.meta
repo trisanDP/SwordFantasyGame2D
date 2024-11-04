@@ -70,12 +70,13 @@ ScriptedImporter:
     compressionQualitySet: 0
     textureFormatSet: 0
     applyGammaDecoding: 0
-  spriteImportData:
+  singleSpriteImportData:
   - name: 
     originalName: 
     pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 0
@@ -92,12 +93,14 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
     spritePosition: {x: 0, y: 0}
-  mosaicSpriteImportData:
+  multiSpriteImportData: []
+  layeredSpriteImportData:
   - name: Enemy2_Attack_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 2460
@@ -119,6 +122,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -140,6 +144,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -161,6 +166,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 908
@@ -182,6 +188,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 863
@@ -203,6 +210,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -224,6 +232,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 761
@@ -245,6 +254,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -266,6 +276,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 1847
@@ -287,6 +298,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 2706
@@ -308,6 +320,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -329,6 +342,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 1794
@@ -350,6 +364,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 2924
@@ -371,6 +386,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 2203
@@ -392,6 +408,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 1482
@@ -408,12 +425,36 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 1482, y: 1967}
     spritePosition: {x: 227, y: 179}
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   rigSpriteImportData:
   - name: Enemy2_Attack_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 908
@@ -435,6 +476,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -456,6 +498,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -477,6 +520,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 908
@@ -498,6 +542,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 908
@@ -519,6 +564,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -540,6 +586,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 908
@@ -561,6 +608,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -582,6 +630,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -603,6 +652,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -619,15 +669,346 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 1366}
     spritePosition: {x: 227, y: 179}
-  characterData:
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData:
+  - name: Enemy2_Attack_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2460
+      y: 660
+      width: 624
+      height: 533
+    spriteID: 5a2c0dcc8ddd5d142a99c36b356777ee
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2460, y: 660}
+    spritePosition: {x: 376, y: 183}
+  - name: Enemy2_Attack_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2673
+      width: 607
+      height: 718
+    spriteID: 6db3f5d7899fbf640ba9bd6fd1d09f52
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2673}
+    spritePosition: {x: 384, y: 181}
+  - name: Enemy2_Attack_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1967
+      width: 749
+      height: 698
+    spriteID: c301dc422dfe1eb47ac5abc217739951
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1967}
+    spritePosition: {x: 242, y: 181}
+  - name: Enemy2_Attack_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 908
+      y: 4
+      width: 931
+      height: 618
+    spriteID: 95c424b6d22cb3e43a967352a0053152
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 908, y: 4}
+    spritePosition: {x: 62, y: 181}
+  - name: Enemy2_Attack_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 660
+      width: 923
+      height: 562
+    spriteID: b6272a3fb82f92d48875685337def5a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 660}
+    spritePosition: {x: 73, y: 183}
+  - name: Enemy2_Attack_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 896
+      height: 648
+    spriteID: 1bbed98cf3e4a754291566e6e44e3fe5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 104, y: 179}
+  - name: Enemy2_Run_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 761
+      y: 1967
+      width: 713
+      height: 693
+    spriteID: d2ce6fc25e4a0364a8a907f19e741ad0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 761, y: 1967}
+    spritePosition: {x: 227, y: 179}
+  - name: Enemy2_Run_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1294
+      width: 793
+      height: 665
+    spriteID: b8b03d35f5b4a054d975c371235db5aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1294}
+    spritePosition: {x: 207, y: 179}
+  - name: Enemy2_Run_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1847
+      y: 4
+      width: 851
+      height: 626
+    spriteID: 7de06bbd2cbbede42b0578ee54dec138
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1847, y: 4}
+    spritePosition: {x: 149, y: 176}
+  - name: Enemy2_Run_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2706
+      y: 4
+      width: 851
+      height: 626
+    spriteID: 2fd5be5b898f1084a8c306f653d7d27f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2706, y: 4}
+    spritePosition: {x: 149, y: 176}
+  - name: Enemy2_Run_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 660
+      width: 851
+      height: 626
+    spriteID: 31a4a15bc8d7d334cbfc0b95273b3bb6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 660}
+    spritePosition: {x: 149, y: 176}
+  - name: Enemy2_Open_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1794
+      y: 660
+      width: 658
+      height: 545
+    spriteID: eb339367d2eb3a44aa8917bd6b4d81ac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1794, y: 660}
+    spritePosition: {x: 282, y: 179}
+  - name: Enemy2_Open_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2924
+      y: 1967
+      width: 713
+      height: 545
+    spriteID: 2b6407f2da9d79d46abf30ed59357a1a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2924, y: 1967}
+    spritePosition: {x: 230, y: 179}
+  - name: Enemy2_Open_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2203
+      y: 1967
+      width: 713
+      height: 692
+    spriteID: 665a47db2a6535946a4128bb4c6cd99d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2203, y: 1967}
+    spritePosition: {x: 227, y: 179}
+  - name: Enemy2_Open_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1482
+      y: 1967
+      width: 713
+      height: 693
+    spriteID: 2f992e95e23663c45850932ebfc96ce4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1482, y: 1967}
+    spritePosition: {x: 227, y: 179}
+  sharedRigCharacterData:
     bones: []
     parts: []
     dimension: {x: 0, y: 0}
     characterGroups: []
     pivot: {x: 0, y: 0}
     boneReadOnly: 0
-  sharedRigSpriteImportData: []
-  sharedRigCharacterData:
+  characterData:
     bones: []
     parts: []
     dimension: {x: 0, y: 0}
@@ -692,15 +1073,239 @@ ScriptedImporter:
   generatePhysicsShape: 0
   paperDollMode: 0
   keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
   skeletonAssetReferenceID: 
   pipeline: {instanceID: 0}
   pipelineVersion: 
-  padding: 4
-  spriteSizeExpand: 0
   spriteCategoryList:
     categories: []
   spritePackingTag: 
   resliceFromLayer: 0
+  pSDLayerImportSetting:
+  - spriteId: 51a65af973174624da8355aaf1328d17
+    name: Enemy2_Attack
+    layerId: 25
+    flatten: 0
+    isGroup: 1
+    importLayer: 1
+  - spriteId: 5a2c0dcc8ddd5d142a99c36b356777ee
+    name: Enemy2_Attack_1
+    layerId: 19
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: 6db3f5d7899fbf640ba9bd6fd1d09f52
+    name: Enemy2_Attack_2
+    layerId: 20
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: c301dc422dfe1eb47ac5abc217739951
+    name: Enemy2_Attack_3
+    layerId: 21
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: 95c424b6d22cb3e43a967352a0053152
+    name: Enemy2_Attack_4
+    layerId: 22
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: b6272a3fb82f92d48875685337def5a9
+    name: Enemy2_Attack_5
+    layerId: 23
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: 1bbed98cf3e4a754291566e6e44e3fe5
+    name: Enemy2_Attack_6
+    layerId: 24
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  psdLayers:
+  - name: Enemy2_Attack
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 51a65af973174624da8355aaf1328d17
+    layerID: 25
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Enemy2_Attack_1
+    spriteName: Enemy2_Attack_1
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 5a2c0dcc8ddd5d142a99c36b356777ee
+    layerID: 19
+    mosaicPosition: {x: 2460, y: 660}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Attack_2
+    spriteName: Enemy2_Attack_2
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 6db3f5d7899fbf640ba9bd6fd1d09f52
+    layerID: 20
+    mosaicPosition: {x: 4, y: 2673}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Attack_3
+    spriteName: Enemy2_Attack_3
+    isGroup: 0
+    parentIndex: 0
+    spriteID: c301dc422dfe1eb47ac5abc217739951
+    layerID: 21
+    mosaicPosition: {x: 4, y: 1967}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Attack_4
+    spriteName: Enemy2_Attack_4
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 95c424b6d22cb3e43a967352a0053152
+    layerID: 22
+    mosaicPosition: {x: 908, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Attack_5
+    spriteName: Enemy2_Attack_5
+    isGroup: 0
+    parentIndex: 0
+    spriteID: b6272a3fb82f92d48875685337def5a9
+    layerID: 23
+    mosaicPosition: {x: 863, y: 660}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Attack_6
+    spriteName: Enemy2_Attack_6
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 1bbed98cf3e4a754291566e6e44e3fe5
+    layerID: 24
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Run
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 306f946c7088f674ab0364af6e8e4922
+    layerID: 17
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Enemy2_Run_1
+    spriteName: Enemy2_Run_1
+    isGroup: 0
+    parentIndex: 7
+    spriteID: d2ce6fc25e4a0364a8a907f19e741ad0
+    layerID: 12
+    mosaicPosition: {x: 761, y: 1967}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Run_2
+    spriteName: Enemy2_Run_2
+    isGroup: 0
+    parentIndex: 7
+    spriteID: b8b03d35f5b4a054d975c371235db5aa
+    layerID: 13
+    mosaicPosition: {x: 4, y: 1294}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Run_3
+    spriteName: Enemy2_Run_3
+    isGroup: 0
+    parentIndex: 7
+    spriteID: 7de06bbd2cbbede42b0578ee54dec138
+    layerID: 14
+    mosaicPosition: {x: 1847, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Run_4
+    spriteName: Enemy2_Run_4
+    isGroup: 0
+    parentIndex: 7
+    spriteID: 2fd5be5b898f1084a8c306f653d7d27f
+    layerID: 15
+    mosaicPosition: {x: 2706, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Run_5
+    spriteName: Enemy2_Run_5
+    isGroup: 0
+    parentIndex: 7
+    spriteID: 31a4a15bc8d7d334cbfc0b95273b3bb6
+    layerID: 16
+    mosaicPosition: {x: 4, y: 660}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Open
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 44a0c74ccd2a3e549912f0ae62998a59
+    layerID: 10
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Enemy2_Open_1
+    spriteName: Enemy2_Open_1
+    isGroup: 0
+    parentIndex: 13
+    spriteID: eb339367d2eb3a44aa8917bd6b4d81ac
+    layerID: 5
+    mosaicPosition: {x: 1794, y: 660}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Open_2
+    spriteName: Enemy2_Open_2
+    isGroup: 0
+    parentIndex: 13
+    spriteID: 2b6407f2da9d79d46abf30ed59357a1a
+    layerID: 6
+    mosaicPosition: {x: 2924, y: 1967}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Open_3
+    spriteName: Enemy2_Open_3
+    isGroup: 0
+    parentIndex: 13
+    spriteID: 665a47db2a6535946a4128bb4c6cd99d
+    layerID: 8
+    mosaicPosition: {x: 2203, y: 1967}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Enemy2_Open_4
+    spriteName: Enemy2_Open_4
+    isGroup: 0
+    parentIndex: 13
+    spriteID: 2f992e95e23663c45850932ebfc96ce4
+    layerID: 9
+    mosaicPosition: {x: 1482, y: 1967}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   mosaicPSDLayers:
   - name: Enemy2_Attack
     spriteName: 
@@ -1064,49 +1669,6 @@ ScriptedImporter:
     isImported: 1
     isVisible: 1
   sharedRigPSDLayers: []
-  pSDLayerImportSetting:
-  - spriteId: 51a65af973174624da8355aaf1328d17
-    name: Enemy2_Attack
-    layerId: 25
-    flatten: 0
-    isGroup: 1
-    importLayer: 1
-  - spriteId: 5a2c0dcc8ddd5d142a99c36b356777ee
-    name: Enemy2_Attack_1
-    layerId: 19
-    flatten: 0
-    isGroup: 0
-    importLayer: 1
-  - spriteId: 6db3f5d7899fbf640ba9bd6fd1d09f52
-    name: Enemy2_Attack_2
-    layerId: 20
-    flatten: 0
-    isGroup: 0
-    importLayer: 1
-  - spriteId: c301dc422dfe1eb47ac5abc217739951
-    name: Enemy2_Attack_3
-    layerId: 21
-    flatten: 0
-    isGroup: 0
-    importLayer: 1
-  - spriteId: 95c424b6d22cb3e43a967352a0053152
-    name: Enemy2_Attack_4
-    layerId: 22
-    flatten: 0
-    isGroup: 0
-    importLayer: 1
-  - spriteId: b6272a3fb82f92d48875685337def5a9
-    name: Enemy2_Attack_5
-    layerId: 23
-    flatten: 0
-    isGroup: 0
-    importLayer: 1
-  - spriteId: 1bbed98cf3e4a754291566e6e44e3fe5
-    name: Enemy2_Attack_6
-    layerId: 24
-    flatten: 0
-    isGroup: 0
-    importLayer: 1
   importFileNodeState: 1
   platformSettingsDirtyTick: 0
   spriteSizeExpandChanged: 0

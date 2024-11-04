@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace OriginL.Building {
+namespace BrokenLands {
     public class MinerScript : BuildingBase {
 
         public string resourceName;  // Name of the resource the miner will mine
