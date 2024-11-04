@@ -13,21 +13,8 @@ public class GameManager : MonoBehaviour {
     #endregion
     
     #region Components
-    [Header("PlayerComponents")]
-    public GameObject playerObj;
-    #endregion
-
-
-    #region GameState:
-    public enum GameState {
-        Play,
-        Pause,
-        Menu,
-        GameOver
-    }
-
-    // Current game state
-    private GameState currentState;
+/*    [Header("PlayerComponents")]
+    public GameObject playerObj;*/
     #endregion
 
     #region Events
@@ -58,11 +45,9 @@ public class GameManager : MonoBehaviour {
     #endregion
 
     private TimeManager timeManager;
-
+    // Current game state
+    [SerializeField] private GameState currentState;
     #endregion
-
-
-    public UiManager uiManager;
     #region Singleton
     private static GameManager _instance;
 
@@ -83,16 +68,13 @@ public class GameManager : MonoBehaviour {
         } else if(_instance != this) {
             Destroy(gameObject);  // Destroy duplicate instance
         }
-        if(timeManager == null) 
-            timeManager = FindFirstObjectByType<TimeManager>();
-        uiManager = UiManager.Instance;
-        
     }
     #endregion
 
     #region UnityRuntimeFunction
     void Start() {
-        SetGameState(GameState.Play);
+        if(timeManager == null)
+            timeManager = FindFirstObjectByType<TimeManager>();
     }
 
     #endregion
@@ -103,6 +85,9 @@ public class GameManager : MonoBehaviour {
         currentState = newState;
 
         switch(currentState) {
+            case GameState.Start:
+            
+            break;
             case GameState.Play:
             ResumeGame();
             break;
@@ -111,7 +96,7 @@ public class GameManager : MonoBehaviour {
             PauseGame();
             break;
 
-            case GameState.Menu:
+            case GameState.MainMenu:
             EnterMenu();
             break;
 
@@ -119,7 +104,6 @@ public class GameManager : MonoBehaviour {
             HandleGameOver();
             break;
         }
-
         Debug.Log("Game State changed to: " + currentState);
     }
     #region GameCommand
@@ -164,7 +148,6 @@ public class GameManager : MonoBehaviour {
     void SceneChange() {
         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Area1")) {  // can replace with ScenesManager.ActiveScene check;
             isGameOver = false;
-            playerObj = GameObject.Find("Player");
         }
     }
 
@@ -182,4 +165,11 @@ public class GameManager : MonoBehaviour {
         }
     }
     #endregion
+}
+public enum GameState {
+    Start,
+    MainMenu,
+    Play,
+    Pause,
+    GameOver
 }
