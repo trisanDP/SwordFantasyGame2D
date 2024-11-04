@@ -12,6 +12,15 @@ namespace OriginL {
         public Equipment[] currentEquipment;
 
         public EquipmentUI_M equipmentUI;
+        public static PlayerEquipmentManager Instance;
+
+        private void Awake() {
+            if(Instance != null) {
+                Destroy(Instance);
+            } else {
+                Instance = this;
+            }
+        }
 
         void Start() {
             inventoryManager = GetComponent<InventoryManager>();

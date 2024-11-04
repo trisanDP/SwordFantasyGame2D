@@ -9,7 +9,7 @@ namespace OriginL {
         PlayerEquipmentManager manager;
 
         private void Start() {
-            manager = GameManager.Instance.playerObj.GetComponent<PlayerEquipmentManager>();
+            manager = PlayerEquipmentManager.Instance;
         }
 
         public void AddItem(Equipment newItem) {
