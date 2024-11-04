@@ -9,6 +9,13 @@ public class UiManager : MonoBehaviour {
 
     #region Variables
 
+    #region State
+
+    public enum State {
+        MainMenu, Game1
+    }
+    public State activeState;
+    #endregion
 
     #region UI_Variables
     [Header("Inventory and Other UIs")]
@@ -26,54 +33,55 @@ public class UiManager : MonoBehaviour {
     public static UiManager Instance;
 
     private void Awake() {
-
         RefreshRefrences1();
         if(Instance == null) {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         } else
             Destroy(gameObject);
+        if(InventoryUI == null) {
+            Debug.LogError("InventoryUI is missing!");
+        }
+        if(chestUI == null) {
+            Debug.LogError("ChestUI is missing!");
+        }
+        if(equipmentUI == null) {
+            Debug.LogError("EquipmentUI is missing!");
+        }
+        if(intractableUi == null) {
+            Debug.LogError("IntractablesUI is missing!");
+        }
     }
 
     #endregion
 
     private void OnEnable() {
-        ScenesManager.Instance.OnSceneChange += RefreshRefrences1;
-
-
-    }
-    private void OnDestroy() {
-        ScenesManager.Instance.OnSceneChange -= RefreshRefrences1;
-
-    }
-
-    void LinkManagers() {
-        if(InventoryUI == null) {
-            GameManager.Instance.DebugMessage("InventoryUI_Manager Was Empty but now Assigned", GameManager.MessageField.UI);
-            InventoryUI = FindFirstObjectByType<InventoryUI_M>(); ;
+        switch(activeState) {
+            case State.Game1:
+            ScenesManager.Instance.OnSceneChange += RefreshRefrences1;
+            break;
+            case State.MainMenu:
+            break;
         }
-        /*            Debug.Log("InventoryFound");*/
+
+    }
+    private void RefreshRefrences1() {
+        if(InventoryUI == null) {
+            GameManager.Instance.DebugMessage("InventoryUI_Manager Was Empty but now Assigned",GameManager.MessageField.UI);
+            InventoryUI = FindFirstObjectByType<InventoryUI_M>(); ;
+        } else
+            Debug.Log("InventoryFound");
         if(chestUI == null) {
             GameManager.Instance.DebugMessage("ChestUI_Manager Was Empty but now Assigned", GameManager.MessageField.UI);
             chestUI = FindFirstObjectByType<ChestUI_Manager>();
         }
         if(equipmentUI == null) {
-            GameManager.Instance.DebugMessage("Equipment Was Empty but now Assigned", GameManager.MessageField.UI);
+            Debug.Log("Equipmwe was Empty");
             equipmentUI = FindFirstObjectByType<EquipmentUI_M>();
         }
         if(intractableUi == null) {
-            GameManager.Instance.DebugMessage("Intractable Was Empty but now Assigned", GameManager.MessageField.UI);
+            Debug.Log("IntractableUI was empty");
             intractableUi = FindFirstObjectByType<IntractablesUI_Manager>();
         }
-    }
 
-    private void RefreshRefrences1() {
-        switch(GameManager.Instance.GetCurrentState()) {
-            case GameState.MainMenu:
-            break;
-            case GameState.Start:
-                LinkManagers();
-            break;
-        }
     }
 }

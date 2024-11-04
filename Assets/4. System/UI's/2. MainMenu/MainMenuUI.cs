@@ -51,7 +51,7 @@ public class UI_MainMenu : MonoBehaviour {
 
     #region Pannel1_MainMenu
     public void OnButtonNewGame() {
-        ScenesManager.Instance.LoadScene(ScenesManager.SceneType.Area1);
+        ScenesManager.Instance.LoadNewScene();
     }
     public void OnButtonSettings() {
         SetActiveState(State.Setting);

@@ -1,8 +1,10 @@
-using OriginL.Player;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace BrokenLands {
+namespace OriginL.Player {
     public class PlayerIntract : MonoBehaviour {
         #region Variables
         public float range;  // Changed to float for precision

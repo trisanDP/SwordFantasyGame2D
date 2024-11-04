@@ -1,4 +1,3 @@
-using BrokenLands;
 using UnityEngine;
 
 namespace OriginL.Player {
@@ -71,8 +70,8 @@ namespace OriginL.Player {
 
         private void Update() {
             PlayerStateMachine.CurrentState.FrameUpdate();
-/*            if(rb.linearVelocity.y < 0)
-*//*                Debug.Log("Here");*/
+            if(rb.linearVelocity.y < 0)
+                Debug.Log("Here");
         }
 
         private void FixedUpdate() {
@@ -91,7 +90,6 @@ namespace OriginL.Player {
             playerInput = GetComponent<PlayerInput>();
             p_animCont = GetComponent<PlayerAnimationController>();
             playerStat = GetComponent<PlayerStat>();
-
             playerCombact = GetComponent<PlayerCombact>();
             playerIntract = GetComponent<PlayerIntract>();
             playerEquipmentM = GetComponentInChildren<PlayerEquipmentManager>();

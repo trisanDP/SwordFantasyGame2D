@@ -20,7 +20,7 @@ public class QuestUI : MonoBehaviour
     //Handles Quest Accept, Reject and Display on Screen
     private void Start()
     {
-        quest = QuestManager.Instance.activeQuests;
+        quest = QuestManager.activeQuests;
     }
     
     public void OpenQuestWindow(int Q_Id){

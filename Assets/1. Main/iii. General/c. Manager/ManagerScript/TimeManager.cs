@@ -25,7 +25,7 @@ namespace BrokenLands
         }
         private void Update() {
             // Only update time if game is in Play state
-            if(GameManager.Instance != null && GameManager.Instance.GetCurrentState() == GameState.Play) {
+            if(GameManager.Instance != null && GameManager.Instance.GetCurrentState() == GameManager.GameState.Play) {
                 UpdateInGameTime();
                 CheckTimeEvents();
                 UpdateClock();

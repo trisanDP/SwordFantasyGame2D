@@ -17,7 +17,7 @@ public class BaseStructureScript : BuildingBase
     }
 
     public override void SetSprite() {
-        //throw new System.NotImplementedException();
+        throw new System.NotImplementedException();
     }
 
     public override void TakeDamage(global::System.Single damageAmount, global::System.Int32 knockBackF, GameObject damageFrom) {
