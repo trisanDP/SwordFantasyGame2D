@@ -163,7 +163,7 @@ public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable, I
         if(CanAfford()) {
             UpgradeStage(); 
             DeductCost();
-            gameManager.playerObj.GetComponent<PlayerStat>().Energy.DecreaseStat(EnergyCost());
+            PlayerScript.Instance.playerStat.Energy.DecreaseStat(EnergyCost());
         }
     }
 
@@ -211,7 +211,7 @@ public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable, I
                 Debug.Log($"Not enough {cost.resourceName}");
                 StartCoroutine(GameUI.instance.DisplayMessage("Cannot Afford", 1));
                 return false;
-            } else if(gameManager.playerObj.GetComponent<PlayerScript>().playerStat.Energy.GetValue() < EnergyCost()) {
+            } else if(PlayerScript.Instance.playerStat.Energy.GetValue() < EnergyCost()) {
                 StartCoroutine(GameUI.instance.DisplayMessage("Not Enough Energy", 1));
                 return false;
 
