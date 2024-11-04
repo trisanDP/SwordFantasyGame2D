@@ -1,4 +1,3 @@
-using BrokenLands;
 using OriginL.Player;
 using TMPro;
 using UnityEngine;
@@ -14,12 +13,7 @@ public class IntractablesUI_Manager : MonoBehaviour
             Debug.Log("IntractObj is Null");
         if(intractTxt == null)
             Debug.Log("Intract Txt is Null");
-        
-    }
-    private void Start() {
         playerIntract = PlayerScript.Instance.playerIntract;
-        if(PlayerScript.Instance == null)
-            Debug.Log("Null");
     }
 
     private void Update() {
@@ -28,7 +22,6 @@ public class IntractablesUI_Manager : MonoBehaviour
         } else
             Hide();
     }
-
     private void OnEnable() {
         ScenesManager.Instance.OnSceneChange += RefreshRefrences;
     }

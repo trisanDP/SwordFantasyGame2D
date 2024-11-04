@@ -9,10 +9,9 @@ EditorBuildSettings:
     path: Assets/Warehouse/Holding/Pixel Adventure 1/Scenes/Demo.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/2. Scenes/a. MainScenes/MainMenu.unity
+    path: Assets/2. Scenes/a. MainMeun/MainMenu.unity
     guid: fd63d72ab8b7918409e87afa567e13f4
   - enabled: 1
-    path: Assets/2. Scenes/a. MainScenes/Area1.unity
+    path: Assets/2. Scenes/b. Levels/Area1.unity
     guid: 5aefb23e9cd48f14ab1e2a90b9f05290
   m_configObjects: {}
-  m_UseUCBPForAssetBundles: 0

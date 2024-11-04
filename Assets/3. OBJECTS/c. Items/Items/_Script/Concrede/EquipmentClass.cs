@@ -10,7 +10,7 @@ namespace OriginL.Item {
 
         public override void Use() {
             base.Use();
-            PlayerEquipmentManager.Instance.Equip(this);
+            GameManager.Instance.playerObj.GetComponent<PlayerEquipmentManager>().Equip(this);
             RemoveFromInventory();
 
         }

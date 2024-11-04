@@ -1,4 +1,3 @@
-using OriginL.Player;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,28 +21,15 @@ namespace OriginL {
 
         private void Awake() {
             slot = equipParent.GetComponentsInChildren<EquipmentSlot>();
-
+            if(GameManager.Instance.playerObj != null && GameManager.Instance.isGameOver == false) {
+                manager = GameManager.Instance.playerObj.GetComponent<PlayerEquipmentManager>();
+                stat = GameManager.Instance.playerObj.GetComponent<Player.PlayerStat>();
+            }
         }
 
         void Start() {
-            Initialize();
             equipmentUiObj.SetActive(false);
-            if(stat != null) {
-                SetEnergy();
-            } else {
-                Debug.LogError("PlayerStat component is missing or not assigned.");
-                if(PlayerScript.Instance.playerStat != null) {
-                    Debug.Log("NUll");
-                }
-            }
-
-        }
-
-        private void Initialize() {
-            if(GameManager.Instance.isGameOver == false) {
-                manager = PlayerEquipmentManager.Instance;/*PlayerScript.Instance.playerEquipmentM*/;
-                stat = PlayerScript.Instance.playerStat;
-            }
+            SetEnergy();
         }
 
         public void ToggleUi() {
@@ -77,7 +63,16 @@ namespace OriginL {
 
 
         void SetEnergy() {
-            Energy.text = stat.Energy.GetValue().ToString();
+            Energy.text = stat.Energy.GetValue().ToString(); 
         }
+        /*
+            public void Update() {
+                if(!GameManager.Instance.isGameOver) {
+                    damageTxt.text = "" + stat.physicalDamage.GetValue();
+                    ArmorTxt.text = "" + stat.armor.GetValue();
+                    ResistanceTxt.text = "" + stat.resistance.GetValue();
+                    health.text = "" + stat.CurrentHealth;
+                }
+            }*/
     }
 }
