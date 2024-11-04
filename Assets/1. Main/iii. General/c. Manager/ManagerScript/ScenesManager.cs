@@ -21,25 +21,28 @@ public class ScenesManager : MonoBehaviour {
     public enum SceneType {
         MainMenu, Area1
     }
-
-    public void LoadMainMenu() {
-        SceneManager.LoadScene("MainMenu");
+    void Start() {
+        UpdateSceneState(SceneType.MainMenu);
     }
 
+    void UpdateSceneState(SceneType scene) {
+        if(scene == SceneType.MainMenu) {
+            GameManager.Instance.SetGameState(GameState.MainMenu);
+        }
+        if(scene == SceneType.Area1) {
+            GameManager.Instance.SetGameState(GameState.Start);
+        }
+    }
+ 
     public void LoadScene(SceneType scene) {
         SceneManager.LoadScene(scene.ToString());
+        UpdateSceneState(scene);
     }
 
-    public void LoadNewScene() {
-        SceneManager.LoadScene("Area1");
-    }
-
-    public void LoadNextScene() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
     private void OnEnable() {
         SceneManager.sceneLoaded += SceneChanged;
     }
+
     void SceneChanged(Scene a, LoadSceneMode b) {
         OnSceneChange?.Invoke();
     }
