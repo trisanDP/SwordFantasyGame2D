@@ -27,7 +27,7 @@ namespace OriginL {
             if(UiManager.Instance != null) {
                 equipmentUI = UiManager.Instance.equipmentUI;
             } else
-                Debug.LogWarning("UIManager is Missing");
+                Debug.LogWarning("UiManager is Missing");
 
             int numSlots = System.Enum.GetNames(typeof(EquipmentSlotType)).Length;
 

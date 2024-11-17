@@ -9,7 +9,7 @@ public class NPCScript : MonoBehaviour, IIntractable {
 
     }
     // Method to show NPC dialogue
-    private void ShowDialogue() {
+/*    private void ShowDialogue() {
         // Example: Show the first dialogue line
         if(npcData.dialogues.Length > 0) {
             Debug.Log($"{npcData.npcName}: {npcData.dialogues[0]}");
@@ -17,17 +17,7 @@ public class NPCScript : MonoBehaviour, IIntractable {
         } else {
             Debug.LogWarning($"{npcData.npcName} has no dialogues.");
         }
-    }
-
-    // Method to start a quest from the NPC
-    public void StartQuest(Quest quest) {
-        if(quest != null) {
-            Debug.Log($"{npcData.npcName} has given you the quest: {quest.questName}");
-            // Implement quest start logic, e.g., adding to player's active quests
-        } else {
-            Debug.LogWarning("Quest is null. Cannot start quest.");
-        }
-    }
+    }*/
 
     // Method to get the NPC's current friendship level
     public int GetFriendshipLevel() {
@@ -35,11 +25,11 @@ public class NPCScript : MonoBehaviour, IIntractable {
     }
 
     public void OnIntract() {
-        if(npcData != null) {
+        /*if(npcData != null) {
             ShowDialogue();
         } else {
             Debug.LogWarning("NPC Data not assigned for " + gameObject.name);
-        }
+        }*/
     }
 
 

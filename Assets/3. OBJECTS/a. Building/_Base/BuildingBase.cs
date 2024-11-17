@@ -4,6 +4,8 @@ using OriginL;
 using System.Resources;
 using OriginL.Player;
 using BrokenLands;
+/*using NUnit.Framework;*/
+using System.Collections.Generic;
 
 public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable, IEnergyConsumer {
 
@@ -24,20 +26,20 @@ public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable, I
     protected float Health;
     [SerializeField] protected int energyCost;
     [SerializeField] protected bool isDestroyed;
-    public ResourceCost[] buildCost;
-
+    public List<ResourceCost> resourceCost;
 
     [Header("DetectionVar")]
     [SerializeField] protected float range;
     protected LayerMask playerLayer;
-    protected GameResourceManager resourceManager;
+    protected InventoryManager inventoryManager;
     GameAssets gameAssets;
 
     #region BuildingStage
 
 
         [Header("State")]
-        [Range(0, 3)]
+
+        [Range(0,3)]
         public int stateLimit;
         public enum State {
             Node, Build1, Build2, Build3
@@ -58,7 +60,7 @@ public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable, I
    
     protected virtual void Awake() {
         gameManager = GameManager.Instance;
-         resourceManager = FindFirstObjectByType<GameResourceManager>();
+         inventoryManager = InventoryManager.instance;
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -73,9 +75,9 @@ public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable, I
 
     protected virtual void Start() {
         SetSprite();
-        if(resourceManager == null) {
+/*        if(inventoryManager == null) {
             Debug.LogError("ResourceManager not found in the scene.");
-        }
+        }*/
     }
 
     protected virtual void Update() {
@@ -201,30 +203,29 @@ public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable, I
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.5f);
         }
 
-        #endregion
+    #endregion
 
 
     #region ResourceCost
     public bool CanAfford() {
-        foreach(var cost in buildCost) {
-            if(resourceManager.GetResourceAmount(cost.resourceName) < cost.amountRequired) {
-                Debug.Log($"Not enough {cost.resourceName}");
+        foreach(ResourceCost cost in resourceCost) {
+            if(inventoryManager.storage.GetResourceAmount(cost.resource) < cost.amountRequired) {
+                Debug.Log($"Not enough {cost.resource.resourceName}");
                 StartCoroutine(GameUI.instance.DisplayMessage("Cannot Afford", 1));
                 return false;
-            } else if(PlayerScript.Instance.playerStat.Energy.GetValue() < EnergyCost()) {
+            }
+            if(PlayerScript.Instance.playerStat.Energy.GetValue() < EnergyCost()) {
                 StartCoroutine(GameUI.instance.DisplayMessage("Not Enough Energy", 1));
                 return false;
-
             }
         }
         return true;
-
     }
 
     // Deduct the resources after building the miner
     public void DeductCost() {
-        foreach(var cost in buildCost) {
-            resourceManager.SubtractResource(cost.resourceName, cost.amountRequired);
+        foreach(var cost in resourceCost) {
+            inventoryManager.SubtractResource(cost.resource, cost.amountRequired);
         }
     }
 
@@ -246,7 +247,7 @@ public abstract class BuildingBase : MonoBehaviour, IDamageable, IIntractable, I
 
 [Serializable]
 public class ResourceCost {
-    public string resourceName;
+    public ResourceType resource;
     public int amountRequired;
 }
 

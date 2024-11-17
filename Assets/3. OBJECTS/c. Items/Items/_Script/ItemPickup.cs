@@ -29,7 +29,7 @@ namespace OriginL.Intractable {
 
             bool wasPickedUp = inventory.AddItem(item);
             if(wasPickedUp) {
-                /*            Debug.Log("Picking Up " + item.name);*/
+                Debug.Log("Picking Up " + item.name);
                 Destroy(gameObject);
             }
         }

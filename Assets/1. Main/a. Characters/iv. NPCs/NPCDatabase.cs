@@ -1,35 +1,43 @@
+using log4net;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCDatabase : ScriptableObject {
-    // A list that stores all registered NPCs
-    public List<NPCData> npcList = new List<NPCData>();
+namespace NPCSystem {
+    [CreateAssetMenu(fileName = "NPCDatabase", menuName = "NPC/NPC Database")]
+    public class NPCDatabase : ScriptableObject {
+        // A list that stores all registered NPCs
+        public List<NPCData> npcDataList = new List<NPCData>();
+        public List<NPC> ActiveNPCLists;
+        public int creditAmount;
 
-    // Method to check if the NPC is already registered
-    public bool IsNPCRegistered(NPCData npc) {
-        return npcList.Contains(npc);
-    }
+        // Method to check if the NPC is already registered
 
-    // Method to register a new NPC
-    public void RegisterNPC(NPCData npc) {
-        // Check if the npcName is empty
-        if(string.IsNullOrEmpty(npc.npcName)) {
-            Debug.LogWarning("NPC name is empty. Cannot register NPC.");
-            return; // Exit early to prevent adding the NPC
+        public bool IsNPCDataRegistered(NPCData npc) {
+            return npcDataList.Contains(npc);
         }
 
-        if(!IsNPCRegistered(npc)) {
-            npcList.Add(npc);
-            Debug.Log($"{npc.npcName} has been added to the NPC Database.");
+        public bool IsActiveNPCRegistered(NPC npc) {
+            return ActiveNPCLists.Contains(npc);
+        }
 
-            // Ensure the NPC was added correctly
-            if(npcList.Contains(npc)) {
-                Debug.Log($"{npc.npcName} has been successfully added to the list.");
+        // Method to register a new NPC
+        public void RegisterNPCData(NPCData npc) {
+            if(!IsNPCDataRegistered(npc)) {
+                npcDataList.Add(npc);
+                /*            Debug.Log($"{npc.npcName} has been added to the NPC Database.");*/
             } else {
-                Debug.LogError($"Failed to add {npc.npcName} to the NPC Database.");
+                /*            Debug.LogWarning($"{npc.npcName} is already registered.");*/
             }
-        } else {
-            Debug.LogWarning($"{npc.npcName} is already registered.");
+        }
+
+        public void RegisterActiveNPCs(NPC npc) {
+            if(!IsActiveNPCRegistered(npc)) {
+                ActiveNPCLists.Add(npc);
+                /*            Debug.Log($"{npc.name} has been added to the NPC Database.");*/
+            } else {
+                /*            Debug.LogWarning($"{npc.name} is already registered.");*/
+            }
+            RegisterNPCData(npc.npcData);
         }
     }
 }

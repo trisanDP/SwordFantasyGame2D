@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36795a597cbe2648bbf2546efc88abb, type: 3}
+  m_Name: HubDatabase
+  m_EditorClassIdentifier: 
+  creditExchangeRates: 0000000000000000000000000000000000000000
+  resourceTypes:
+  - {fileID: 11400000, guid: 6449c6822ba0c394a81eecf67baf39ec, type: 2}
+  - {fileID: 11400000, guid: 71937e167104ed849b1237862d708b99, type: 2}
+  - {fileID: 11400000, guid: 78c76afd9d225344d9febdc7b5cc5261, type: 2}
+  - {fileID: 11400000, guid: fd8ed2516c90dbc408495fb6e9722dbe, type: 2}
+  - {fileID: 11400000, guid: 235ad62f7efddfa45a79509475eba03d, type: 2}
+  hubstorage:
+    storedResources: 8500000074000000000000000000000000000000
+    credits: 0

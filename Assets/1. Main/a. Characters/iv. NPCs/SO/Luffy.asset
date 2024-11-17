@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09b66e146696854e8a9168c9bd8475a, type: 3}
+  m_Name: Luffy
+  m_EditorClassIdentifier: 
+  npcName: Luffy
+  portrait: {fileID: 0}
+  dialogues: []
+  quests: []
+  friendshipLevel: 0
+  isUsed: 0
+  resourceData:
+  - resourceType: {fileID: 11400000, guid: 6449c6822ba0c394a81eecf67baf39ec, type: 2}
+    productionRate: 10
+    consumptionRate: 6
+  - resourceType: {fileID: 11400000, guid: 71937e167104ed849b1237862d708b99, type: 2}
+    productionRate: 40
+    consumptionRate: 20
+  - resourceType: {fileID: 11400000, guid: 78c76afd9d225344d9febdc7b5cc5261, type: 2}
+    productionRate: 20
+    consumptionRate: 10
+  - resourceType: {fileID: 11400000, guid: fd8ed2516c90dbc408495fb6e9722dbe, type: 2}
+    productionRate: 20
+    consumptionRate: 5
+  - resourceType: {fileID: 11400000, guid: 235ad62f7efddfa45a79509475eba03d, type: 2}
+    productionRate: 3
+    consumptionRate: 2
+  storage:
+    storedResources: 5a00000068010000b4000000b40000001b000000
+  npcDatabase: {fileID: 11400000, guid: 19d6dd72390726d4ea6c6dcd58a7bd2a, type: 2}
+  deliveryTimeMultiplier: 1
+  currentMoral: 10

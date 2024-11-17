@@ -20,6 +20,8 @@ namespace OriginL.EnemySpace {
         internal EnemyAI enemyAI;
         internal EnemyAnimController enemyAnimCont;
         internal EnemyCombact enemyCombact;
+
+        internal NPCData npcData;
         #endregion
 
         #region Primitives

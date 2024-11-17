@@ -5,9 +5,9 @@ using TMPro;
 using UnityEngine.UI;
 
 public class QuestUI : MonoBehaviour
-{
+{/*
     public List<Quest> quest;
-    private QuestManager QuestManager;
+    private QuestManager questManager;
 
     public GameObject questWindow;
     public TMP_Text qTitle;
@@ -20,7 +20,7 @@ public class QuestUI : MonoBehaviour
     //Handles Quest Accept, Reject and Display on Screen
     private void Start()
     {
-        quest = QuestManager.Instance.activeQuests;
+        quest = questManager.activeQuests;
     }
     
     public void OpenQuestWindow(int Q_Id){
@@ -28,18 +28,18 @@ public class QuestUI : MonoBehaviour
         Debug.Log(Q_Id);
         questWindow.SetActive(true);
         qTitle.text = quest[Q_Id].questName;
-        /*qTask.text = quest[Q_Id].objectives;*/
+        *//*qTask.text = quest[Q_Id].objectives;*//*
         qReward.text = quest[Q_Id].GetRewardsTxt();
     }
 
     public void AcceptQuest()
     {
         questWindow.SetActive(false);
-/*        QuestManager.StartQuest();*/
+*//*        QuestManager.StartQuest();*//*
     }
 
     public void Reset()
     {
         questWindow.SetActive(false);
-    }
+    }*/
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace BrokenLands {
     public class MinerScript : BuildingBase {
 
-        public string resourceName;  // Name of the resource the miner will mine
+        public ResourceType resource;  // Name of the resource the miner will mine
 
 
         private float miningTimer;
@@ -28,10 +28,10 @@ namespace BrokenLands {
 
         protected override void Update() {
             base.Update();
-            if(resourceManager != null && activeStage != State.Node) {
+            if(inventoryManager != null && activeStage != State.Node) {
                 miningTimer += Time.deltaTime;
                 if(miningTimer >= miningRate) {
-                    resourceManager.AddResource(resourceName, miningAmount); // Adjust the amount as needed
+                    inventoryManager.AddResource(resource, miningAmount); // Adjust the amount as needed
                     miningTimer = 0f;
                     Debug.Log("Mining");
                 }

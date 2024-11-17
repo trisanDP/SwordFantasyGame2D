@@ -1,0 +1,2 @@
+resourceitems which gives resources, 
+can use the ItemPickup script probably, should look more into it

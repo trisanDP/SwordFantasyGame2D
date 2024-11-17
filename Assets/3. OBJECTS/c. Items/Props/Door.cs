@@ -9,6 +9,7 @@ namespace OriginL
 
         [Header("Basic")]
         bool isOpen;
+
         public string DoorName;
         public string message;
 
