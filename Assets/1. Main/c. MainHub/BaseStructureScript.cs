@@ -13,7 +13,7 @@ public class BaseStructureScript : BuildingBase
     }*/
     #endregion
     public override void OnIntract() {
-        
+        ScenesManager.Instance.LoadScene(ScenesManager.SceneType.ResourceManagement);
     }
 
     public override void SetSprite() {

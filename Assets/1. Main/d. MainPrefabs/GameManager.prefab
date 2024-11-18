@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7358645431095754712}
   - component: {fileID: 7984080279472872633}
-  - component: {fileID: 6042432062404727396}
   - component: {fileID: 156509917155344608}
   m_Layer: 0
   m_Name: GameManager
@@ -54,25 +53,6 @@ MonoBehaviour:
   timeManager: {fileID: 156509917155344608}
   isPaused: 0
   currentState: 0
---- !u!114 &6042432062404727396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74698240704745112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40e3fe7c541396045a7ac534c6185508, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resources:
-  - {fileID: 11400000, guid: 72cc1fb87f0adb945af06a0af25d9414, type: 2}
-  woodAmountText: {fileID: 0}
-  metalAmountText: {fileID: 0}
-  stoneAmountText: {fileID: 0}
-  foodAmountTxt: {fileID: 0}
-  componentsAmountText: {fileID: 0}
 --- !u!114 &156509917155344608
 MonoBehaviour:
   m_ObjectHideFlags: 0

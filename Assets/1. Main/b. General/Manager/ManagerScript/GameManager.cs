@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
     public TimeManager timeManager;
 
     public bool isPaused;
+    public bool use24HourFormat;
     // Current game state
     [SerializeField] private GameState currentState;
     #endregion

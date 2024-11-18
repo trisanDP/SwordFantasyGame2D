@@ -15,27 +15,38 @@ MonoBehaviour:
   npcName: Luffy
   portrait: {fileID: 0}
   dialogues: []
-  quests: []
   friendshipLevel: 0
   isUsed: 0
+  conectedNPC: {fileID: 0}
   resourceData:
-  - resourceType: {fileID: 11400000, guid: 6449c6822ba0c394a81eecf67baf39ec, type: 2}
-    productionRate: 10
-    consumptionRate: 6
-  - resourceType: {fileID: 11400000, guid: 71937e167104ed849b1237862d708b99, type: 2}
-    productionRate: 40
-    consumptionRate: 20
-  - resourceType: {fileID: 11400000, guid: 78c76afd9d225344d9febdc7b5cc5261, type: 2}
-    productionRate: 20
-    consumptionRate: 10
-  - resourceType: {fileID: 11400000, guid: fd8ed2516c90dbc408495fb6e9722dbe, type: 2}
-    productionRate: 20
-    consumptionRate: 5
-  - resourceType: {fileID: 11400000, guid: 235ad62f7efddfa45a79509475eba03d, type: 2}
+  - resourceType: {fileID: 11400000, guid: 73a3056dddd31e94989301c6c902cbbd, type: 2}
+    productionRate: 7
+    consumptionRate: 2
+  - resourceType: {fileID: 11400000, guid: 4151d0be45878be458b72054723c1538, type: 2}
     productionRate: 3
+    consumptionRate: 0
+  - resourceType: {fileID: 11400000, guid: ef3661cc884e53847a7c7f9d132b3d91, type: 2}
+    productionRate: 15
+    consumptionRate: 6
+  - resourceType: {fileID: 11400000, guid: e31516fa70917ab4aa625c3620283d9f, type: 2}
+    productionRate: 5
+    consumptionRate: 3
+  - resourceType: {fileID: 11400000, guid: 2ebefe9ee30fc034ab4ef8ad17c93815, type: 2}
+    productionRate: 5
     consumptionRate: 2
   storage:
-    storedResources: 5a00000068010000b4000000b40000001b000000
-  npcDatabase: {fileID: 11400000, guid: 19d6dd72390726d4ea6c6dcd58a7bd2a, type: 2}
+    storedResources:
+    - resourceType: {fileID: 11400000, guid: 73a3056dddd31e94989301c6c902cbbd, type: 2}
+      amount: 20
+    - resourceType: {fileID: 11400000, guid: 4151d0be45878be458b72054723c1538, type: 2}
+      amount: 8
+    - resourceType: {fileID: 11400000, guid: ef3661cc884e53847a7c7f9d132b3d91, type: 2}
+      amount: 33
+    - resourceType: {fileID: 11400000, guid: e31516fa70917ab4aa625c3620283d9f, type: 2}
+      amount: 5
+    - resourceType: {fileID: 11400000, guid: 2ebefe9ee30fc034ab4ef8ad17c93815, type: 2}
+      amount: 9
+    credits: 0
+  npcDatabase: {fileID: 11400000, guid: ee5d960273ee2a24aa6678c8ded80f3c, type: 2}
   deliveryTimeMultiplier: 1
   currentMoral: 10

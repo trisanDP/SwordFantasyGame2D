@@ -19,7 +19,7 @@ public class NPCData : ScriptableObject {
     public List<ResourceProductionData> resourceData = new List<ResourceProductionData>();
 
     // Resource storage
-    public Storage storage = new();
+    public Storage storage = new(); // Ensure Storage is initialized
 
     // Reference to the NPC database
     [SerializeField] private NPCDatabase npcDatabase;
@@ -36,10 +36,16 @@ public class NPCData : ScriptableObject {
             RegisterIfNeeded();
         }
 
-        // Automatically initialize resource data
+        // Initialize storage if not already initialized
+        if(storage == null) {
+            storage = new Storage(); // Initialize storage if it's null
+        }
+
+        // Initialize resources in storage from ResourceDatabase
         ResourceDatabase resourceDatabase = Resources.Load<ResourceDatabase>("ResourceDatabase");
         if(resourceDatabase != null) {
-            InitializeResourceData(resourceDatabase);
+            storage.InitializeStorage(resourceDatabase); // Initialize storage with resources from the database
+            InitializeResourceData(resourceDatabase);    // Initialize resource data for production/consumption
         } else {
             Debug.LogWarning("ResourceDatabase not found. Ensure it's placed in the Resources folder.");
         }
@@ -99,7 +105,6 @@ public class NPCData : ScriptableObject {
     #endregion
 
     public void InitializeResourceData(ResourceDatabase resourceDatabase) {
-        Debug.Log("Hello");
         if(resourceDatabase == null || resourceDatabase.allResources == null) {
             Debug.LogError("ResourceDatabase or its resources are null. Initialization failed.");
             return;
@@ -110,14 +115,14 @@ public class NPCData : ScriptableObject {
             var existingData = resourceData.Find(data => data.resourceType == resource);
             if(existingData == null) {
                 // Add a new entry for this resource
-                resourceData.Add(new ResourceProductionData { resourceType = resource});
+                resourceData.Add(new ResourceProductionData { resourceType = resource });
             }
         }
 
         Debug.Log($"{npcName} resourceData initialized with {resourceData.Count} entries.");
     }
-
 }
+
 // Class to represent production/consumption data for a specific resource
 [System.Serializable]
 public class ResourceProductionData {

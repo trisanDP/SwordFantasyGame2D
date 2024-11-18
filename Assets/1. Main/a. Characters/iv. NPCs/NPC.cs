@@ -40,12 +40,12 @@ namespace NPCSystem {
             }
         }
         void OnEnable() {
-            /*GameManager.Instance.timeManager.OnNightStarted += NPCBehaviourOverNight;*/
+            GameManager.Instance.timeManager.OnNightStarted += NPCBehaviourOverNight;
         }
 
         private void OnDestroy() {
             if(GameManager.Instance != null) {
-                /*GameManager.Instance.timeManager.OnNightStarted -= NPCBehaviourOverNight;*/
+                GameManager.Instance.timeManager.OnNightStarted -= NPCBehaviourOverNight;
             }
 
             if(npcData != null) {

@@ -47,18 +47,24 @@ namespace OriginL.Inventory {
 
         // Update the storage UI to display resources and their amounts
         void UpdateStorageUI() {
-            ResetResourceValue(); // Reset UI elements to default 
+            ResetResourceValue(); // Reset UI elements to default
             int index = 0;
-            foreach(var entry in inventory.storage.storedResources) {
+
+            foreach(var storedResource in inventory.storage.storedResources) {
                 if(index < storedResourceTxt.Count) {
-                    var resource = entry.Key;
-                    var amount = entry.Value;
-                    storedResourceTxt[index].text = $"{amount}"; // Display resource name and amount
-/*                    Debug.Log($"Updating resource {index}: {resource.resourceName} - {amount}");*/
+                    var resourceType = storedResource.resourceType;  // Get the resource type
+                    var amount = storedResource.amount;  // Get the amount of the resource
+
+                    // Update the UI element with the resource's amount
+                    storedResourceTxt[index].text = $"{amount}";  // Display resource name and amount
+
+                    // Optionally, log the updated resource (for debugging)
+                    // Debug.Log($"Updating resource {index}: {resourceType.resourceName} - {amount}");
                 }
                 index++;
             }
         }
+
 
         // Reset the resource display
         void ResetResourceValue() {

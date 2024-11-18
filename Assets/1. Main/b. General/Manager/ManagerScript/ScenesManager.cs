@@ -24,6 +24,7 @@ public class ScenesManager : MonoBehaviour {
         MainMenu,
         Area1,
         Area2,
+        ResourceManagement
     }
     #endregion
 

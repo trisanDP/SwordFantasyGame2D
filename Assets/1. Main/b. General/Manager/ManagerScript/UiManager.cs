@@ -2,6 +2,7 @@ using NPCSystem;
 using OriginL;
 using OriginL.ChestSpace;
 using OriginL.Inventory;
+using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class UiManager : MonoBehaviour {
 
     #region Variables
 
+    public TextMeshProUGUI clockText;
 
     #region UI_Variables
     [Header("Inventory and Other UIs")]
@@ -52,12 +54,6 @@ public class UiManager : MonoBehaviour {
 
     }
 
-
-/*    public void ShowNPCUi(NPC npc, NPCData npcData) {
-        npcUiManager.GetNPCDetail(npc, npcData);
-        npcUiManager.Show();
-    }*/
-
     void LinkManagers() {
         if(InventoryUI == null) {
             GameManager.Instance.DebugMessage("InventoryUI_Manager Was Empty but now Assigned", GameManager.MessageField.UI);
@@ -97,5 +93,23 @@ public class UiManager : MonoBehaviour {
                 LinkManagers();
             break;
         }
+    }
+    public void UpdateClockUI(int hours, int minutes) {
+        
+        string timeText;
+
+        // Check if using 24-hour or 12-hour format
+        if(GameManager.Instance.use24HourFormat) {
+            // 24-hour format
+            timeText = $"{hours:00}:{minutes:00}";
+        } else {
+            // 12-hour format with AM/PM
+            string period = hours >= 12 ? "PM" : "AM";
+            int twelveHourFormat = hours % 12 == 0 ? 12 : hours % 12; // Convert 0 to 12 for 12-hour format
+            timeText = $"{twelveHourFormat:00}:{minutes:00} {period}";
+        }
+
+        // Update the clock UI text
+/*        clockText.text = timeText;*/
     }
 }

@@ -4380,6 +4380,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448285454}
   m_CullTransparentMesh: 1
+--- !u!114 &454667280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 156509917155344608, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+  m_PrefabInstance: {fileID: 1961131686}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd45f21e97df215478d9e57c3a72f7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &455874434
 GameObject:
   m_ObjectHideFlags: 0
@@ -12265,6 +12276,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2056948051002456281, guid: da7c566d459592c46b2e9be617658ed2, type: 3}
+      propertyPath: clockText
+      value: 
+      objectReference: {fileID: 341370347}
     - target: {fileID: 8172986683738318829, guid: da7c566d459592c46b2e9be617658ed2, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -12450,58 +12465,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258909822}
   m_CullTransparentMesh: 1
---- !u!1 &1266606107
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1266606109}
-  - component: {fileID: 1266606110}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1266606109
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266606107}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1266606110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266606107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f16ba51e801d14ebe0fef1ab9da0c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGameOver: 0
-  hub: {fileID: 0}
-  activeNPCList: []
-  npcDataList: []
-  setMessageField: 0
-  timeManager: {fileID: 0}
-  isPaused: 0
-  currentState: 0
 --- !u!1 &1274364924
 GameObject:
   m_ObjectHideFlags: 0
@@ -13241,9 +13204,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, NewAssembly
-        m_MethodName: DecreaseSpeed
+      - m_Target: {fileID: 454667280}
+        m_TargetAssemblyTypeName: BrokenLands.TimeManager, BrokenLands
+        m_MethodName: SlowDownTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13893,7 +13856,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zoro
       objectReference: {fileID: 0}
-    - target: {fileID: 8020454173083374531, guid: 29f2cdd0102ed854a93dc85f23821785, type: 3}
+    - target: {fileID: 7960381675394961902, guid: 29f2cdd0102ed854a93dc85f23821785, type: 3}
       propertyPath: npcData
       value: 
       objectReference: {fileID: 11400000, guid: adfc8b588a885d746ac6efc75887fe8f, type: 2}
@@ -14287,7 +14250,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Luffy
       objectReference: {fileID: 0}
-    - target: {fileID: 8020454173083374531, guid: 29f2cdd0102ed854a93dc85f23821785, type: 3}
+    - target: {fileID: 7960381675394961902, guid: 29f2cdd0102ed854a93dc85f23821785, type: 3}
       propertyPath: npcData
       value: 
       objectReference: {fileID: 11400000, guid: 3052a5d09f53c4c4e9cb05fd4ffc0849, type: 2}
@@ -21791,6 +21754,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958077831}
   m_CullTransparentMesh: 1
+--- !u!1001 &1961131686
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 74698240704745112, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.0325403
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9387712
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1814284
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358645431095754712, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea57cf693bfa3be47bd5f270c7b18b85, type: 3}
 --- !u!1 &1961173902
 GameObject:
   m_ObjectHideFlags: 0
@@ -22361,9 +22381,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, NewAssembly
-        m_MethodName: FastForwardTime
+      - m_Target: {fileID: 454667280}
+        m_TargetAssemblyTypeName: BrokenLands.TimeManager, BrokenLands
+        m_MethodName: SpeedUpTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23036,7 +23056,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trisan
       objectReference: {fileID: 0}
-    - target: {fileID: 8020454173083374531, guid: 29f2cdd0102ed854a93dc85f23821785, type: 3}
+    - target: {fileID: 7960381675394961902, guid: 29f2cdd0102ed854a93dc85f23821785, type: 3}
       propertyPath: npcData
       value: 
       objectReference: {fileID: 11400000, guid: 30ca39ace4b596845b47be202a2304d4, type: 2}
@@ -24383,7 +24403,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jim
       objectReference: {fileID: 0}
-    - target: {fileID: 8020454173083374531, guid: 29f2cdd0102ed854a93dc85f23821785, type: 3}
+    - target: {fileID: 7960381675394961902, guid: 29f2cdd0102ed854a93dc85f23821785, type: 3}
       propertyPath: npcData
       value: 
       objectReference: {fileID: 11400000, guid: 5be90b3a74c8a354a9d735a11b0d9328, type: 2}
@@ -24585,6 +24605,6 @@ SceneRoots:
   - {fileID: 898961493}
   - {fileID: 1884624696}
   - {fileID: 5526497357779393135}
-  - {fileID: 1266606109}
   - {fileID: 189535220}
   - {fileID: 1257887272}
+  - {fileID: 1961131686}

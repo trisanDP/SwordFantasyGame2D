@@ -1,6 +1,6 @@
-using Codice.Client.BaseCommands.BranchExplorer;
 using System.Collections.Generic;
 using UnityEngine;
+using BrokenLands;
 
 [CreateAssetMenu(fileName = "NewHubData", menuName = "Hub/New Hub")]
 public class HubData : ScriptableObject {
