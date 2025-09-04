@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace OriginL.Item {
-    public abstract class ItemClass : ScriptableObject {
+    public abstract class BaseItemSO : ScriptableObject {
         [Header("Item Detail")]
         new public string name = "New Item";
         public Sprite itemIcon = null;

@@ -54,7 +54,7 @@
                     "name": "Entract",
                     "type": "Button",
                     "id": "acc6a39e-5e02-448d-8cbf-b06c9753e8c9",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -63,7 +63,7 @@
                     "name": "SpawnEnemy",
                     "type": "Button",
                     "id": "b43a33a9-af03-427d-881a-9b52996346a8",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

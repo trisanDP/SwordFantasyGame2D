@@ -3,14 +3,14 @@ using UnityEngine;
 namespace OriginL.Item {
 
     [CreateAssetMenu(fileName = "New Tool Class", menuName = "Item/Tool")]
-    public class ToolsClass : ItemClass {
+    public class ToolsClass : BaseItemSO {
 
 
         public override void Use() {
             base.Use();
         }
         #region Function
-        /*public override ItemClass GetItem() { return this; }
+        /*public override BaseItemSO GetItem() { return this; }
 
         public override ToolsClass GetTool() { return this; }
 

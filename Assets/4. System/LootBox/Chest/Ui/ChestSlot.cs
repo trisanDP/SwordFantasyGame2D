@@ -5,17 +5,17 @@ using OriginL.Item;
 
 namespace OriginL.ChestSpace{
     public class ChestSlot : MonoBehaviour {
-        ItemClass item;
+        BaseItemSO item;
         public Image icon;
         /*    InventoryManager inventory;*/
-        /*    public static event Action<ItemClass> OnItemAddedToInventory;*/
-        public UnityEvent<ItemClass> OnItemPickedUp;
+        /*    public static event Action<BaseItemSO> OnItemAddedToInventory;*/
+        public UnityEvent<BaseItemSO> OnItemPickedUp;
 
         private void Start() {
             /*        inventory = InventoryManager.instance;*/
         }
 
-        public void AddItem(ItemClass newItem) { // Will add the Item and item UI in chest
+        public void AddItem(BaseItemSO newItem) { // Will add the Item and item UI in chest
             item = newItem;
             icon.sprite = item.itemIcon;
             icon.enabled = true;

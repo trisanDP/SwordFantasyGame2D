@@ -64,7 +64,6 @@ namespace BrokenLands {
                 Debug.LogError("InventoryManager is not set!", this);
                 return;
             }
-
             inventoryManager.AddResource(resourceType, amount);
             Destroy(gameObject);
         }

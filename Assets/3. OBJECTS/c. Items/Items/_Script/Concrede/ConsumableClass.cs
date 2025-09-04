@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OriginL.Item {
     [CreateAssetMenu(fileName = "New Tool Class", menuName = "Item/Consumable")]
-    public class ConsumableClass : ItemClass {
+    public class ConsumableClass : BaseItemSO {
         public enum Type {
             Healing, DamageAmp, SpeedBoost
         }

@@ -4,11 +4,11 @@ using OriginL.Item;
 
 namespace OriginL.Inventory{
     public class InventorySlot : MonoBehaviour {
-        ItemClass item;
+        BaseItemSO item;
         public Image icon;
         public Button removeButton;
 
-        public void AddItem(ItemClass newItem) {
+        public void AddItem(BaseItemSO newItem) {
             item = newItem;
             icon.sprite = item.itemIcon;
             icon.enabled = true;

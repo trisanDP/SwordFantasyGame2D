@@ -11,7 +11,7 @@ namespace OriginL.EnemySpace {
 
         [Header("Drops")]
         [SerializeField] GameObject dropBox;
-/*        [SerializeField] List<ItemClass> drops;*/
+/*        [SerializeField] List<BaseItemSO> drops;*/
 
         #endregion
         private void Start() {
@@ -35,7 +35,7 @@ namespace OriginL.EnemySpace {
       /*  public void DropItems() {  // Called in EnemyAnimation Script
             dropBox = Instantiate(dropBox, transform.position, Quaternion.identity);
             if(dropBox != null) {
-                foreach(ItemClass item in drops) { // Loop through all items in Drops
+                foreach(BaseItemSO item in drops) { // Loop through all items in Drops
                     LootDrop itemDropsScript = dropBox.GetComponent<LootDrop>();
                     if(itemDropsScript != null) {
                         itemDropsScript.ItemsRewards.Add(item);

@@ -5,7 +5,7 @@ namespace OriginL.Intractable {
 
     public class ItemPickup : MonoBehaviour, IIntractable {
         InventoryManager inventory;
-        public ItemClass item;
+        public BaseItemSO item;
         private SpriteRenderer spriteRenderer;
 
 

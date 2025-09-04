@@ -7,7 +7,7 @@ namespace OriginL.ChestSpace {
 
         #region Variables
 
-        public List<ItemClass> ItemsRewards;
+        public List<BaseItemSO> ItemsRewards;
         [Header("Components")]
         protected Animator animator;
         protected ChestUI_Manager ChestUi_M;
@@ -74,7 +74,7 @@ namespace OriginL.ChestSpace {
             activeState = BoxState.Close;
         }
 
-        public void RemoveChestItem(ItemClass item) {
+        public void RemoveChestItem(BaseItemSO item) {
             ItemsRewards.Remove(item);
             ChestUi_M.UpdateUI(this);
             if(ItemsRewards.Count <= 0) {
