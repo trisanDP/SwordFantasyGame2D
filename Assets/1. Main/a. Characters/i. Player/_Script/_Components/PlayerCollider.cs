@@ -57,16 +57,6 @@ namespace OriginL.Player {
 
         #endregion
 
-        #region onTrigger
-        /*
-            private void OnTriggerEnter2D(Collider2D collision)
-            {
-                #region Quest
-
-                #endregion
-            }*/
-        #endregion
-
         #region EnemyDetect
         internal Collider2D[] HitColRange() {
             Collider2D[] hit = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, hitLayer);

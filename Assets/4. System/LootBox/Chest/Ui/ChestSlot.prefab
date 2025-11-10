@@ -86,7 +86,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 774240771564302475}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -228,6 +228,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 774240771564302475}
+  OnItemPickedUp:
+    m_PersistentCalls:
+      m_Calls: []
+  btn: {fileID: 3942294271019012558}
 --- !u!222 &1218753039468638309
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -4,8 +4,9 @@ using UnityEngine.InputSystem;
 
 namespace BrokenLands {
     public class PlayerIntract : MonoBehaviour {
+
         #region Variables
-        public float range;  // Changed to float for precision
+        public float range;
         private PlayerScript player;
 
 
@@ -20,10 +21,6 @@ namespace BrokenLands {
             if(player == null) {
                 Debug.LogWarning("PlayerScript not found on the GameObject!");
             }
-        }
-
-        private void Update() {
-            // Handle UI or other updates if needed
         }
         #endregion
 
@@ -52,7 +49,7 @@ namespace BrokenLands {
                 }
             }
 
-            return closest; // Returns null if no intractable objects found
+            return closest;
         }
         #endregion
 

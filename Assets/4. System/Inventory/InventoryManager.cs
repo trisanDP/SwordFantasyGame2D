@@ -31,6 +31,9 @@ namespace OriginL {
         }
         #endregion
 
+        public void OnEnable() {
+            
+        }
 
         #region ItemManagement
         public bool AddItem(BaseItemSO item) {

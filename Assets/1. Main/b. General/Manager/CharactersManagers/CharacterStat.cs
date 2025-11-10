@@ -49,7 +49,4 @@ namespace OriginL {
         #endregion
     }
 
-    #region Note
-    //Add a Damage Over Time Function Like Take Damage Function for poision damage and Bleed Damage, Magic Damage
-    #endregion
 }

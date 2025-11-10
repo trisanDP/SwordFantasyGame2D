@@ -58,9 +58,8 @@ namespace OriginL.Player {
 
             if(Instance == null) {
                 Instance = this;
-/*                DontDestroyOnLoad(gameObject);  // Optional, depending on usage*/
             } else {
-                Destroy(gameObject);  // Destroy duplicate instance
+                Destroy(gameObject); 
             }
         
         }

@@ -5,7 +5,7 @@ using System.Linq;
 public class CameraManager : MonoBehaviour
 {
     private CinemachineCamera[] cameras;
-    private int currentCameraIndex = 0;
+/*    private int currentCameraIndex = 0;*/
 
     void Start()
     {
@@ -18,14 +18,14 @@ public class CameraManager : MonoBehaviour
         // Check if 'C' key is pressed
         if (Input.GetKeyDown(KeyCode.C))
         {
-            // Disable the current camera
+/*            // Disable the current camera
             cameras[currentCameraIndex].enabled = false;
 
             // Increment the index to switch to the next camera
             currentCameraIndex = (currentCameraIndex + 1) % cameras.Length;
 
             // Enable the new current camera
-            cameras[currentCameraIndex].enabled = true;
+            cameras[currentCameraIndex].enabled = true;*/
         }
     }
 }

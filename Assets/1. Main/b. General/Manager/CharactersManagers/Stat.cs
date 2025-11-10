@@ -33,7 +33,7 @@ public class Stat {
     public void IncreaseStat(int amount) {
         baseValue += amount;
     }
-
+     
     public void DecreaseStat(int amount) {
         baseValue -= amount; 
     }

@@ -38,7 +38,7 @@ namespace OriginL.Player {
 
         #region Animation_Attack_Caller
 
-        public void AttackCall() {  // Attack Function is called within animation frame     
+        public void AttackCall() {
             foreach(Collider2D hit in playerScrip.playerCollider.HitColRange()) {
                 if(hit.TryGetComponent<IDamageable>(out var damageable)) {
                     /*playerScrip.target = hit.gameObject;*/

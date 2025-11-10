@@ -33,7 +33,7 @@ namespace OriginL.Inventory {
             inventory.OnResourceAddCallBack -= UpdateStorageUI;
         }
 
-        // Update the inventory slots
+
         void UpdateItemSlotUi() {
             for(int i = 0; i < slot.Length; i++) {
                 if(i < inventory.items.Count) {
@@ -45,21 +45,18 @@ namespace OriginL.Inventory {
             }
         }
 
-        // Update the storage UI to display resources and their amounts
         void UpdateStorageUI() {
             ResetResourceValue(); // Reset UI elements to default
             int index = 0;
 
             foreach(var storedResource in inventory.storage.storedResources) {
                 if(index < storedResourceTxt.Count) {
-                    var resourceType = storedResource.resourceType;  // Get the resource type
-                    var amount = storedResource.amount;  // Get the amount of the resource
+                    var resourceType = storedResource.resourceType; 
+                    var amount = storedResource.amount;  
 
-                    // Update the UI element with the resource's amount
-                    storedResourceTxt[index].text = $"{amount}";  // Display resource name and amount
+                    storedResourceTxt[index].text = $"{amount}";  
 
-                    // Optionally, log the updated resource (for debugging)
-                    // Debug.Log($"Updating resource {index}: {resourceType.resourceName} - {amount}");
+
                 }
                 index++;
             }

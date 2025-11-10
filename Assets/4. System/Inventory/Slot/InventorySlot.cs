@@ -4,6 +4,7 @@ using OriginL.Item;
 
 namespace OriginL.Inventory{
     public class InventorySlot : MonoBehaviour {
+        
         BaseItemSO item;
         public Image icon;
         public Button removeButton;

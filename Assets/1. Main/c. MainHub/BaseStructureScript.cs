@@ -3,17 +3,10 @@ using UnityEngine;
 public class BaseStructureScript : BuildingBase
 {
     #region Unity Runtime Functions
-/*    void Start() {
 
-    }
-
-    // Update is called once per frame
-    void Update() {
-
-    }*/
     #endregion
-    public override void OnIntract() {
-        ScenesManager.Instance.LoadScene(ScenesManager.SceneType.ResourceManagement);
+    public override void OnIntract() {/*
+        ScenesManager.Instance.LoadScene(ScenesManager.SceneType.ResourceManagement);*/
     }
 
     public override void SetSprite() {
