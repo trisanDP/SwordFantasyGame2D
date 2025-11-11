@@ -7,7 +7,7 @@ namespace OriginL {
         InventoryManager inventoryManager;
 
         public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
-        public OnEquipmentChanged onEquipmentChanged;
+       public static OnEquipmentChanged onEquipmentChanged;
 
         public Equipment[] currentEquipment;
 
@@ -37,6 +37,7 @@ namespace OriginL {
         #region Basic Equipment Function
 
         public void Equip(Equipment newItem) {
+            Debug.Log("Called");
             int slotIndex = (int)newItem.equipment_Slot;
             Equipment oldItem = null;
             if(currentEquipment[slotIndex] != null) {

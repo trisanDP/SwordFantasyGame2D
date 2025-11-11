@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 namespace OriginL.EnemySpace {
     public class EnemyStat : CharacterStat {
         internal Enemy enemy;
+
+        public static Action OnDeath;
         #region Variables
 
         [Header("Status")]
@@ -29,6 +32,8 @@ namespace OriginL.EnemySpace {
         public override void Die() {
             base.Die();
             enemy.enemyAnimCont.PlayDeathAnim();
+            Debug.Log("Enemy Dies");
+            OnDeath?.Invoke();
         }
 
         #region Temp

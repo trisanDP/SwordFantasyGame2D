@@ -9,6 +9,7 @@ namespace BrokenLands {
         public float range;
         private PlayerScript player;
 
+        public GameObject ui;
 
         #endregion
 
@@ -22,6 +23,17 @@ namespace BrokenLands {
                 Debug.LogWarning("PlayerScript not found on the GameObject!");
             }
         }
+
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.Q)) {
+                if(ui.activeSelf) { 
+                    ui.SetActive(false); 
+                }
+                else{ 
+                    ui.SetActive(true); 
+                }
+            }
+        }
         #endregion
 
         #region Input
@@ -31,6 +43,8 @@ namespace BrokenLands {
                 intract?.OnIntract();  // Only call if object is not null
             }
         }
+
+        
         #endregion
 
         #region Intract Detection

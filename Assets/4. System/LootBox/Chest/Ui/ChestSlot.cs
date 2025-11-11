@@ -6,17 +6,17 @@ using System;
 
 namespace OriginL.ChestSpace {
     public class ChestSlot : MonoBehaviour {
-        BaseItemSO item;                    // The item that this slot represents
-        public Image icon;                   // The UI image for the item icon
-        InventoryManager inventory;          // Reference to the InventoryManager
-        public static event Action<BaseItemSO> OnItemAddedToInventory; // Event for adding item to inventory
-        public UnityEvent<BaseItemSO> OnItemPickedUp; // Unity event when item is picked up
+        BaseItemSO item;                 
+        public Image icon;                  
+        InventoryManager inventory;          
+        //public static event Action<BaseItemSO> OnItemAddedToInventory; 
+       // public UnityEvent<BaseItemSO> OnItemPickedUp; 
 
         public Button btn;
 
         private void Start() {
             inventory = InventoryManager.instance;
-            btn.onClick.AddListener(AddToInventory);
+            //btn.onClick.AddListener(AddToInventory);
         }
 
         public void AddItem(BaseItemSO newItem) // Will add the Item and item UI in chest
@@ -36,8 +36,7 @@ namespace OriginL.ChestSpace {
         #region Button
         public void AddToInventory() // Linked to Button in ChestSlot prefab
         {            
-            Debug.Log("Item Added to Inventory");
-            OnItemPickedUp?.Invoke(item);
+            //OnItemPickedUp?.Invoke(item);
             inventory.AddItem(item);
             Chest.activeLootBox.RemoveChestItem(item);
 

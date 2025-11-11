@@ -36,9 +36,8 @@ public class QuestManager : MonoBehaviour {
 
     // Handle quest timeout
     private void HandleQuestTimeUp(Quest quest) {
-        quest.status = Quest.QuestStatus.Failed; // Set the quest status to Failed
+        quest.status = Quest.QuestStatus.Failed; 
         Debug.Log($"Quest {quest.questName} has failed due to time running out.");
-        // Additional actions, such as notifying the player or triggering consequences
     }
 
 
@@ -49,7 +48,6 @@ public class QuestManager : MonoBehaviour {
             return true;
         return false;
     }
-    // Activates a new quest
 
     public void CheckQuestStatue(Quest quest) {
         if(!completedQuests.Contains(quest) && quest.IsCompleted()) {

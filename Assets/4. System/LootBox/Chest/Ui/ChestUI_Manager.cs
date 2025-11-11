@@ -39,6 +39,7 @@ namespace OriginL.ChestSpace {
             for(int i = 0; i < chest.ItemsRewards.Count; i++) {
                 GameObject newSlot = Instantiate(itemSlotPrefab, itemParent);
                 ChestSlot slotComponent = newSlot.GetComponent<ChestSlot>();
+                slotComponent.btn.interactable = true;
 
                 // Add the item to the newly instantiated slot
                 slotComponent.AddItem(chest.ItemsRewards[i]);

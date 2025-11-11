@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using OriginL.Item;
-using System.Dynamic;
-using OriginL.Inventory;
-using Mono.Cecil;
-using Codice.Client.Commands.Matcher;
 
 namespace OriginL {
     public class InventoryManager : MonoBehaviour {
@@ -43,6 +39,7 @@ namespace OriginL {
                     return false;
                 }
                 items.Add(item);
+                Debug.Log("ItemAdded");
                 itemChangeCallBack?.Invoke();
             }
             return true;

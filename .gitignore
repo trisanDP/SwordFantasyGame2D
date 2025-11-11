@@ -70,3 +70,27 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/1. Main/a. Characters/iv. NPCs/NPC.cs
+Assets/1. Main/a. Characters/iv. NPCs/NPCData.cs
+Assets/1. Main/a. Characters/iv. NPCs/SO/Jim.asset
+Assets/1. Main/a. Characters/iv. NPCs/SO/Luffy.asset
+Assets/1. Main/a. Characters/iv. NPCs/SO/Trisan.asset
+Assets/1. Main/a. Characters/iv. NPCs/SO/Zoro.asset
+Assets/1. Main/b. General/Manager/ManagerScript/GameManager.cs
+Assets/1. Main/b. General/Manager/ManagerScript/ScenesManager.cs
+Assets/1. Main/b. General/Manager/ManagerScript/TimeManager.cs
+Assets/1. Main/b. General/Manager/ManagerScript/UiManager.cs
+Assets/1. Main/c. MainHub/BaseStructureScript.cs
+Assets/1. Main/c. MainHub/Hub/HubData.cs
+Assets/1. Main/d. MainPrefabs/GameManager.prefab
+Assets/2. Scenes/a. MainScenes/ResourceManagermentScene.unity
+Assets/2. Scenes/a. MainScenes/ResourceManagermentScene.unity.meta
+Assets/2. Scenes/LevelDesignPractice/Level1.unity
+Assets/3. OBJECTS/e. Resources/Script/ResourceDatabase.cs
+Assets/3. OBJECTS/e. Resources/Script/ResourceType.cs
+Assets/4. System/Inventory/InventoryUI_M.cs
+Assets/4. System/Inventory/Storage.cs
+Assets/4. System/Inventory/Storage.cs.meta
+Assets/Resources/ResourceDatabase.asset
+Assets/Warehouse/Extra/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+ProjectSettings/EditorBuildSettings.asset

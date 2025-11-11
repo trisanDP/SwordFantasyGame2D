@@ -114,13 +114,13 @@ namespace OriginL.Player {
         }
         //........................
         #endregion
-
+/*
         public void SpawnEnemy(InputAction.CallbackContext context) {
             if(context.performed) {
                 EnemySpawner.instance.SpawnRandomEnemy();
             }
         }
-
+*/
         #endregion
 
     }

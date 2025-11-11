@@ -1,21 +1,20 @@
+using UnityEditor;
 using NPCSystem;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
-public class QuestCreationWindow : EditorWindow {
+/*public class QuestCreationWindow : EditorWindow {
     #region Variables
     //-----------------------------------------------------------------------
 
     private string questID = "";
     private string questName = "";
     private string description = "";
-    /*    private bool isRepeatable = false;*/
+    *//*    private bool isRepeatable = false;*//*
 
     private List<QuestObjective> objectives = new List<QuestObjective>();
     private List<Reward> rewards = new List<Reward>();
-    /*    private List<Quest> dependentQuests = new List<Quest>();*/
+    *//*    private List<Quest> dependentQuests = new List<Quest>();*//*
 
     private NPCDatabase npcDatabase;
     private string[] npcNames;
@@ -28,7 +27,7 @@ public class QuestCreationWindow : EditorWindow {
     private string[] resourceTypes;
 
     private enum QuestGiver { NPC, System }
-    /*    private QuestGiver selectedQuestGiver = QuestGiver.System;*/
+    *//*    private QuestGiver selectedQuestGiver = QuestGiver.System;*//*
 
     private enum QuestType { Gameplay_Day, Gameplay_Night }
     private QuestType selectedQuestType = QuestType.Gameplay_Night;
@@ -140,7 +139,7 @@ public class QuestCreationWindow : EditorWindow {
 
         showDependencies = EditorGUILayout.Foldout(showDependencies, "Dependent Quests");
         if(showDependencies) {
-            /*DrawDependentQuestsSection();*/
+            *//*DrawDependentQuestsSection();*//*
         }
 
         GUILayout.FlexibleSpace();
@@ -160,8 +159,8 @@ public class QuestCreationWindow : EditorWindow {
         EditorGUILayout.BeginVertical("box");
         questID = EditorGUILayout.TextField(new GUIContent("Quest ID", "Unique identifier for the quest"), questID);
         questName = EditorGUILayout.TextField(new GUIContent("Quest Name", "Name of the quest"), questName);
-        description = EditorGUILayout.TextField(new GUIContent("Description", "Brief description of the quest"), description);/*
-        isRepeatable = EditorGUILayout.Toggle(new GUIContent("Repeatable", "Can the quest be repeated?"), isRepeatable);*/
+        description = EditorGUILayout.TextField(new GUIContent("Description", "Brief description of the quest"), description);*//*
+        isRepeatable = EditorGUILayout.Toggle(new GUIContent("Repeatable", "Can the quest be repeated?"), isRepeatable);*//*
         EditorGUILayout.EndVertical();
     }
 
@@ -282,7 +281,7 @@ public class QuestCreationWindow : EditorWindow {
     }
 
     #endregion
-
+        
     #region Create Function
     private void AutoQuest() {
         Quest newQuest = new Quest();
@@ -290,8 +289,8 @@ public class QuestCreationWindow : EditorWindow {
         questName = "Auto Quest";
         description = "Auto Quest Description";
         selectedQuestType = QuestType.Gameplay_Day;
-        /*        newQuest.objectives = new List<QuestObjective>(objectives);
-                newQuest.rewards = new List<Reward>(rewards);*/
+        *//*        newQuest.objectives = new List<QuestObjective>(objectives);
+                newQuest.rewards = new List<Reward>(rewards);*//*
         selectedNPC = npcDatabase.npcDataList[0];
         if(objectives.Count == 0) {
             QuestObjective newObjective = new QuestObjective();
@@ -334,8 +333,8 @@ public class QuestCreationWindow : EditorWindow {
         newQuest.objectives = new List<QuestObjective>(objectives);
         newQuest.rewards = new List<Reward>(rewards);
         newQuest.questGiver = selectedNPC;
-/*        Debug.Log(newQuest.objectives[0].npcData.name);
-        Debug.Log(newQuest.objectives[0].npcData.npcName);*/
+*//*        Debug.Log(newQuest.objectives[0].npcData.name);
+        Debug.Log(newQuest.objectives[0].npcData.npcName);*//*
 
         if(selectedQuestType == QuestType.Gameplay_Day) {
             SaveInDayQuestList(newQuest);
@@ -367,20 +366,20 @@ public class QuestCreationWindow : EditorWindow {
         questDatabase.AddQuest(quest);
         EditorUtility.SetDirty(questDatabase); // Mark as dirty to ensure changes are saved
         AssetDatabase.SaveAssets();
-/*        Debug.Log($"Quest '{questName}' added to Quest Database.");*/
+*//*        Debug.Log($"Quest '{questName}' added to Quest Database.");*//*
     }
     private void ResetFields() {
         questID = "";
         questName = "";
         description = "";
         selectedNPC = null;
-        /*        isRepeatable = false;*/
-        /*        selectedQuestGiver = QuestGiver.System; */
+        *//*        isRepeatable = false;*/
+        /*        selectedQuestGiver = QuestGiver.System; *//*
         objectives.Clear();
         rewards.Clear();
-        /*        dependentQuests.Clear();*/
+        *//*        dependentQuests.Clear();*//*
     }
     #endregion
 
-}
+}*/
 

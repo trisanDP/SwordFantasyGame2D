@@ -1,8 +1,7 @@
-using log4net;
+
 using NPCSystem;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "NewNPC", menuName = "NPC/New NPC")]
 public class NPCData : ScriptableObject {
@@ -31,7 +30,7 @@ public class NPCData : ScriptableObject {
     public int currentMoral = 10;             // Moral ranges from 1 to 10
 
     // Automatically registers the NPC when necessary
-    private void OnValidate() {
+/*    private void OnValidate() {
         if(!isRegistered) {
             RegisterIfNeeded();
         }
@@ -49,7 +48,7 @@ public class NPCData : ScriptableObject {
         } else {
             Debug.LogWarning("ResourceDatabase not found. Ensure it's placed in the Resources folder.");
         }
-    }
+    }*/
 
 
     #region Register

@@ -1,6 +1,7 @@
+
+using OriginL.Item;
 using OriginL.Player;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace OriginL {
@@ -20,6 +21,7 @@ namespace OriginL {
         public TextMeshProUGUI health;
         public TextMeshProUGUI Energy;
 
+        private PlayerStat stats;
         private void Awake() {
             slot = equipParent.GetComponentsInChildren<EquipmentSlot>();
 
@@ -29,14 +31,22 @@ namespace OriginL {
             Initialize();
             equipmentUiObj.SetActive(false);
             if(stat != null) {
-                SetEnergy();
+                UpdateEnergy();
             } else {
                 Debug.LogError("PlayerStat component is missing or not assigned.");
                 if(PlayerScript.Instance.playerStat != null) {
                     Debug.Log("NUll");
                 }
             }
+            stats = PlayerScript.Instance.playerStat;
+            UpdateStats();
+            UpdateHealth();
+            
+        }
 
+        private void OnEnable() {
+            PlayerEquipmentManager.onEquipmentChanged += UpdateValues;
+            PlayerStat.OnHealthChange += UpdateHealth;
         }
 
         private void Initialize() {
@@ -65,7 +75,29 @@ namespace OriginL {
             slot[index].ClearSlot();
         }
 
-        public void SetValues(int phyDmg, int armor, int resistance, int health) {
+        public void UpdateStats() {
+            if(!GameManager.Instance.isGameOver) {
+                damageTxt.text = "" + stats.physicalDamage.GetValue();
+                ArmorTxt.text = "" + stats.armor.GetValue();
+                ResistanceTxt.text = "" + stats.resistance.GetValue();
+
+            }
+        }
+
+        public void UpdateValues(BaseItemSO item, BaseItemSO item2) {
+            UpdateStats();
+            UpdateEnergy();
+            UpdateHealth();
+            
+        }
+        public void UpdateHealth() {
+            this.health.text = "" + stats.CurrentHealth;
+        }
+
+
+/*        public void SetValues(int phyDmg, int armor, int resistance, int health) {
+            PlayerStat stats = PlayerScript.Instance.playerStat;
+
             if(!GameManager.Instance.isGameOver) {
                 damageTxt.text = "" + phyDmg;
                 ArmorTxt.text = "" + armor;
@@ -73,10 +105,9 @@ namespace OriginL {
                 this.health.text = "" + health;
                 SetEnergy();
             }
-        }
+        }*/
 
-
-        void SetEnergy() {
+        void UpdateEnergy() {
             Energy.text = stat.Energy.GetValue().ToString();
         }
     }

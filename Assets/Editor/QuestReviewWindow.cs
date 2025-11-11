@@ -1,4 +1,4 @@
-using UnityEditor;
+/*using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -218,7 +218,7 @@ public class QuestReviewWindow : EditorWindow {
             currentQuestList.Remove(selectedQuest);
             questDatabase.RemoveQuestByID(selectedQuest.questID);
             AssetDatabase.SaveAssets();
-/*            Debug.Log($"Quest '{selectedQuest.questName}' deleted.");*/
+*//*            Debug.Log($"Quest '{selectedQuest.questName}' deleted.");*//*
         }
 
         // Clear the selection
@@ -238,3 +238,4 @@ public class QuestReviewWindow : EditorWindow {
         }
     }
 }
+*/
