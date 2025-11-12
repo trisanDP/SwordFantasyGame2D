@@ -191,6 +191,10 @@ PrefabInstance:
       value: Table
       objectReference: {fileID: 0}
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
+      propertyPath: message
+      value: Press E to Collect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: itemName
       value: MetalPlate
       objectReference: {fileID: 0}
@@ -973,7 +977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5480250873180475023, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: m_Name
-      value: stonePile
+      value: StonePile
       objectReference: {fileID: 0}
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: col
@@ -984,8 +988,12 @@ PrefabInstance:
       value: Table
       objectReference: {fileID: 0}
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
+      propertyPath: message
+      value: Press E to Collect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: itemName
-      value: stonePile
+      value: StonePile
       objectReference: {fileID: 0}
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: resourceType
@@ -1314,6 +1322,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 246180258324371106, guid: b1a53d81bb9808e40b51c4c19e1cbdc4, type: 3}
+      propertyPath: message
+      value: Press E to Open Door
+      objectReference: {fileID: 0}
     - target: {fileID: 3157300165151522069, guid: b1a53d81bb9808e40b51c4c19e1cbdc4, type: 3}
       propertyPath: message
       value: Press E to Interact
@@ -1435,6 +1447,10 @@ PrefabInstance:
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
+      propertyPath: message
+      value: Press E to Collect
       objectReference: {fileID: 0}
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: itemName
@@ -1710,6 +1726,10 @@ PrefabInstance:
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
+      propertyPath: message
+      value: Press E to Collect
       objectReference: {fileID: 0}
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: itemName
@@ -2625,6 +2645,10 @@ PrefabInstance:
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: Name
       value: Wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
+      propertyPath: message
+      value: Press E to Collect
       objectReference: {fileID: 0}
     - target: {fileID: 5677299566636091905, guid: b65171b51a873014ab6bbf49b7960084, type: 3}
       propertyPath: itemName

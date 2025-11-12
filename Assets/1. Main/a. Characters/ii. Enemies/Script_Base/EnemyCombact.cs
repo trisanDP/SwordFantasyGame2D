@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace OriginL.EnemySpace {
-    public class EnemyCombact : Combact_Base {
+    public class EnemyCombact : Combat_Base {
         Enemy enemyScrip;
         private void Start() {
             enemyScrip = GetComponent<Enemy>();

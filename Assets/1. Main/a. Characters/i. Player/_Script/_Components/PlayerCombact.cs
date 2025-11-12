@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OriginL.Player {
 
-    public class PlayerCombact : Combact_Base {
+    public class PlayerCombat : Combat_Base {
         PlayerScript playerScrip;
 
         void Start() {

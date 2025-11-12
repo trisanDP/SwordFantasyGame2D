@@ -92,11 +92,11 @@ namespace OriginL.Player {
         public void OnAttack(InputAction.CallbackContext context) {
             if(context.performed) {
                 if(context.action.name == "Attack1")
-                    player.playerCombact.MeleeAttack1();
+                    player.playerCombat.MeleeAttack1();
 
             }
             if(context.action.name == "Attack2")
-                player.playerCombact.MeleeAttack2();
+                player.playerCombat.MeleeAttack2();
 
         }
 

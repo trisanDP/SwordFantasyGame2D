@@ -13,7 +13,7 @@ namespace OriginL.Player {
         internal PlayerInput playerInput;
         internal PlayerAnimationController p_animCont;
         internal PlayerStat playerStat;
-        internal PlayerCombact playerCombact;
+        internal PlayerCombat playerCombat;
         internal PlayerIntract playerIntract;
         internal PlayerEquipmentManager playerEquipmentM;
 
@@ -91,7 +91,7 @@ namespace OriginL.Player {
             p_animCont = GetComponent<PlayerAnimationController>();
             playerStat = GetComponent<PlayerStat>();
 
-            playerCombact = GetComponent<PlayerCombact>();
+            playerCombat = GetComponent<PlayerCombat>();
             playerIntract = GetComponent<PlayerIntract>();
             playerEquipmentM = GetComponentInChildren<PlayerEquipmentManager>();
         }

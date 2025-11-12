@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 namespace OriginL {
-    public class Combact_Base : MonoBehaviour {
+    public class Combat_Base : MonoBehaviour {
         internal GameObject target;
         public bool isAttacking = false;
 
