@@ -4,6 +4,7 @@ namespace OriginL.Item {
     [CreateAssetMenu(fileName = "New Equipment", menuName = "Item/Equipment")]
     public class Equipment : BaseItemSO {
         public EquipmentSlotType equipment_Slot;
+
         public int armorModifier;
         public int damageModifier;
         public int resistanceModifier;
